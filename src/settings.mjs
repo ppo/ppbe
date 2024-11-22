@@ -16,6 +16,7 @@ export const HTML_HEAD = {
   title: SITE_NAME,
   titleSeparator: ' :: ',
   description: 'Pascal Polleunus’ personal website.',
+  twitterUsername: 'ppolleunus',
 };
 
 

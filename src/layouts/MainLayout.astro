@@ -7,12 +7,14 @@ import Header from '@/components/layout/Header.astro';
 interface Props {
   title?: string | null;
   description?: string | null;
+  image?: string | URL | null;
   meta?: object[];
 }
 
 const {
   title,
   description,
+  image,
   meta,
 } = Astro.props.frontmatter || Astro.props;  // `.md[x]` provide a `frontmatter` prop.
 ---
@@ -20,7 +22,7 @@ const {
 
 <html lang="en">
   <head>
-    <BaseHead {...{title, description, meta}} />
+    <BaseHead {...{title, description, image, meta}} />
   </head>
   <body>
     <div>

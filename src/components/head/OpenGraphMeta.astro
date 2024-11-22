@@ -1,0 +1,25 @@
+---
+import { getMetaImageUrl } from '@/utils/url.mjs';
+
+
+interface Props {
+	url: string | URL;
+	title: string;
+	description?: string | null;
+	image?: string | URL | null;
+}
+
+const {
+  url,
+  title,
+  description,
+} = Astro.props;
+const imageUrl = getMetaImageUrl(Astro, Astro.props.image);
+---
+
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content={url} />{/* TODO: or Astro.url? */}
+<meta property="og:title" content={title} />
+{description && <meta property="og:description" content={description} />}
+{imageUrl && <meta property="og:image" content={imageUrl} />}

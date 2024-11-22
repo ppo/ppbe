@@ -1,0 +1,29 @@
+---
+import { HTML_HEAD } from '@/settings.mjs';
+
+import { getMetaImageUrl } from '@/utils/url.mjs';
+
+
+interface Props {
+	url: string | URL;
+	title: string;
+	description?: string | null;
+	image?: string | URL | null;
+  handle?: string | null;
+}
+const {
+  url,
+  title,
+  description,
+  handle = HTML_HEAD.twitterUsername,
+} = Astro.props;
+const imageUrl = getMetaImageUrl(Astro, Astro.props.image);
+---
+
+
+<meta property="twitter:card" content={imageUrl ? 'summary_large_image' : 'summary'} />
+<meta property="twitter:url" content={url} />{/* TODO: or Astro.url? */}
+{handle && <meta property="twitter:site" content={`@${handle}`} />}
+<meta property="twitter:title" content={title} />
+{description && <meta property="twitter:description" content={description} />}
+{imageUrl && <meta property="twitter:image" content={imageUrl} />}

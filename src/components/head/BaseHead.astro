@@ -4,6 +4,9 @@ import { HTML_HEAD, MY_NAME } from '@/settings.mjs';
 import { getFirstDefined } from '@/utils/main.mjs';
 import { getFullUrl } from '@/utils/url.mjs';
 
+import OpenGraphMeta from '@/components/head/OpenGraphMeta.astro';
+import TwitterMeta from '@/components/head/TwitterMeta.astro';
+
 
 /**
  * @param {...(string|undefined)} descriptions - Potential description(s).
@@ -29,9 +32,10 @@ function getTitle(...titles) {
 interface Props {
   title?: string | null;
   description?: string | null;
+	image?: string | URL | null;
   meta?: object[] | null;
 }
-const { meta } = Astro.props;
+const { image, meta } = Astro.props;
 const title = getTitle(Astro.props.title);
 const description = getDescription(Astro.props.description);
 
@@ -60,3 +64,7 @@ const pageUrl = getFullUrl(Astro);
 
 {/* Custom Metadata */}
 {meta && meta.map((attrs) => (<meta {...attrs} />))}
+
+{/* Socials Metadata */}
+<OpenGraphMeta {...{url: pageUrl, title, description, image}} />
+<TwitterMeta {...{url: pageUrl, title, description, image}} />

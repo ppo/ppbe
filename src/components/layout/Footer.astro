@@ -1,0 +1,14 @@
+---
+import { COPYRIGHT_NAME, COPYRIGHT_START_YEAR } from '@/settings.mjs';
+
+
+const thisYear = new Date().getFullYear();
+---
+
+
+<footer>
+  <div class="legal">
+    © {COPYRIGHT_START_YEAR}{thisYear > COPYRIGHT_START_YEAR && `–${thisYear}`}
+    {COPYRIGHT_NAME}.
+  </div>
+</footer>

@@ -1,0 +1,62 @@
+---
+import { HTML_HEAD, MY_NAME } from '@/settings.mjs';
+
+import { getFirstDefined } from '@/utils/main.mjs';
+import { getFullUrl } from '@/utils/url.mjs';
+
+
+/**
+ * @param {...(string|undefined)} descriptions - Potential description(s).
+ * @returns {string} - The first defined description, or the default description.
+ */
+function getDescription(...descriptions) {
+  return getFirstDefined(...descriptions, HTML_HEAD.description);
+}
+
+/**
+ * @param {...(string|undefined)} titles - Title(s) to be merged.
+ * @returns {string} - The merged title, or the default title.
+ */
+function getTitle(...titles) {
+  if (titles.length === 0) return HTML_HEAD.title;
+
+  titles = titles.filter((arg) => arg);
+  titles.push(HTML_HEAD.title);
+  return titles.join(HTML_HEAD.titleSeparator);
+}
+
+
+interface Props {
+  title?: string | null;
+  description?: string | null;
+  meta?: object[] | null;
+}
+const { meta } = Astro.props;
+const title = getTitle(Astro.props.title);
+const description = getDescription(Astro.props.description);
+
+const pageUrl = getFullUrl(Astro);
+---
+
+
+{/* High Priority */}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>{title}</title>
+
+{/* CSS */}
+{/* <link rel="stylesheet" href="/css/main.css" type="text/css"> */}
+
+{/* Icons */}
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+{/* Primary Metadata */}
+{description && <meta name="description" content={description} />}
+<meta name="author" content={MY_NAME} />
+{/* <meta name="generator" content={Astro.generator} /> */}
+
+{/* URLs */}
+<link rel="canonical" href={pageUrl} />
+
+{/* Custom Metadata */}
+{meta && meta.map((attrs) => (<meta {...attrs} />))}

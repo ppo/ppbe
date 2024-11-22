@@ -5,6 +5,9 @@ export const SITE_NAME = 'Pascal Polleunus';
 export const MY_NAME = 'Pascal Polleunus';
 export const MY_EMAIL = 'pascal@polleunus.be';
 
+export const COPYRIGHT_NAME = MY_NAME;
+export const COPYRIGHT_START_YEAR = 1974;
+
 
 // HEAD ============================================================================================
 

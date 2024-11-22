@@ -1,0 +1,32 @@
+---
+import { FONTS } from '@/settings.mjs';
+import type { Fonts } from '@/types/settings';
+
+
+interface Props {
+  fonts?: Fonts | null;
+}
+
+
+function generateFontUrlArgs(fonts: Fonts): string {
+  return Object.entries(fonts)
+    .map(([_, value]) => {
+      const name = encodeURIComponent(value.name);
+      const weights = value.weights ? `:wght@${value.weights.join(';')}` : '';
+      return `&family=${name}${weights}`;
+    })
+    .join('');
+}
+
+
+const { fonts = FONTS } = Astro.props;
+
+const urlArgs = fonts ? generateFontUrlArgs(fonts) : null;
+---
+
+
+{urlArgs && (
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+  <link rel="stylesheet" href={`https://fonts.googleapis.com/css2?display=swap${urlArgs}`}>
+)}

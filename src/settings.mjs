@@ -26,3 +26,13 @@ export const HTML_HEAD = {
 export const ROUTES = {
   home: '/',
 };
+
+
+// DESIGN ==========================================================================================
+
+/** @type {import('./types/settings').Fonts} */
+export const FONTS = {
+  display: { name: 'Atkinson Hyperlegible', weights: [400, 700], },  // Available: 4, 7
+  body: { name: 'Roboto', weights: [100, 300, 400, 500], },  // Available: 1, 3, 4, 5, 7, 9
+  // icons: { name: 'Material Icons', },
+};

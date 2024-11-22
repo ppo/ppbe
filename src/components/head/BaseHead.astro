@@ -6,6 +6,7 @@ import { getFullUrl } from '@/utils/url.mjs';
 
 import OpenGraphMeta from '@/components/head/OpenGraphMeta.astro';
 import TwitterMeta from '@/components/head/TwitterMeta.astro';
+import GoogleFonts from '@/components/services/GoogleFonts.astro';
 
 
 /**
@@ -47,6 +48,10 @@ const pageUrl = getFullUrl(Astro);
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>{title}</title>
+
+{/* Fonts */}
+<GoogleFonts />
+{/* <link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin /> */}
 
 {/* CSS */}
 {/* <link rel="stylesheet" href="/css/main.css" type="text/css"> */}

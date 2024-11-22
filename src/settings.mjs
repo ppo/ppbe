@@ -27,6 +27,9 @@ export const ROUTES = {
   home: '/',
 };
 
+// URL of the sitemap.
+export const SITEMAP_ROUTE = '/sitemap-index.xml';
+
 
 // DESIGN ==========================================================================================
 

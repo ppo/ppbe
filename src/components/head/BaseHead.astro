@@ -1,5 +1,5 @@
 ---
-import { HTML_HEAD, MY_NAME } from '@/settings.mjs';
+import { HTML_HEAD, MY_NAME, SITEMAP_ROUTE } from '@/settings.mjs';
 
 import { getFirstDefined } from '@/utils/main.mjs';
 import { getFullUrl } from '@/utils/url.mjs';
@@ -66,6 +66,7 @@ const pageUrl = getFullUrl(Astro);
 
 {/* URLs */}
 <link rel="canonical" href={pageUrl} />
+<link rel="sitemap" href={SITEMAP_ROUTE} />
 
 {/* Custom Metadata */}
 {meta && meta.map((attrs) => (<meta {...attrs} />))}

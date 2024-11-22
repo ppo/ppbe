@@ -2,6 +2,7 @@
 import BaseHead from '@/components/head/BaseHead.astro';
 import Footer from '@/components/layout/Footer.astro';
 import Header from '@/components/layout/Header.astro';
+import GoogleAnalytics from '@/components/services/GoogleAnalytics.astro';
 
 
 interface Props {
@@ -32,5 +33,7 @@ const {
       </main>
       <Footer />
     </div>
+
+    <GoogleAnalytics />
   </body>
 </html>

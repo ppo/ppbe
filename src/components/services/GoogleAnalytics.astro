@@ -1,0 +1,26 @@
+---
+// Only rendered in production mode.
+
+import { GOOGLE_ANALYTICS_TRACKING_ID } from '@/settings.mjs';
+
+interface Props {
+  id?: string | null;
+}
+const { id = GOOGLE_ANALYTICS_TRACKING_ID } = Astro.props;
+
+
+const isActive = import.meta.env.PROD && id;
+---
+
+
+{isActive &&
+  <script is:inline async type="text/partytown"
+    src={`https://www.googletagmanager.com/gtag/js?id=${id}`}
+  ></script>
+  <script is:inline define:vars={{ id }} type="text/partytown">
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', id);
+  </script>
+}

@@ -36,3 +36,9 @@ export const FONTS = {
   body: { name: 'Roboto', weights: [100, 300, 400, 500], },  // Available: 1, 3, 4, 5, 7, 9
   // icons: { name: 'Material Icons', },
 };
+
+
+// SERVICES ========================================================================================
+
+// Google Analytics: Tracking ID.
+export const GOOGLE_ANALYTICS_TRACKING_ID = 'UA-162951120-1';

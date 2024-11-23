@@ -2,11 +2,16 @@
 import { COPYRIGHT_NAME, COPYRIGHT_START_YEAR } from '@/settings.mjs';
 
 
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+
 const thisYear = new Date().getFullYear();
 ---
 
 
-<footer>
+<footer id="main-footer" class:list={['p-2 text-sm', className]}>
   <div class="legal">
     © {COPYRIGHT_START_YEAR}{thisYear > COPYRIGHT_START_YEAR && `–${thisYear}`}
     {COPYRIGHT_NAME}.

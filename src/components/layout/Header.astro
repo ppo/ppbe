@@ -1,11 +1,16 @@
 ---
 import { SITE_NAME } from '@/settings.mjs';
-
 import { getNamedPath } from '@/utils/url.mjs';
+
+
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
 ---
 
 
-<header>
+<header id="main-header" class:list={['p-2', className]}>
   <nav>
     <h1><a href={getNamedPath('home')}>{SITE_NAME}</a></h1>
   </nav>

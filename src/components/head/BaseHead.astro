@@ -1,33 +1,12 @@
 ---
 import { HTML_HEAD, MY_NAME, SITEMAP_ROUTE } from '@/settings.mjs';
 
-import { getFirstDefined } from '@/utils/main.mjs';
+import { getFirstDefined, joinHeadTitle } from '@/utils/main.mjs';
 import { getFullUrl } from '@/utils/url.mjs';
 
 import OpenGraphMeta from '@/components/head/OpenGraphMeta.astro';
 import TwitterMeta from '@/components/head/TwitterMeta.astro';
 import GoogleFonts from '@/components/services/GoogleFonts.astro';
-
-
-/**
- * @param {...(string|undefined)} descriptions - Potential description(s).
- * @returns {string} - The first defined description, or the default description.
- */
-function getDescription(...descriptions) {
-  return getFirstDefined(...descriptions, HTML_HEAD.description);
-}
-
-/**
- * @param {...(string|undefined)} titles - Title(s) to be merged.
- * @returns {string} - The merged title, or the default title.
- */
-function getTitle(...titles) {
-  if (titles.length === 0) return HTML_HEAD.title;
-
-  titles = titles.filter((arg) => arg);
-  titles.push(HTML_HEAD.title);
-  return titles.join(HTML_HEAD.titleSeparator);
-}
 
 
 interface Props {
@@ -37,8 +16,8 @@ interface Props {
   meta?: object[] | null;
 }
 const { image, meta } = Astro.props;
-const title = getTitle(Astro.props.title);
-const description = getDescription(Astro.props.description);
+const title = joinHeadTitle(Astro.props.title, HTML_HEAD.title);
+const description = getFirstDefined(Astro.props.description, HTML_HEAD.description);
 
 const pageUrl = getFullUrl(Astro);
 ---

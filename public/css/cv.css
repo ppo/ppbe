@@ -1,0 +1,480 @@
+:root {
+  --color-background: #fafafa;
+  --color-text: #333;
+  --color-text0: #000;
+  --color-text2: #444;
+  --color-primary: #7cb342;  /* Material Light Green 600 */
+  --color-primary-hover: #558b2f;  /* Material Light Green 800 */
+  --color-accent: #1e88e5;  /* Material Blue 600 */
+  --color-accent-hover: #1565c0;  /* Material Blue 800 */
+  --color-topbar-fg: #666;
+  --color-topbar-bg: #eee;
+  --color-skill: #e6e6e6;
+  --color-skill-level-bg: #ddd;
+  --color-skill-level-fg: #888;
+  --color-dim: #888;
+  --color-separator: #ccc;
+  --spacing-sm: 1rem;
+  --spacing-xs: calc(0.5 * var(--spacing-sm));
+  --spacing-md: calc(2 * var(--spacing-sm));
+  --spacing-lg: calc(2 * var(--spacing-md));
+  --spacing-xl: calc(2 * var(--spacing-lg));
+}
+
+
+/* BASE ========================================================================================= */
+
+html {
+  font-size: 10px;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1.6;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+main a {
+  color: var(--color-primary);
+}
+a:hover {
+  color: var(--color-primary-hover);
+  text-decoration: underline;
+}
+
+strong {
+  font-weight: 500;
+}
+b {
+  color: var(--color-text0);
+  font-weight: 400;
+}
+
+em {
+  font-style: normal;
+}
+
+small {
+  font-size: 0.85em;
+}
+
+p {
+  margin: 0 0 1em 0;
+}
+
+ol, ul {
+  margin: 0;
+  padding-inline-start: 1.5em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-primary);
+  line-height: 1.15;
+  margin: 0;
+}
+
+
+section {
+  margin: calc(1.5 * var(--spacing-lg)) 0;
+}
+
+h3 {
+  font-size: 1.35em;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--spacing-md);
+  text-transform: uppercase;
+}
+
+h4, h5 {
+font-size: 1em;
+margin: 1em 0 0.25em 0;
+}
+
+h4 {
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+h5 {
+  color: var(--color-dim);
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+
+/* HELPERS ====================================================================================== */
+
+ul.unstyled {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+ul.unstyled > li li{
+  list-style: disc;
+}
+
+span.separator::before {
+  color: var(--color-separator);
+  content: "–";
+  display: inline-block;
+}
+span.separator-dot::before {
+  content: "•";
+}
+
+li.separator,
+ul.unstyled > li.separator {
+  border-bottom: 1px dotted var(--color-separator);
+  margin: calc(var(--spacing-sm) + 0.25em) 0;
+  width: 10%;
+}
+
+q {
+  font-style: italic;
+  quotes: "“" "”";
+}
+q::before, q::after { color: var(--color-dim); }
+q::before { content: open-quote; }
+q::after { content: close-quote; }
+q + .author {
+  color: var(--color-dim);
+  display: block;
+  white-space: nowrap;
+}
+q + .author::before {
+  content: "—";
+}
+.author cite {
+  font-style: normal;
+  quotes: "‘" "’";
+}
+.author cite::before, .author cite::after { color: var(--color-dim); }
+.author cite::before { content: open-quote; }
+.author cite::after { content: close-quote; }
+.author a {
+  color: inherit;
+}
+
+
+/* TOPBAR ======================================================================================= */
+
+.topbar {
+  background-color: var(--color-topbar-bg);
+  color: var(--color-topbar-fg);
+  font-size: 0.9em;
+  left: 0;
+  padding: var(--spacing-sm) 0;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  top: 0;
+}
+
+
+/* HEADER ======================================================================================= */
+
+header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: calc(var(--spacing-xl) + 2 * var(--spacing-sm)) 0 var(--spacing-xl) 0;
+}
+
+h1, h2 {
+  font-family: Ubuntu, sans-serif;
+  white-space: nowrap;
+}
+
+/* Name */
+h1 {
+  color: var(--color-text);
+  font-size: 2em;
+  font-weight: 500;
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Job Title */
+h2 {
+  color: var(--color-accent);
+  font-size: 1.5em;
+  font-weight: 400;
+}
+
+header a:hover {
+  color: var(--color-accent-hover);
+}
+
+.roles {
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+}
+.roles .info {
+  border-left: 1px solid var(--color-separator);
+  color: var(--color-dim);
+  margin-left: 1.5em;
+  padding-left: 0.75em;
+}
+
+header .aside {
+  text-align: center;
+}
+
+header .aside .separator {
+  margin: 0 var(--spacing-xs);
+}
+
+header .contact {
+  border-radius: 1rem;
+  border: 1px solid var(--color-accent);
+  flex-shrink: 1;
+  padding: 0.5em 1em;
+}
+
+
+/* FOOTER ======================================================================================= */
+
+footer.page {
+  border-top: 1px solid var(--color-separator);
+  color: var(--color-dim);
+  font-size: 0.7em;
+  margin: var(--spacing-xl) 0 var(--spacing-lg);
+  padding-top: var(--spacing-sm);
+}
+
+
+/* TRAITS ======================================================================================= */
+
+ul.unstyled > li {
+  margin: var(--spacing-sm) 0;
+}
+
+
+/* SKILLS ======================================================================================= */
+
+#skills h5 {
+  text-transform: none;
+}
+
+ul.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 var(--spacing-sm) 0;
+  padding: 0;
+}
+ul.skill-tags li {
+  border-radius: 0.4rem;
+  border: 1px solid var(--color-skill);
+  display: inline-block;
+  line-height: 1.15;
+  list-style: none;
+  margin: 0.2em;
+  padding: 0.3em 0.5em;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+/* NO because of line wrap // ul.skill-tags li:first-of-type { margin-left: 0; } */
+
+ul.skill-tags li em {
+  background-color: var(--color-skill-level-bg);
+  border-radius: 0.1rem;
+  color: var(--color-skill-level-fg);
+  display: inline-block;
+  font-size: 0.8em;
+  height: 1em;
+  line-height: 1em;
+  margin-left: 0.1em;
+  padding: 0.1em;
+  text-align: center;
+  vertical-align: middle;
+  width: 1em;
+}
+
+
+/* EXPERIENCE =================================================================================== */
+
+#experience .summary {
+  border-left: 2px solid var(--color-separator);
+  color: var(--color-text2);
+  font-size: 0.85em;
+  margin-bottom: var(--spacing-lg);
+  padding-left: var(--spacing-md);
+}
+
+#experience .mission {
+  margin: var(--spacing-lg) 0;
+}
+
+#experience .title,
+#education .title {
+  font-weight: 500;
+}
+
+#experience .dates {
+  color: var(--color-dim);
+  font-size: 0.9em;
+}
+
+#experience .dates small {
+  color: var(--color-dim);
+}
+
+#experience .description {
+  font-size: 0.9em;
+  color: var(--color-text2);
+}
+
+
+/* EDUCATION ==================================================================================== */
+
+#education .year {
+  white-space: nowrap;
+}
+#education .school {
+  color: var(--color-dim);
+}
+
+
+/* RESPONSIVE =================================================================================== */
+
+.container {
+  margin: 0 1.5rem;
+}
+
+
+@media screen and (max-width: 699px) {
+  header {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  header .aside {
+    margin-top: var(--spacing-lg);
+    display: flex;
+    justify-content: center;
+  }
+
+  #education li {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin: var(--spacing-md) 0;
+  }
+  #education li span:not(:first-of-type) {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 499px) {
+  html { font-size: 9px; }
+}
+
+@media screen and (max-width: 429px) {
+  html { font-size: 8px; }
+}
+
+
+@media screen and (min-width: 700px) {
+  #education ul {
+    border-spacing: 0;
+    display: table;
+  }
+  #education li {
+    display: table-row;
+  }
+  #education li span:not(:first-child) {
+    padding-left: var(--spacing-sm);
+  }
+  #education span {
+    display: table-cell;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .container {
+    margin: 0 auto;
+    max-width: 900px;
+  }
+}
+
+
+/* PRINT ======================================================================================== */
+
+@media screen {
+  .print-only {
+    display: none;
+  }
+}
+
+
+@page {
+  margin: 15mm;
+}
+
+@media print {
+  .screen-only {
+    display: none;
+  }
+
+  :root {
+    --color-background: #fff;
+    --color-text: #000;
+    --color-text2: #111;
+    --color-primary: #4CAF50;  /* Material Green 500 */
+    --color-skill: #ddd;
+    --color-dim: #aaa;
+    --color-separator: #ccc;
+    --spacing-sm: 0.75rem;
+  }
+
+  html {
+    font-size: 7px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  h2 {
+    font-size: 1.25em;
+  }
+
+  h3 {
+    font-size: 1.15em;
+  }
+
+  h4, h5 {
+    margin: 0.5em 0 0.125em 0;
+  }
+
+  header {
+    margin-top: 0;
+  }
+
+  ul.skill-tags li {
+    padding: 0.2em 0.3em;
+  }
+
+  section,
+  #experience .summary,
+  #experience .mission {
+    break-inside: avoid;
+  }
+
+  section#experience {
+    break-inside: auto;
+  }
+
+  section > h3 {
+    page-break-after: avoid;
+  }
+}

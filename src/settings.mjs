@@ -30,6 +30,28 @@ export const ROUTES = {
 // URL of the sitemap.
 export const SITEMAP_ROUTE = '/sitemap-index.xml';
 
+// Named URLs (as name: path).
+export const URLS = {
+  facebook:  'https://www.facebook.com/pascal.polleunus',
+  github:    'https://github.com/ppo',
+  instagram: 'https://www.instagram.com/ppolleunus',
+  linkedin:  'https://www.linkedin.com/in/pascal-polleunus/',
+  x:         'https://x.com/ppolleunus',
+};
+
+
+// NAVS ============================================================================================
+
+// Elements of the social nav.
+/** @type {import('./types/settings').Nav} */
+export const SOCIAL_NAV = [
+  {label: 'Instagram', icon: 'instagram', url: URLS.instagram, },
+  {label: 'X/Twitter', icon: 'x',         url: URLS.x, },
+  {label: 'LinkedIn',  icon: 'linkedin',  url: URLS.linkedin, },
+  {label: 'GitHub',    icon: 'github',    url: URLS.github, },
+  {label: 'Facebook',  icon: 'facebook',  url: URLS.facebook, },
+];
+
 
 // DESIGN ==========================================================================================
 

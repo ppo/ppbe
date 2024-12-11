@@ -1,5 +1,7 @@
 ---
-import { COPYRIGHT_NAME, COPYRIGHT_START_YEAR } from '@/settings.mjs';
+import { COPYRIGHT_NAME, COPYRIGHT_START_YEAR, SOCIAL_NAV } from '@/settings.mjs';
+
+import IconLink from '@/components/IconLink.astro';
 
 
 interface Props {
@@ -16,4 +18,11 @@ const thisYear = new Date().getFullYear();
     © {COPYRIGHT_START_YEAR}{thisYear > COPYRIGHT_START_YEAR && `–${thisYear}`}
     {COPYRIGHT_NAME}.
   </div>
+  <nav id="footer-socials">
+    <ul class="flex gap-2">
+      {SOCIAL_NAV.map(({label, url, icon}) => (
+        <li><IconLink {...{label, url, icon}} /></li>
+      ))}
+    </ul>
+  </nav>
 </footer>

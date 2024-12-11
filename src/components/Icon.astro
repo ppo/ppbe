@@ -1,0 +1,12 @@
+---
+interface Props {
+  name: string;
+  label?: string;
+}
+const { name, label } = Astro.props;
+
+const size = 16;
+---
+
+
+<img class="icon" src={`/icons/${name}.svg`} height={size} width={size} alt={`Icon: ${label || name}`} />

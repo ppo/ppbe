@@ -7,12 +7,12 @@ import { FONTS } from './src/settings.mjs';
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
-    fontFamily: {
-      display: [FONTS.display.name],
-      sans: [FONTS.body.name, ...defaultTheme.fontFamily.sans],
-      // serif: ['???', ...defaultTheme.fontFamily.serif],
-    },
     extend: {
+      fontFamily: {
+        display: [FONTS.display.name],
+        sans: [FONTS.body.name, ...defaultTheme.fontFamily.sans],
+        // serif: ['???', ...defaultTheme.fontFamily.serif],
+      },
       typography: (theme) => ({
         DEFAULT: {
           css: {
@@ -27,13 +27,5 @@ export default {
   },
   plugins: [
     require('@tailwindcss/typography'),
-    function({ addBase, theme }) {
-      addBase({
-        '#main-header h1': {
-          fontFamily: theme('fontFamily.sans'),
-          fontWeight: 300,
-        },
-      });
-    },
   ],
 }

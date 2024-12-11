@@ -2,6 +2,7 @@
 import { COPYRIGHT_NAME, COPYRIGHT_START_YEAR, SOCIAL_NAV } from '@/settings.mjs';
 
 import IconLink from '@/components/IconLink.astro';
+import Container from '@/components/layout/Container.astro';
 
 
 interface Props {
@@ -13,16 +14,18 @@ const thisYear = new Date().getFullYear();
 ---
 
 
-<footer id="main-footer" class:list={['p-2 text-sm', className]}>
-  <div class="legal">
-    © {COPYRIGHT_START_YEAR}{thisYear > COPYRIGHT_START_YEAR && `–${thisYear}`}
-    {COPYRIGHT_NAME}.
-  </div>
-  <nav id="footer-socials">
-    <ul class="flex gap-2">
-      {SOCIAL_NAV.map(({label, url, icon}) => (
-        <li><IconLink {...{label, url, icon}} /></li>
-      ))}
-    </ul>
-  </nav>
+<footer id="main-footer" class:list={['text-sm', className]}>
+  <Container>
+    <div class="legal">
+      © {COPYRIGHT_START_YEAR}{thisYear > COPYRIGHT_START_YEAR && `–${thisYear}`}
+      {COPYRIGHT_NAME}.
+    </div>
+    <nav id="footer-socials">
+      <ul class="flex gap-2">
+        {SOCIAL_NAV.map(({label, url, icon}) => (
+          <li><IconLink {...{label, url, icon}} /></li>
+        ))}
+      </ul>
+    </nav>
+  </Container>
 </footer>

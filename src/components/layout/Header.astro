@@ -2,6 +2,8 @@
 import { SITE_NAME } from '@/settings.mjs';
 import { getNamedPath } from '@/utils/url.mjs';
 
+import Container from '@/components/layout/Container.astro';
+
 
 interface Props {
   class?: string;
@@ -10,8 +12,17 @@ const { class: className } = Astro.props;
 ---
 
 
-<header id="main-header" class:list={['p-2', className]}>
-  <nav>
-    <h1><a href={getNamedPath('home')}>{SITE_NAME}</a></h1>
-  </nav>
+<header id="main-header" class={className}>
+  <Container>
+    <nav>
+      <h1><a href={getNamedPath('home')}>{SITE_NAME}</a></h1>
+    </nav>
+  </Container>
 </header>
+
+
+<style>
+  h1 {
+    font-weight: 300;
+  }
+</style>

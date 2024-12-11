@@ -61,7 +61,7 @@ export function getFullUrl(Astro, path) {
  * Returns the full URL of the given image.
  *
  * @param {Object} Astro Astro global context.
- * @param {string|URL} image URL path.
+ * @param {string|URL|null} image URL path.
  * @returns {(URL|null)} The image URL or null.
  */
 export function getImageUrl(Astro, image) {
@@ -74,7 +74,7 @@ export function getImageUrl(Astro, image) {
  * Returns the full URL of the image for socials metadata.
  *
  * @param {Object} Astro Astro global context.
- * @param {string|URL} image URL path.
+ * @param {string|URL|null} image URL path.
  * @returns {(URL|null)} The image URL or null.
  */
 export function getMetaImageUrl(Astro, image) {

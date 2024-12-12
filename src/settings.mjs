@@ -24,7 +24,9 @@ export const HTML_HEAD = {
 
 // Named routes (as name: path).
 export const ROUTES = {
-  home: '/',
+  home:  '/',
+  about: '/about',
+  cv:    '/cv',
 };
 
 // URL of the sitemap.
@@ -41,6 +43,12 @@ export const URLS = {
 
 
 // NAVS ============================================================================================
+
+// Elements of the main nav.
+/** @type {import('./types/settings').Nav} */
+export const MAIN_NAV = [
+  {label: 'About',   url: ROUTES.about, },
+];
 
 // Elements of the social nav.
 /** @type {import('./types/settings').Nav} */

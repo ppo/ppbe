@@ -1,0 +1,67 @@
+---
+// Check:
+//   https://spencermortensen.com/articles/email-obfuscation/
+//   https://codereview.stackexchange.com/questions/222003/obfuscation-of-email-and-phone-using-javascript
+/**
+ * Props:
+ *   value: The regular email or the phone number as it must be displayed. This component takes
+ *     care of the conversions that are needed for the display value or the code value.
+ *
+ * In client-side code:
+ *   u(): `unobfuscate()`, reverse of `obfuscate()` on server-side.
+ *   h(): `toHtmlEntities()`, encode a string as HTML entities (`&#n`).
+ *   p(): `toPercentEncoding()`, encode a string as percent encoding (`%n`).
+ */
+
+// Type-protocol mapping.
+const PROTOCOLS = {
+  'email': 'mailto:',
+  'phone': 'tel:',
+};
+
+
+// Convert a string into an array of hexadecimal char codes.
+function obfuscate(v: string): string[] {
+  return v.split('').map(c => '0x' + c.charCodeAt(0).toString(16));
+}
+
+
+interface Props {
+  protocol: 'email' | 'phone';
+  value: string;
+};
+const { protocol, value } = Astro.props;
+
+
+const id: string = crypto.randomUUID();
+
+const s: string[] = obfuscate(PROTOCOLS[protocol]);  // Obfuscated protocol.
+let d: string[];  // Obfuscated display value (email or phone).
+let v: string[];  // Obfuscated code value (email or phone).
+
+switch (protocol) {
+  case 'email':
+    d = obfuscate(value);
+    v = obfuscate(value);
+    break;
+
+  case 'phone':
+    d = obfuscate(value.replaceAll(' ', ' '));  // Non-breaking space.
+    v = obfuscate(value.replaceAll(' ', ''));
+    break;
+}
+---
+
+
+<span id={id} />
+
+<script is:inline define:vars={{ id, s, v, d }}>
+  function u(s) { return s.map(c => String.fromCharCode(parseInt(c))).join(''); }
+  function h(s) { return s.split('').map(c => '&#' + c.charCodeAt(0) + ';').join(''); }
+  function p(s) { return s.split('').map(c => '%' + c.charCodeAt(0).toString(16)).join(''); }
+  const e = document.createElement(u(['0x61']));
+  e.setAttribute(u(['0x68', '0x72', '0x65', '0x66']), u(s) + p(u(v)));
+  e.setAttribute('rel', 'nofollow');
+  e.innerHTML = h(u(d));
+  document.getElementById(id).replaceWith(e);
+</script>

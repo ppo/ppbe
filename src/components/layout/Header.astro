@@ -1,5 +1,5 @@
 ---
-import { SITE_NAME } from '@/settings.mjs';
+import { MAIN_NAV, SITE_NAME } from '@/settings.mjs';
 import { getNamedPath } from '@/utils/url.mjs';
 
 import Container from '@/components/layout/Container.astro';
@@ -16,6 +16,11 @@ const { class: className } = Astro.props;
   <Container>
     <nav>
       <h1><a href={getNamedPath('home')}>{SITE_NAME}</a></h1>
+      <ul>
+        {MAIN_NAV.map(({label, url}) => (
+          <li><a href={url}>{label}</a></li>
+        ))}
+      </ul>
     </nav>
   </Container>
 </header>

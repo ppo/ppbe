@@ -1,0 +1,57 @@
+---
+import { MY_EMAIL, URLS } from '@/settings.mjs';
+
+import { Image } from 'astro:assets';
+
+import ObfuscatedLink from '@/components/ObfuscatedLink.astro';
+import MainLayout from '@/layouts/MainLayout.astro';
+import { getNamedPath } from '@/utils/url';
+
+import profilePicture from '@/media/pascal-polleunus.webp';
+---
+
+
+<MainLayout
+  title="About"
+  description="Some information about me, Pascal Polleunus."
+>
+  <main class="prose">
+    <div class="about-intro">
+      <Image src={profilePicture} width="200" height="200" alt="Profile picture of Pascal Polleunus" />
+      <p>Hi, my name is <strong>Pascal Polleunus</strong>.</p>
+    </div>
+    <p>
+      <div>Born: 🇧🇪 Brussels, Belgium.</div>
+      <div>Nomad: 🇮🇩 Lembongan, Bali, Indonesia.</div>
+    </p>
+
+    <h2>Curriculum Vitae</h2>
+    <p>
+      My <a href={getNamedPath('cv')} target="_blank">resume</a> and
+      <a href={URLS.linkedin} target="_blank">LinkedIn profile</a>.
+    </p>
+
+
+    <h2>Get in Touch</h2>
+    <p>You can contact me at <ObfuscatedLink protocol="email" value={MY_EMAIL} /></p>
+  </main>
+</MainLayout>
+
+
+<style>
+  .about-intro {
+    @apply my-24;
+
+    text-align: center;
+  }
+    .about-intro img {
+      @apply mb-6;
+
+      border-radius: 50%;
+      display: inline-block;
+      height: 200px;
+      margin-block: 0 var(--spacing-sm);
+      margin-inline: auto;
+      width: 200px;
+    }
+</style>

@@ -3,6 +3,13 @@ const { class: className } = Astro.props;
 ---
 
 
-<div class:list={["container max-w-screen-md mx-auto px-4 py-4", className]}>
+<div class:list={["container mx-auto px-4 py-4", className]}>
   <slot />
 </div>
+
+
+<style>
+  .container {
+    max-width: 850px;
+  }
+</style>

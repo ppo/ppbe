@@ -11,7 +11,7 @@ export default {
       colors: {
         background: '#fafafa',
         text: '#333',
-        'text-dim': '#888',
+        'text-dim': '#666',
         primary: '#1e88e5',
         secondary: '#7cb342',
       },

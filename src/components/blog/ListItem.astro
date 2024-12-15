@@ -1,0 +1,39 @@
+---
+import { getNamedPath } from '@/utils/url';
+
+import Time from '@/components/Time.astro';
+import { FORMATS } from '@/utils/format';
+
+
+interface Props {
+  article: CollectionEntry<'blog'>,
+};
+const { article } = Astro.props;
+const { title, abstract, category, hero, publishedAt } = article.data;
+// BEGIN: ALTERNATIVE VERSION
+// const {
+//   article: {
+//     data: { title, abstract, hero, publishedAt, createdAt },
+//   },
+// } = Astro.props;
+// END: ALTERNATIVE VERSION
+---
+
+
+<a
+  href={getNamedPath('blog', article.slug)}
+  class="bg-white shadow-md rounded-lg overflow-hidden"
+>
+  <article class="flex justify-left mb-10">
+    { /* <Image src={hero?.image} alt={hero.alt} /> */ }
+    {hero?.image && (<img src={hero.image} alt={hero.alt} class="h-24 object-cover" />)}
+    <div class="px-4 py-0">
+      <div class="text-sm text-text-dim">
+        <Time date={publishedAt} format={FORMATS.DATE} title="Publication Date" />
+        {category && (<>• {category}</>)}
+      </div>
+      <h2 class="text-lg font-semibold my-1">{title}</h2>
+      {abstract && (<p class="text-sm text-text my-0">{abstract}</p>)}
+    </div>
+  </article>
+</a>

@@ -1,0 +1,49 @@
+---
+
+import Hero from '@/components/Hero.astro';
+import ArticleMeta from '@/components/blog/ArticleMeta.astro';
+
+
+// interface Props {
+//   title: string | null;
+//   subtitle?: string | null;
+//   abstract?: string | null;
+//   hero?: string | null;
+//   category?: string | null;
+//   tags?: string | null;
+//   author: string | null;
+//   publishedAt: string | null;
+//   createdAt: string | null;
+// }
+
+const { article } = Astro.props;
+const {
+  title,
+  subtitle,
+  abstract,
+  hero,
+} = article.data;
+
+const { Content } = await article.render();
+---
+
+
+<article>
+  <ArticleMeta {...article.data} />
+  <div class="prose max-w-none">
+    <h1 class="mb-3">{title}</h1>
+    {subtitle && (
+      <h2 class="mt-0">{subtitle}</h2>
+    )}
+
+    {abstract && (
+      <p class="text-text-dim italic">{abstract}</p>
+    )}
+
+    {hero && (
+      <Hero {...hero} />
+    )}
+
+    <Content />
+  </div>
+</article>

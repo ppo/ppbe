@@ -1,0 +1,11 @@
+---
+import ListItem from '@/components/blog/ListItem.astro';
+
+
+const { articles } = Astro.props;
+---
+
+
+{articles.map((article) => (
+  <ListItem {article} />
+))}

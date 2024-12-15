@@ -1,0 +1,39 @@
+---
+interface Props {
+  image: string;
+  alt: string;
+  title: string;
+  subtitle?: string;
+  url?: string;
+  caption?: string;
+  captionUrl?: string;
+}
+
+const { image, alt, title, subtitle, url, caption, captionUrl } = Astro.props;
+---
+
+
+<section class="relative">
+  <img src={image} {alt} class="w-full h-64 object-cover md:h-96" />
+  <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+    <div class="text-center text-white">
+      <h1 class="text-4xl font-bold mb-2">{title}</h1>
+      {subtitle && (
+        <p class="text-xl">{subtitle}</p>
+      )}
+      {url && (
+        <a href={url} class="mt-4 inline-block bg-primary text-white px-4 py-2 rounded hover:bg-secondary transition-colors">
+          Learn More
+        </a>
+      )}
+    </div>
+  </div>
+  {caption && (
+    <p class="text-text-dim text-sm text-center mt-2">
+      {captionUrl ? (
+        <a href={captionUrl} target="_blank" rel="noopener noreferrer">{caption}</a>
+        ) : caption
+      }
+    </p>
+  )}
+</section>

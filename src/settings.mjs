@@ -26,6 +26,7 @@ export const HTML_HEAD = {
 export const ROUTES = {
   home:  '/',
   about: '/about',
+  blog:  '/blog',
   cv:    '/cv',
 };
 
@@ -48,6 +49,7 @@ export const URLS = {
 // Elements of the main nav.
 /** @type {import('./types/settings').Nav} */
 export const MAIN_NAV = [
+  {label: 'Blog',    url: ROUTES.blog, },
   {label: 'About',   url: ROUTES.about, },
 ];
 
@@ -77,3 +79,9 @@ export const FONTS = {
 
 // Google Analytics: Tracking ID.
 export const GOOGLE_ANALYTICS_TRACKING_ID = 'UA-162951120-1';
+
+
+// FEATURES ========================================================================================
+
+// BLOG
+export const NUM_FEATURED_ARTICLES_ON_HOME = 5;

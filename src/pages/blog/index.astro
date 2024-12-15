@@ -1,0 +1,15 @@
+---
+import BlogList from '@/components/blog/List.astro';
+import Layout from '@/layouts/MainLayout.astro';
+import { getAllArticles } from '@/lib/blog';
+
+
+const articles = await getAllArticles();
+---
+
+
+<Layout>
+  <section class="container mx-auto px-4 py-8">
+    <BlogList {articles} />
+  </section>
+</Layout>

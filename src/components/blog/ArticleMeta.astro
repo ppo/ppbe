@@ -1,0 +1,29 @@
+---
+import { FORMATS } from '@/utils/format';
+
+import Time from '@/components/Time.astro';
+
+
+const {
+  category,
+  tags,
+  publishedAt,
+  createdAt,
+} = Astro.props;
+---
+
+
+<div class="flex justify-between items-center font-light text-text-dim text-base mb-2">
+  <div>
+    {category && (<span>{category}</span>)}
+    <br>
+    <!-- {(category && tags) && (<>•</>)} -->
+    {tags && (<span class="text-sm">{tags.map((t) => `#${t}`).join(' ')}</span>)}
+  </div>
+  <div>
+    <Time date={publishedAt} format={FORMATS.DATE} title="Published on" />
+    {createdAt && (
+      <Time date={createdAt} format={FORMATS.DATE} title="Created on" hide={true} />
+    )}
+  </div>
+</div>

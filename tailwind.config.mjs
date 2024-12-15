@@ -8,6 +8,13 @@ export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
+      colors: {
+        background: '#fafafa',
+        text: '#333',
+        'text-dim': '#888',
+        primary: '#1e88e5',
+        secondary: '#7cb342',
+      },
       fontFamily: {
         display: [FONTS.display.name],
         sans: [FONTS.body.name, ...defaultTheme.fontFamily.sans],
@@ -20,6 +27,11 @@ export default {
               fontFamily: theme('fontFamily.display'),
               fontWeight: 700,
             },
+            'img, svg': {
+              fill: 'currentColor',
+              /* stroke: 'currentColor', */
+            }
+
           },
         },
       }),

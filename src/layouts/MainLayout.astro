@@ -5,6 +5,8 @@ import Footer from '@/components/layout/Footer.astro';
 import Header from '@/components/layout/Header.astro';
 import GoogleAnalytics from '@/components/services/GoogleAnalytics.astro';
 
+import '@/styles/global.css';
+
 
 interface Props {
   title?: string | null;
@@ -26,9 +28,9 @@ const {
   <head>
     <BaseHead {...{title, description, image, meta}} />
   </head>
-  <body>
+  <body class="flex flex-col min-h-screen">
     <Header />
-    <div id="main-body">
+    <div id="main-body" class="flex-grow">
       <Container>
         <slot />
       </Container>

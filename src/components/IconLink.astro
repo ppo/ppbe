@@ -6,9 +6,14 @@ interface Props {
   icon: string;
   url: string;
   label?: string;
+  target?: string;
+  rel?: string;
 }
-const { icon, url, label } = Astro.props;
+const { icon, url, label, target, rel } = Astro.props;
 ---
 
 
-<a href={url} title={label}><Icon name={icon} {label} />{/* <span>{label}</span> */}</a>
+<a href={url} title={label} {...{target, rel}}>
+  <Icon name={icon} {label} />
+  {/* <span>{label}</span> */}
+</a>

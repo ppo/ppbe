@@ -12,11 +12,13 @@ const { class: className } = Astro.props;
 ---
 
 
-<header id="main-header" class={className}>
-  <Container>
+<header id="main-header" class:list={["bg-background shadow-sm", className]}>
+  <Container class="flex justify-between items-center">
+    <h1 class="text-xl">
+      <a href={getNamedPath('home')}>{SITE_NAME}</a>
+    </h1>
     <nav>
-      <h1><a href={getNamedPath('home')}>{SITE_NAME}</a></h1>
-      <ul>
+      <ul class="flex space-x-4 font-light">
         {MAIN_NAV.map(({label, url}) => (
           <li><a href={url}>{label}</a></li>
         ))}
@@ -27,7 +29,8 @@ const { class: className } = Astro.props;
 
 
 <style>
-  h1 {
-    font-weight: 300;
+  a {
+    @apply text-text;
+    @apply hover:text-primary;
   }
 </style>

@@ -28,6 +28,8 @@ export const ROUTES = {
   about: '/about',
   blog:  '/blog',
   cv:    '/cv',
+
+  rss:   '/rss.xml',
 };
 
 // URL of the sitemap.
@@ -62,6 +64,8 @@ export const SOCIAL_NAV = [
   {label: 'LinkedIn',  icon: 'linkedin',  url: URLS.linkedin, },
   {label: 'X/Twitter', icon: 'x',         url: URLS.x, },
   {label: 'YouTube',   icon: 'youtube',   url: URLS.youtube, },
+  null,
+  {label: 'RSS Feed',  icon: 'rss',       url: ROUTES.rss},
 ];
 
 

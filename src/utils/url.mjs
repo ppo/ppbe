@@ -58,6 +58,18 @@ export function getFullUrl(Astro, path) {
 
 
 /**
+ * Returns the full URL of a given path relative to the site's base URL.
+ * Useful for static build-time URLs where Astro context isn't available.
+ *
+ * @param {string} path - The path to convert to a full URL. Can be relative or absolute.
+ * @returns {URL} The cleaned full URL object.
+ */
+export function getStaticFullUrl(path) {
+  return cleanUrl(new URL(path, import.meta.env.SITE));
+}
+
+
+/**
  * Returns the full URL of the given image.
  *
  * @param {Object} Astro Astro global context.

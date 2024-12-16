@@ -12,6 +12,16 @@ export async function getAllArticles() {
   return sortArticles(articles);
 }
 
+
+/**
+ * Get all blog articles for RSS feed.
+ */
+export async function getArticlesForRss() {
+  const articles = await getCollection('blog');
+  return transformArticlesForRss(articles);
+}
+
+
 /**
  * Get all unique categories.
  */
@@ -21,6 +31,7 @@ export async function getAllCategories() {
   return Array.from(categories);
 }
 
+
 /**
  * Get all unique tags.
  */
@@ -29,6 +40,7 @@ export async function getAllTags() {
   const tags = new Set(articles.flatMap(article => article.data.tags || []));
   return Array.from(tags);
 }
+
 
 /**
  * Get previous and next articles for a given article.
@@ -43,6 +55,7 @@ export async function getAdjacentArticles(refArticle) {
   };
 }
 
+
 /**
  * Get featured articles.
  */
@@ -52,6 +65,7 @@ export async function getFeaturedArticles(limit = NUM_FEATURED_ARTICLES_ON_HOME)
   return limit ? featuredArticles.slice(0, limit) : featuredArticles;
 }
 
+
 /**
  * Get a single article by its slug.
  */
@@ -59,6 +73,7 @@ export async function getArticleBySlug(slug) {
   const articles = await getCollection('blog');
   return articles.find(article => article.slug === slug);
 }
+
 
 /**
  * Get articles by category.
@@ -68,6 +83,7 @@ export async function getArticlesByCategory(category) {
   return articles.filter(article => article.data.category === category);
 }
 
+
 /**
  * Get articles by tag.
  */
@@ -75,6 +91,7 @@ export async function getArticlesByTag(tag) {
   const articles = await getAllArticles();
   return articles.filter(article => article.data.tags?.includes(tag));
 }
+
 
 /**
  * Get related articles for a given article.
@@ -91,6 +108,7 @@ export async function getRelatedArticles(article, limit = 3) {
     .slice(0, limit);
 }
 
+
 /**
  * Helper function to sort articles by date.
  */
@@ -99,4 +117,18 @@ function sortArticles(articles) {
     +new Date(b.data.publishedAt) - +new Date(a.data.publishedAt)
     // ALTERNATIVE VERSION: b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf()
   );
+}
+
+
+/**
+ * Helper function to map articles for RSS feeds.
+ */
+function transformArticlesForRss(articles) {
+  return articles.map((article) => ({
+    title: article.data.title,
+    description: article.data.abstract,
+    pubDate: article.data.publishedAt,
+    link: getNamedPath('blog', article.slug),
+    categories: article.data.tags,
+  }));
 }

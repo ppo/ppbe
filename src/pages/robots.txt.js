@@ -1,11 +1,13 @@
 import { SITEMAP_ROUTE } from '@/settings.mjs';
+import { getStaticFullUrl } from '@/util/url.mjs';
 
 
 const robotsTxt = `
 User-agent: *
 Allow: /
 
-Sitemap: ${ new URL(SITEMAP_ROUTE, import.meta.env.SITE).href }
+Sitemap: ${ getStaticFullUrl(SITEMAP_ROUTE) }
+Feed: ${ getStaticFullUrl(ROUTES.rss) }
 `.trim();
 
 

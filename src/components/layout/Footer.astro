@@ -24,9 +24,13 @@ const thisYear = new Date().getFullYear();
     */}
     <nav id="footer-socials">
       <ul class="flex gap-4">
-        {SOCIAL_NAV.map(({label, url, icon}) => (
+        {SOCIAL_NAV.map((item) => (
           <li>
-            <IconLink {...{label, url, icon, target: "_blank", rel: "noopener noreferrer"}} />
+            {item && (
+              <IconLink {...{...item, target: "_blank", rel: "noopener noreferrer"}} />
+            ) || (
+              <></>
+            )}
           </li>
         ))}
       </ul>

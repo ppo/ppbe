@@ -20,6 +20,9 @@ const title = joinHeadTitle(Astro.props.title, HTML_HEAD.title);
 const description = getFirstDefined(Astro.props.description, HTML_HEAD.description);
 
 const pageUrl = getFullUrl(Astro);
+
+const rssUrl = new URL('rss.xml', Astro.site);
+const rssTitle = `RSS: ${HTML_HEAD.title}`;
 ---
 
 
@@ -33,6 +36,7 @@ const pageUrl = getFullUrl(Astro);
 {/* <link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin /> */}
 
 {/* CSS */}
+{/* Note: `@/styles/global.css` imported in `layouts/MainLayout` */}
 {/* <link rel="stylesheet" href="/css/main.css" type="text/css"> */}
 
 {/* Icons */}
@@ -46,6 +50,7 @@ const pageUrl = getFullUrl(Astro);
 {/* URLs */}
 <link rel="canonical" href={pageUrl} />
 <link rel="sitemap" href={SITEMAP_ROUTE} />
+<link rel="alternate" type="application/rss+xml" href={rssUrl} title={rssTitle} />
 
 {/* Custom Metadata */}
 {meta && meta.map((attrs) => (<meta {...attrs} />))}

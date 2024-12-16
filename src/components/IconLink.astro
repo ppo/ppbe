@@ -5,15 +5,16 @@ import Icon from '@/components/Icon.astro';
 interface Props {
   icon: string;
   url: string;
+  size?: number;
   label?: string;
   target?: string;
   rel?: string;
 }
-const { icon, url, label, target, rel } = Astro.props;
+const { icon, url, size, label, target, rel } = Astro.props;
 ---
 
 
 <a href={url} title={label} {...{target, rel}}>
-  <Icon name={icon} {label} />
+  <Icon name={icon} {label} {size} />
   {/* <span>{label}</span> */}
 </a>

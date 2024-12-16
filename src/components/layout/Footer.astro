@@ -27,7 +27,7 @@ const thisYear = new Date().getFullYear();
         {SOCIAL_NAV.map((item) => (
           <li>
             {item && (
-              <IconLink {...{...item, target: "_blank", rel: "noopener noreferrer"}} />
+              <IconLink {...{...item, size: 16, target: "_blank", rel: "noopener noreferrer"}} />
             ) || (
               <></>
             )}

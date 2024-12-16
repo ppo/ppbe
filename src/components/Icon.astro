@@ -2,10 +2,9 @@
 interface Props {
   name: string;
   label?: string;
+  size?: number;
 }
-const { name, label } = Astro.props;
-
-const size = 16;
+const { name, label, size = 24 } = Astro.props;
 ---
 
 

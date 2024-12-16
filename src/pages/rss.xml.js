@@ -1,8 +1,8 @@
 import rss from '@astrojs/rss';
 
 import { getArticlesForRss } from '@/lib/blog.mjs';
+import { getStaticFullUrl } from '@/lib/url.mjs';
 import { HTML_HEAD } from '@/settings.mjs';
-import { getStaticFullUrl } from '@/utils/url.mjs';
 
 
 export async function GET(context) {

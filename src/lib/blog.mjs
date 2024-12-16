@@ -1,7 +1,7 @@
 import { getCollection } from 'astro:content';
 
+import { getNamedPath } from '@/lib/url';
 import { NUM_FEATURED_ARTICLES_ON_HOME } from '@/settings.mjs';
-import { getNamedPath } from '@/utils/url';
 
 
 /**

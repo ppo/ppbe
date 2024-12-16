@@ -6,8 +6,8 @@ featured: true
 category: "Web Performance"
 tags: ["Performance", "Optimization", "WebDev", "UX"]
 author: "Pascal Polleunus"
-publishedAt: 2024-12-22T00:00:00Z
-createdAt: 2024-12-21T00:00:00Z
+publishedAt: 2024-11-22T00:00:00Z
+createdAt: 2024-11-21T00:00:00Z
 hero:
   image: "https://placehold.co/600x400"
   alt: "Dashboard showing website performance metrics"

@@ -6,8 +6,8 @@ featured: true
 category: "Web Development"
 tags: ["CSS", "Layout", "ResponsiveDesign", "Frontend"]
 author: "Pascal Polleunus"
-publishedAt: 2024-12-18T00:00:00Z
-createdAt: 2024-12-17T00:00:00Z
+publishedAt: 2024-11-18T00:00:00Z
+createdAt: 2024-11-17T00:00:00Z
 hero:
   image: "https://placehold.co/600x400"
   alt: "Visual representation of CSS Grid layout"

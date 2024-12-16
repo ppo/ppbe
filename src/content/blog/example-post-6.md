@@ -5,8 +5,8 @@ abstract: "Discover how Astro, a modern static site generator, is changing the g
 category: "Web Development"
 tags: ["Astro", "SSG", "Performance", "Frontend"]
 author: "Pascal Polleunus"
-publishedAt: 2024-12-26T00:00:00Z
-createdAt: 2024-12-25T00:00:00Z
+publishedAt: 2024-11-26T00:00:00Z
+createdAt: 2024-11-25T00:00:00Z
 hero:
   image: "https://placehold.co/600x400"
   alt: "Astro logo with a starry background"

@@ -5,8 +5,8 @@ abstract: "Discover why TypeScript is gaining popularity among developers and ho
 category: "Programming Languages"
 tags: ["TypeScript", "JavaScript", "WebDev", "StaticTyping"]
 author: "Pascal Polleunus"
-publishedAt: 2024-12-20T00:00:00Z
-createdAt: 2024-12-19T00:00:00Z
+publishedAt: 2024-11-20T00:00:00Z
+createdAt: 2024-11-19T00:00:00Z
 hero:
   image: "https://placehold.co/600x400"
   alt: "TypeScript logo with code in the background"

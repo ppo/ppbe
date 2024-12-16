@@ -5,8 +5,8 @@ abstract: "Learn the importance of web accessibility and discover practical tech
 category: "Web Design"
 tags: ["Accessibility", "InclusiveDesign", "WebDev", "UX"]
 author: "Pascal Polleunus"
-publishedAt: 2024-12-24T00:00:00Z
-createdAt: 2024-12-23T00:00:00Z
+publishedAt: 2024-11-24T00:00:00Z
+createdAt: 2024-11-23T00:00:00Z
 hero:
   image: "https://placehold.co/600x400"
   alt: "Diverse group of people using various devices to access a website"

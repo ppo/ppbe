@@ -1,5 +1,5 @@
 ---
-import { HTML_HEAD, MY_NAME, SITEMAP_ROUTE } from '@/settings.mjs';
+import { HTML_HEAD, SITEMAP_ROUTE } from '@/settings.mjs';
 
 import { getFirstDefined, joinHeadTitle } from '@/lib/main.mjs';
 import { getFullUrl } from '@/lib/url.mjs';
@@ -44,7 +44,7 @@ const rssTitle = `RSS: ${HTML_HEAD.title}`;
 
 {/* Primary Metadata */}
 {description && <meta name="description" content={description} />}
-<meta name="author" content={MY_NAME} />
+<meta name="author" content="Pascal Polleunus" />
 {/* <meta name="generator" content={Astro.generator} /> */}
 
 {/* URLs */}

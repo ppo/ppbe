@@ -32,7 +32,6 @@ import profilePicture from '@/media/pascal-polleunus.webp';
         <a href={URLS.linkedin} target="_blank">LinkedIn profile</a>.
       </p>
 
-
       <h2>Get in Touch</h2>
       <p>You can contact me at <ObfuscatedLink protocol="email" value={MY_EMAIL} /></p>
     </section>
@@ -43,12 +42,10 @@ import profilePicture from '@/media/pascal-polleunus.webp';
 <style>
   .about-intro {
     @apply my-24;
-
     text-align: center;
-  }
-    .about-intro img {
-      @apply mb-6;
 
+    img {
+      @apply mb-6;
       border-radius: 50%;
       display: inline-block;
       height: 200px;
@@ -56,4 +53,5 @@ import profilePicture from '@/media/pascal-polleunus.webp';
       margin-inline: auto;
       width: 200px;
     }
+  }
 </style>

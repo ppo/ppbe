@@ -1,5 +1,4 @@
 ---
-import { getNamedPath } from '@/lib/url';
 
 import Time from '@/components/Time.astro';
 import { FORMATS } from '@/lib/format';
@@ -20,14 +19,11 @@ const { title, abstract, category, hero, publishedAt } = article.data;
 ---
 
 
-<a
-  href={getNamedPath('blog', article.slug)}
-  class="bg-white shadow-md rounded-lg overflow-hidden"
->
   <article class="flex justify-left mb-10">
     { /* <Image src={hero?.image} alt={hero.alt} /> */ }
     {hero?.image && (<img src={hero.image} alt={hero.alt} class="h-24 object-cover" />)}
     <div class="px-4 py-0">
+<a href={article.url}>
       <div class="text-sm text-dim">
         <Time date={publishedAt} format={FORMATS.DATE} title="Publication Date" />
         {category && (<>• {category}</>)}

@@ -4,16 +4,17 @@ import { getNamedPath } from '@/lib/url';
 import { BLOG_NUM_FEATURED_ON_HOME, BLOG_NUM_RELATED } from '@/settings.mjs';
 
 
-async function _getRawArticles() {
-  return await getCollection('blog');
+async function _getRawArticles(sorted = false) {
+  const rawArticles = await getCollection('blog');
+  return sorted ? sortArticles(rawArticles) : rawArticles;
 }
 
 /**
  * Get all blog articles sorted by creation date (newest first).
  */
 export async function getArticles() {
-  const articles = await _getRawArticles();
-  return sortArticles(articles);
+  const rawArticles = await _getRawArticles(true);
+  return hydrateArticles(rawArticles);
 }
 
 
@@ -21,8 +22,15 @@ export async function getArticles() {
  * Get all blog articles for RSS feed.
  */
 export async function getArticlesForRss() {
-  const articles = await _getRawArticles();
-  return transformArticlesForRss(articles);
+  const rawArticles = await _getRawArticles(true);
+  const articles = hydrateArticles(rawArticles);
+  return articles.map((a) => ({
+    title: a.data.title,
+    description: a.data.abstract,
+    pubDate: a.data.publishedAt,
+    link: a.url,
+    categories: a.data.tags,
+  }));
 }
 
 
@@ -30,8 +38,8 @@ export async function getArticlesForRss() {
  * Get all unique categories.
  */
 export async function getCategories() {
-  const articles = await _getRawArticles();
-  const categories = new Set(articles.map((a) => a.data.category).filter(Boolean));
+  const rawArticles = await _getRawArticles();
+  const categories = new Set(rawArticles.map((a) => a.data.category).filter(Boolean));
   return Array.from(categories);
 }
 
@@ -40,8 +48,8 @@ export async function getCategories() {
  * Get all unique tags.
  */
 export async function getTags() {
-  const articles = await _getRawArticles();
-  const tags = new Set(articles.flatMap((a) => a.data.tags || []));
+  const rawArticles = await _getRawArticles();
+  const tags = new Set(rawArticles.flatMap((a) => a.data.tags || []));
   return Array.from(tags);
 }
 
@@ -50,12 +58,14 @@ export async function getTags() {
  * Get previous and next articles for a given article.
  */
 export async function getAdjacentArticles(refArticle) {
-  const articles = await getArticles();
-  const currentIndex = articles.findIndex((a) => a.slug === refArticle.slug);
+  const rawArticles = await _getRawArticles(true);
+  const currentIndex = rawArticles.findIndex((a) => a.slug === refArticle.slug);
+  const prevIndex = currentIndex < rawArticles.length - 1 ? currentIndex + 1 : null;
+  const nextIndex = currentIndex > 0 ? currentIndex - 1 : null;
 
   return {
-    prev: currentIndex < articles.length - 1 ? articles[currentIndex + 1] : null,
-    next: currentIndex > 0 ? articles[currentIndex - 1] : null,
+    prev: prevIndex ? hydrateArticle(rawArticles[prevIndex]) : null,
+    next: nextIndex ? hydrateArticle(rawArticles[nextIndex]) : null,
   };
 }
 
@@ -64,9 +74,10 @@ export async function getAdjacentArticles(refArticle) {
  * Get featured articles.
  */
 export async function getFeaturedArticles(limit = BLOG_NUM_FEATURED_ON_HOME) {
-  const articles = await _getRawArticles();
-  const featuredArticles = sortArticles(articles.filter((a) => a.data.featured));
-  return limit ? featuredArticles.slice(0, limit) : featuredArticles;
+  const rawArticles = await _getRawArticles();
+  const featuredArticles = sortArticles(rawArticles.filter((a) => a.data.featured));
+  const articles = limit ? featuredArticles.slice(0, limit) : featuredArticles;
+  return hydrateArticles(articles);
 }
 
 
@@ -74,8 +85,8 @@ export async function getFeaturedArticles(limit = BLOG_NUM_FEATURED_ON_HOME) {
  * Get a single article by its slug.
  */
 export async function getArticleBySlug(slug) {
-  const articles = await _getRawArticles();
-  return articles.find((a) => a.slug === slug);
+  const rawArticles = await _getRawArticles();
+  return rawArticles.find((a) => a.slug === slug);
 }
 
 
@@ -83,33 +94,56 @@ export async function getArticleBySlug(slug) {
  * Get articles by category.
  */
 export async function getArticlesByCategory(category) {
-  const articles = await getArticles();
-  return articles.filter((a) => a.data.category === category);
+  const rawArticles = await _getRawArticles();
+  const articles = rawArticles.filter((a) => a.data.category === category);
+  return hydrateArticles(sortArticles(articles));
 }
 
 
 /**
  * Get articles by tag.
- */
+*/
 export async function getArticlesByTag(tag) {
-  const articles = await getArticles();
-  return articles.filter((a) => a.data.tags?.includes(tag));
+  const rawArticles = await _getRawArticles();
+  const articles = rawArticles.filter((a) => a.data.tags?.includes(tag));
+  return hydrateArticles(sortArticles(articles));
 }
 
 
 /**
  * Get related articles for a given article.
- *
- * Criteria: Same category or shared tags.
  */
 export async function getRelatedArticles(refArticle, limit = BLOG_NUM_RELATED) {
-  const articles = (await getArticles())
-    .filter((a) => a.slug !== refArticle.slug) // Exclude current article
-    .filter((a) => (
+  const rawArticles = await _getRawArticles();
+  const relatedArticles = rawArticles.filter((a) => (
+    // Exclude current article
+    a.slug !== refArticle.slug && (
+      // Same category or shared tags
       a.data.category === refArticle.data.category ||
       a.data.tags?.some((tag) => refArticle.data.tags?.includes(tag))
-    ));
-  return limit ? articles.slice(0, limit) : articles;
+    )
+  ));
+  const articles = limit ? relatedArticles.slice(0, limit) : relatedArticles;
+  return hydrateArticles(sortArticles(articles));
+}
+
+
+/**
+ * Helper function to hydrate the given article.
+ *
+ * Add `url`.
+ */
+function hydrateArticle(article) {
+  article.url = getNamedPath('blog', article.slug);
+  return article;
+}
+
+
+/**
+ * Helper function to hydrate all articles.
+ */
+function hydrateArticles(articles) {
+  return articles.map((a) => hydrateArticle(a));
 }
 
 
@@ -121,18 +155,4 @@ function sortArticles(articles) {
     +new Date(b.data.publishedAt) - +new Date(a.data.publishedAt)
     // ALTERNATIVE VERSION: b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf()
   );
-}
-
-
-/**
- * Helper function to map articles for RSS feeds.
- */
-function transformArticlesForRss(articles) {
-  return articles.map((a) => ({
-    title: a.data.title,
-    description: a.data.abstract,
-    pubDate: a.data.publishedAt,
-    link: getNamedPath('blog', a.slug),
-    categories: a.data.tags,
-  }));
 }

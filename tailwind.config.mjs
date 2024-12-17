@@ -11,7 +11,7 @@ export default {
       colors: {
         background: '#fafafa',
         text: '#333',
-        'text-dim': '#666',
+        dim: '#777',
         primary: '#1e88e5',
         secondary: '#7cb342',
       },
@@ -26,12 +26,13 @@ export default {
             'h1, h2, h3, h4, h5, h6': {
               fontFamily: theme('fontFamily.display'),
               fontWeight: 700,
+              // letterSpacing: '-0.01em', */
+              // marginBlock: '1.2em 0.6em',
             },
-            'img, svg': {
-              fill: 'currentColor',
-              /* stroke: 'currentColor', */
-            }
-
+            /* 1.200 - Minor Third: 3.584, 2.986, 2.489 2.074, 1.728, 1.440, 1.200 */
+            // h1: { fontSize: '2.074em' },
+            // h2: { fontSize: '1.728em' },
+            // h3: { fontSize: '1.440em' },
           },
         },
       }),

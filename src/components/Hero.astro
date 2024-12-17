@@ -29,7 +29,7 @@ const { image, alt, title, subtitle, url, caption, captionUrl } = Astro.props;
     </div>
   </div>
   {caption && (
-    <p class="text-text-dim text-sm text-center mt-2">
+    <p class="text-dim text-sm text-center mt-2">
       {captionUrl ? (
         <a href={captionUrl} target="_blank" rel="noopener noreferrer">{caption}</a>
         ) : caption

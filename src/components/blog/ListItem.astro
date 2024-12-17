@@ -28,7 +28,7 @@ const { title, abstract, category, hero, publishedAt } = article.data;
     { /* <Image src={hero?.image} alt={hero.alt} /> */ }
     {hero?.image && (<img src={hero.image} alt={hero.alt} class="h-24 object-cover" />)}
     <div class="px-4 py-0">
-      <div class="text-sm text-text-dim">
+      <div class="text-sm text-dim">
         <Time date={publishedAt} format={FORMATS.DATE} title="Publication Date" />
         {category && (<>• {category}</>)}
       </div>

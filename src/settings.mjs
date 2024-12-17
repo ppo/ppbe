@@ -1,3 +1,6 @@
+export const WHERE_AM_I = "🇮🇩 Lembongan, Bali, Indonesia";
+
+
 // MAIN ============================================================================================
 
 export const APP_SLUG = 'ppbe';

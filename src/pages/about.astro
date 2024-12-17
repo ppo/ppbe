@@ -1,5 +1,5 @@
 ---
-import { MY_EMAIL, URLS } from '@/settings.mjs';
+import { MY_EMAIL, URLS, WHERE_AM_I } from '@/settings.mjs';
 
 import { Image } from 'astro:assets';
 
@@ -15,22 +15,111 @@ import profilePicture from '@/media/pascal-polleunus.webp';
   title="About"
   description="Some information about me, Pascal Polleunus."
 >
-  <main class="container mx-auto px-4 py-8">
-    <section class="prose max-w-none">
-      <div class="about-intro">
-        <Image src={profilePicture} width="200" height="200" alt="Profile picture of Pascal Polleunus" />
-        <p>Hi, my name is <strong>Pascal Polleunus</strong>.</p>
-      </div>
-      <p>
-        <div>Born: 🇧🇪 Brussels, Belgium.</div>
-        <div>Nomad: 🇮🇩 Lembongan, Bali, Indonesia.</div>
-      </p>
+  <main class="container mx-auto py-4">
+    <section class="about-intro mt-6 mb-24 text-center">
+      <Image src={profilePicture} width="150" height="150" alt="Profile picture of Pascal Polleunus" />
+      <p>Hi, my name is <strong>Pascal Polleunus</strong>.</p>
+      <p>Born in 🇧🇪 Brussels, Belgium.</p>
+      <p>Currently in {WHERE_AM_I}.</p>
+    </section>
+    <section class="prose">
 
-      <h2>Curriculum Vitae</h2>
+
+      <h2>My Golden Circle</h2>
+      <ul class="unstyled">
+        <li>
+          <strong>WHY:</strong>
+          💪 Contribute to the transition to a new world.
+        </li>
+        <li>
+          <strong>HOW:</strong>
+          <nobr>🤔 Question everything</nobr>
+          <nobr>🤪 Think different</nobr>
+          <nobr>✊ Inspire change</nobr>
+        </li>
+        <li>
+          <strong>WHAT:</strong>
+          ❓ Coming soon… Working on my “Master Plan 2025”!
+        </li>
+      </ul>
+
+
+      <h2>Interests</h2>
+      <p>Spirituality, travel, nomadism, education, sciences, makers, vanlife, tiny houses, indoor farming, self-sufficiency, sports, CrossFit</p>
+
+
+      <h2>Values</h2>
+      <ul class="unstyled">
+        <li><strong>Unity makes strength</strong>                             <nobr><em class="text-dim">— Motto of Belgium</em></nobr></li>
+        <li><strong>Ubuntu:</strong> I am what I am because of who we all are <nobr><em class="text-dim">— Ancient African philosophy</em></nobr></li>
+        <li><strong>One for all and all for one</strong>                      <nobr><em class="text-dim">— The Three Musketeers</em></nobr></li>
+        <li><strong>Being in service to others</strong>                       <nobr><em class="text-dim">— The Law of One</em></nobr></li>
+      </ul>
+
+
+      <h2>Character</h2>
+      <p class="text-dim"><em>Not quite on every level yet, but that’s what I aspire to</em> 😉</p>
+      <ul class="unstyled">
+        <li><strong>Bold</strong>       <span class="text-dim">—</span> I’m confident, brave, ambitious, audacious</li>
+        <li><strong>Strong</strong>     <span class="text-dim">—</span> I stand for my values and speak the truth</li>
+        <li><strong>Agile</strong>      <span class="text-dim">—</span> I move quickly and easily, adapting to changes</li>
+        <li><strong>Creative</strong>   <span class="text-dim">—</span> I question everything, think different, and innovate</li>
+        <li><strong>Smart</strong>      <span class="text-dim">—</span> I apply all current knowledge and use the latest technologies</li>
+        <li><strong>Excellence</strong> <span class="text-dim">—</span> I do things as they must be done</li>
+        <li><strong>Fun</strong>        <span class="text-dim">—</span> I’m serious but not boring, enjoying what I do</li>
+      </ul>
+
+      <q>
+        I’m the type of person that if you ask me a question and I don’t know the answer, I’m gonna
+        tell you that I don’t know. But I bet you what, I know how to find the answer and I will
+        find the answer.
+      </q>
+      <span class="author">Chris Gardner, in <cite><a href="https://youtube.com/clip/UgkxpQyPVrnaE0A_APJiBJSuf7cNrDjlZhJr">The Pursuit of Happyness</a></cite></span>
+
+
+      <h2>Favorite Quotes</h2>
+      <ul class="unstyled">
+        <li>
+          <q>We can’t solve problems by using the same kind of thinking we used when we created them.</q>
+          <span class="author">Albert Einstein</span>
+        </li>
+        <li>
+          <q>We are what we repeatedly do. Excellence, then, is not an act, but a habit.</q>
+          <span class="author">Aristotle</span>
+        </li>
+        <li>
+          <q>It seems that perfection is attained not when there is nothing more to add, but when there is nothing more to remove.</q>
+          <span class="author">Antoine de Saint Exupéry</span>
+        </li>
+        <li>
+          <q>Simplicity is the ultimate sophistication.</q>
+          <span class="author">Leonardo da Vinci</span>
+        </li>
+        <li>
+          <q>The mind, once stretched by a new idea, never returns to its original dimensions.</q>
+          <span class="author">Ralph Waldo Emerson</span>
+        </li>
+        <li>
+          <q>Happiness is when what you think, what you say, and what you do are in harmony.</q>
+          <span class="author">Mahatma Gandhi</span>
+        </li>
+        <li>
+          <q>
+            Don’t ever let someone tell you you can’t do something. Not even me. You got a dream, you
+            gotta protect it. People can’t do somethin’ themselves, they wanna tell you you can’t do it.
+            You want somethin’, go get it. Period.
+          </q>
+          <span class="author">Chris Gardner, in <cite><a href="https://youtube.com/clip/UgxRWIQcmZXXviXX3yN4AaABCQ">The Pursuit of Happyness</a></cite></span>
+        </li>
+      </ul>
+
+
+      <h2>Professional Life</h2>
       <p>
         My <a href={getNamedPath('cv')} target="_blank">resume</a> and
         <a href={URLS.linkedin} target="_blank">LinkedIn profile</a>.
       </p>
+
 
       <h2>Get in Touch</h2>
       <p>You can contact me at <ObfuscatedLink protocol="email" value={MY_EMAIL} /></p>
@@ -40,18 +129,38 @@ import profilePicture from '@/media/pascal-polleunus.webp';
 
 
 <style>
-  .about-intro {
-    @apply my-24;
-    text-align: center;
+  .about-intro img {
+    @apply mt-0 mb-6;
+    border-radius: 50%;
+    display: inline-block;
+    height: 150px;
+    margin-inline: auto;
+    width: 150px;
+  }
 
-    img {
-      @apply mb-6;
-      border-radius: 50%;
-      display: inline-block;
-      height: 200px;
-      margin-block: 0 var(--spacing-sm);
-      margin-inline: auto;
-      width: 200px;
-    }
+  q {
+    font-style: italic;
+    quotes: "“" "”";
+  }
+  q::before, q::after { @apply text-dim; }
+  q::before { content: open-quote; }
+  q::after { content: close-quote; }
+  q + .author {
+    @apply text-dim;
+    display: block;
+    white-space: nowrap;
+  }
+  q + .author::before {
+    content: "—";
+  }
+  .author cite {
+    font-style: normal;
+    quotes: "‘" "’";
+  }
+  .author cite::before, .author cite::after { @apply text-dim; }
+  .author cite::before { content: open-quote; }
+  .author cite::after { content: close-quote; }
+  .author a {
+    color: inherit;
   }
 </style>

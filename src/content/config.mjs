@@ -24,7 +24,7 @@ const blog = defineCollection({
     hero: hero.nullish(),
     // collection: z.string().nullish(),
     // related: z.array(reference('blog')).nullable(),  // References to other blog articles, using their `slug`.
-    author: z.string(),
+    // author: z.string(),
     publishedAt: z.date().nullable(), // The reference date for sorting
     createdAt: z.date().nullish(), // When the content was originally created, defaults to publishedAt.
     // OR? z.string().datetime()

@@ -12,7 +12,7 @@ const { class: className } = Astro.props;
 ---
 
 
-<header class:list={['mb-12 px-2 py-4', className]}>
+<header class:list={['mb-12 py-4', className]}>
   <Container class="flex justify-between items-center">
     <h1 class="text-xl">
       <a href={getNamedPath('home')}>{SITE_NAME}</a>

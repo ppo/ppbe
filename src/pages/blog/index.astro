@@ -1,6 +1,6 @@
 ---
 import BlogList from '@/components/blog/List.astro';
-import Layout from '@/layouts/MainLayout.astro';
+import MainLayout from '@/layouts/MainLayout.astro';
 import { getArticles } from '@/lib/blog';
 
 
@@ -8,8 +8,8 @@ const articles = await getArticles();
 ---
 
 
-<Layout>
+<MainLayout>
   <section class="container mx-auto px-4 py-8">
     <BlogList {articles} />
   </section>
-</Layout>
+</MainLayout>

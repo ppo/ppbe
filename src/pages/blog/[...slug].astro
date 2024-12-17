@@ -6,7 +6,7 @@ import { type CollectionEntry, getCollection } from 'astro:content';
 import { Icon } from 'astro-icon/components';
 
 import BlogArticle from '@/components/blog/Article.astro';
-import Layout from '@/layouts/BlogLayout.astro';
+import BlogLayout from '@/layouts/BlogLayout.astro';
 import { getAdjacentArticles } from '@/lib/blog';
 
 // TODO: import { filterObject } from '@/lib/main';
@@ -34,7 +34,7 @@ const { prev: prevArticle, next: nextArticle } = await getAdjacentArticles(artic
 ---
 
 
-<Layout>
+<BlogLayout>
   {/* TODO: <ContentHeader {...headerAttrs} /> */}
   <main class="prose max-w-none">
     <BlogArticle {article} />
@@ -54,7 +54,7 @@ const { prev: prevArticle, next: nextArticle } = await getAdjacentArticles(artic
       </a>
     )}
   </nav>
-</Layout>
+</BlogLayout>
 
 
 <style>

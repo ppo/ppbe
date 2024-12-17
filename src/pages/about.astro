@@ -4,14 +4,14 @@ import { MY_EMAIL, URLS, WHERE_AM_I } from '@/settings.mjs';
 import { Image } from 'astro:assets';
 
 import ObfuscatedLink from '@/components/ObfuscatedLink.astro';
-import Layout from '@/layouts/MainLayout.astro';
+import MainLayout from '@/layouts/MainLayout.astro';
 import { getNamedPath } from '@/lib/url';
 
 import profilePicture from '@/media/pascal-polleunus.webp';
 ---
 
 
-<Layout
+<MainLayout
   title="About"
   description="Some information about me, Pascal Polleunus."
 >
@@ -125,7 +125,7 @@ import profilePicture from '@/media/pascal-polleunus.webp';
       <p>You can contact me at <ObfuscatedLink protocol="email" value={MY_EMAIL} /></p>
     </section>
   </main>
-</Layout>
+</MainLayout>
 
 
 <style>

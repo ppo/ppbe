@@ -8,7 +8,7 @@ author: "Pascal Polleunus"
 publishedAt: 2024-11-24T00:00:00Z
 createdAt: 2024-11-23T00:00:00Z
 hero:
-  image: "https://placehold.co/600x400"
+  image: "/blog/placehold-600x400.svg"
   alt: "Diverse group of people using various devices to access a website"
   caption: "Web accessibility benefits everyone"
   captionUrl: "https://example.com/web-accessibility-image"

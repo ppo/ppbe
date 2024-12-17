@@ -1,3 +1,24 @@
+// TODO: Mix object (to simplify the functions) & functions (for easier interface)
+// TODO: Hydrate article => article.url
+/*
+article: {
+  collection: 'blog',
+  id: 'example-post-1.md',
+  slug: 'example-post-1',
+  filePath: 'src/content/blog/example-post-1.md',
+  digest: '510c77829f3dd993',
+  data: // see content/config › blog
+  body: '[…]',
+  rendered: {
+    html: '[…]',
+    metadata: { headings: [Array], imagePaths: [], frontmatter: [Object] }
+  },
+  render: [Function: render]
+}
+*/
+
+
+
 import { getCollection } from 'astro:content';
 
 import { getNamedPath } from '@/lib/url';

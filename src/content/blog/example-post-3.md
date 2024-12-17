@@ -8,7 +8,7 @@ author: "Pascal Polleunus"
 publishedAt: 2024-11-20T00:00:00Z
 createdAt: 2024-11-19T00:00:00Z
 hero:
-  image: "https://placehold.co/600x400"
+  image: "/blog/placehold-600x400.svg"
   alt: "TypeScript logo with code in the background"
   caption: "TypeScript: Enhancing JavaScript with static typing"
   captionUrl: "https://example.com/typescript-image"

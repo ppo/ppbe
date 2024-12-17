@@ -1,4 +1,5 @@
 ---
+// TODO: import { getImage, Image } from 'astro:assets';
 
 import Time from '@/components/Time.astro';
 import { FORMATS } from '@/lib/format';
@@ -16,14 +17,19 @@ const { title, abstract, category, hero, publishedAt } = article.data;
 //   },
 // } = Astro.props;
 // END: ALTERNATIVE VERSION
+
+// TODO: const heroImage = hero?.image ? await import(hero.image) : null;
+// TODO: const heroImage = hero?.image ? await getImage({src: hero.image}) : null;
 ---
 
 
-  <article class="flex justify-left mb-10">
-    { /* <Image src={hero?.image} alt={hero.alt} /> */ }
-    {hero?.image && (<img src={hero.image} alt={hero.alt} class="h-24 object-cover" />)}
-    <div class="px-4 py-0">
 <a href={article.url}>
+  <article class="mb-10 flex flex-col sm:flex-row justify-left">
+    {/* TODO: {heroImage && (<Image src={heroImage} alt={hero.alt} class="h-auto w-full sm:h-24 sm:w-auto object-cover" />)} */}
+    {hero?.image && (
+      <img src={hero.image} alt={hero.alt} class="h-auto w-full sm:h-24 sm:w-auto object-cover" />
+    )}
+    <div class="mt-3 sm:mt-0 sm:px-4 py-0">
       <div class="text-sm text-dim">
         <Time date={publishedAt} format={FORMATS.DATE} title="Publication Date" />
         {category && (<>• {category}</>)}

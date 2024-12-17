@@ -9,7 +9,7 @@ author: "Pascal Polleunus"
 publishedAt: 2024-11-18T00:00:00Z
 createdAt: 2024-11-17T00:00:00Z
 hero:
-  image: "https://placehold.co/600x400"
+  image: "/blog/placehold-600x400.svg"
   alt: "Visual representation of CSS Grid layout"
   caption: "CSS Grid in action"
   captionUrl: "https://example.com/css-grid-image"

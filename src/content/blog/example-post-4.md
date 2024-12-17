@@ -9,7 +9,7 @@ author: "Pascal Polleunus"
 publishedAt: 2024-11-22T00:00:00Z
 createdAt: 2024-11-21T00:00:00Z
 hero:
-  image: "https://placehold.co/600x400"
+  image: "/blog/placehold-600x400.svg"
   alt: "Dashboard showing website performance metrics"
   caption: "Monitoring web performance is crucial for user experience"
   captionUrl: "https://example.com/web-performance-image"

@@ -8,7 +8,7 @@ author: "Pascal Polleunus"
 publishedAt: 2024-11-15T00:00:00Z
 createdAt: 2024-11-01T00:00:00Z
 hero:
-  image: "https://placehold.co/600x400"
+  image: "/blog/placehold-600x400.svg"
   alt: "Futuristic web development concept"
   caption: "Image by Future Web Designs"
   captionUrl: "https://example.com/future-web-designs"

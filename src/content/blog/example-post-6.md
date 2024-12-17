@@ -8,7 +8,7 @@ author: "Pascal Polleunus"
 publishedAt: 2024-11-26T00:00:00Z
 createdAt: 2024-11-25T00:00:00Z
 hero:
-  image: "https://placehold.co/600x400"
+  image: "/blog/placehold-600x400.svg"
   alt: "Astro logo with a starry background"
   caption: "Astro: The all-in-one web framework designed for speed"
   captionUrl: "https://example.com/astro-image"

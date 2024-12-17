@@ -1,5 +1,5 @@
 ---
-title: "Optimizing Web Performance: Techniques for Faster Load Times"
+title: "⭐️ Optimizing Web Performance: Techniques for Faster Load Times"
 subtitle: "Boost your website's speed and user experience"
 abstract: "Learn essential techniques to optimize your website's performance, from image optimization to lazy loading and code splitting. Discover how to create faster, more efficient web experiences."
 featured: true

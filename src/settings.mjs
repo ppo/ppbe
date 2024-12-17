@@ -88,4 +88,5 @@ export const GOOGLE_ANALYTICS_TRACKING_ID = 'UA-162951120-1';
 // FEATURES ========================================================================================
 
 // BLOG
-export const NUM_FEATURED_ARTICLES_ON_HOME = 5;
+export const BLOG_NUM_FEATURED_ON_HOME = 5;
+export const BLOG_NUM_RELATED = 3;

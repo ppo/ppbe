@@ -1,5 +1,5 @@
 ---
-title: "Mastering CSS Grid: A Comprehensive Guide"
+title: "⭐️ Mastering CSS Grid: A Comprehensive Guide"
 subtitle: "Unlocking the power of modern layout design"
 abstract: "Dive deep into CSS Grid and learn how to create complex, responsive layouts with ease. This guide covers everything from basic concepts to advanced techniques."
 featured: true

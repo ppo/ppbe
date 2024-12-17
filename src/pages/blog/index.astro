@@ -1,10 +1,10 @@
 ---
 import BlogList from '@/components/blog/List.astro';
 import Layout from '@/layouts/MainLayout.astro';
-import { getAllArticles } from '@/lib/blog';
+import { getArticles } from '@/lib/blog';
 
 
-const articles = await getAllArticles();
+const articles = await getArticles();
 ---
 
 

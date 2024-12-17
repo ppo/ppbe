@@ -1,14 +1,18 @@
 import { getCollection } from 'astro:content';
 
 import { getNamedPath } from '@/lib/url';
-import { NUM_FEATURED_ARTICLES_ON_HOME } from '@/settings.mjs';
+import { BLOG_NUM_FEATURED_ON_HOME, BLOG_NUM_RELATED } from '@/settings.mjs';
 
+
+async function _getRawArticles() {
+  return await getCollection('blog');
+}
 
 /**
  * Get all blog articles sorted by creation date (newest first).
  */
-export async function getAllArticles() {
-  const articles = await getCollection('blog');
+export async function getArticles() {
+  const articles = await _getRawArticles();
   return sortArticles(articles);
 }
 
@@ -17,7 +21,7 @@ export async function getAllArticles() {
  * Get all blog articles for RSS feed.
  */
 export async function getArticlesForRss() {
-  const articles = await getCollection('blog');
+  const articles = await _getRawArticles();
   return transformArticlesForRss(articles);
 }
 
@@ -25,9 +29,9 @@ export async function getArticlesForRss() {
 /**
  * Get all unique categories.
  */
-export async function getAllCategories() {
-  const articles = await getAllArticles();
-  const categories = new Set(articles.map(article => article.data.category).filter(Boolean));
+export async function getCategories() {
+  const articles = await _getRawArticles();
+  const categories = new Set(articles.map((a) => a.data.category).filter(Boolean));
   return Array.from(categories);
 }
 
@@ -35,9 +39,9 @@ export async function getAllCategories() {
 /**
  * Get all unique tags.
  */
-export async function getAllTags() {
-  const articles = await getAllArticles();
-  const tags = new Set(articles.flatMap(article => article.data.tags || []));
+export async function getTags() {
+  const articles = await _getRawArticles();
+  const tags = new Set(articles.flatMap((a) => a.data.tags || []));
   return Array.from(tags);
 }
 
@@ -46,8 +50,8 @@ export async function getAllTags() {
  * Get previous and next articles for a given article.
  */
 export async function getAdjacentArticles(refArticle) {
-  const articles = await getAllArticles();
-  const currentIndex = articles.findIndex(article => article.slug === refArticle.slug);
+  const articles = await getArticles();
+  const currentIndex = articles.findIndex((a) => a.slug === refArticle.slug);
 
   return {
     prev: currentIndex < articles.length - 1 ? articles[currentIndex + 1] : null,
@@ -59,9 +63,9 @@ export async function getAdjacentArticles(refArticle) {
 /**
  * Get featured articles.
  */
-export async function getFeaturedArticles(limit = NUM_FEATURED_ARTICLES_ON_HOME) {
-  const articles = await getCollection('blog');
-  const featuredArticles = sortArticles(articles.filter(article => article.data.featured));
+export async function getFeaturedArticles(limit = BLOG_NUM_FEATURED_ON_HOME) {
+  const articles = await _getRawArticles();
+  const featuredArticles = sortArticles(articles.filter((a) => a.data.featured));
   return limit ? featuredArticles.slice(0, limit) : featuredArticles;
 }
 
@@ -70,8 +74,8 @@ export async function getFeaturedArticles(limit = NUM_FEATURED_ARTICLES_ON_HOME)
  * Get a single article by its slug.
  */
 export async function getArticleBySlug(slug) {
-  const articles = await getCollection('blog');
-  return articles.find(article => article.slug === slug);
+  const articles = await _getRawArticles();
+  return articles.find((a) => a.slug === slug);
 }
 
 
@@ -79,8 +83,8 @@ export async function getArticleBySlug(slug) {
  * Get articles by category.
  */
 export async function getArticlesByCategory(category) {
-  const articles = await getAllArticles();
-  return articles.filter(article => article.data.category === category);
+  const articles = await getArticles();
+  return articles.filter((a) => a.data.category === category);
 }
 
 
@@ -88,24 +92,24 @@ export async function getArticlesByCategory(category) {
  * Get articles by tag.
  */
 export async function getArticlesByTag(tag) {
-  const articles = await getAllArticles();
-  return articles.filter(article => article.data.tags?.includes(tag));
+  const articles = await getArticles();
+  return articles.filter((a) => a.data.tags?.includes(tag));
 }
 
 
 /**
  * Get related articles for a given article.
+ *
+ * Criteria: Same category or shared tags.
  */
-export async function getRelatedArticles(article, limit = 3) {
-  const articles = await getAllArticles();
-
-  return articles
-    .filter(p => p.slug !== article.slug) // Exclude current article
-    .filter(p => (
-      p.data.category === article.data.category || // Same category
-      p.data.tags?.some(tag => article.data.tags?.includes(tag)) // Shared tags
-    ))
-    .slice(0, limit);
+export async function getRelatedArticles(refArticle, limit = BLOG_NUM_RELATED) {
+  const articles = (await getArticles())
+    .filter((a) => a.slug !== refArticle.slug) // Exclude current article
+    .filter((a) => (
+      a.data.category === refArticle.data.category ||
+      a.data.tags?.some((tag) => refArticle.data.tags?.includes(tag))
+    ));
+  return limit ? articles.slice(0, limit) : articles;
 }
 
 
@@ -124,11 +128,11 @@ function sortArticles(articles) {
  * Helper function to map articles for RSS feeds.
  */
 function transformArticlesForRss(articles) {
-  return articles.map((article) => ({
-    title: article.data.title,
-    description: article.data.abstract,
-    pubDate: article.data.publishedAt,
-    link: getNamedPath('blog', article.slug),
-    categories: article.data.tags,
+  return articles.map((a) => ({
+    title: a.data.title,
+    description: a.data.abstract,
+    pubDate: a.data.publishedAt,
+    link: getNamedPath('blog', a.slug),
+    categories: a.data.tags,
   }));
 }

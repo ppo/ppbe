@@ -1,5 +1,5 @@
+import { getStaticFullUrl } from '@/lib/url.mjs';
 import { SITEMAP_ROUTE } from '@/settings.mjs';
-import { getStaticFullUrl } from '@/util/url.mjs';
 
 
 const robotsTxt = `

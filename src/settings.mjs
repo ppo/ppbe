@@ -82,7 +82,7 @@ export const FONTS = {
 // SERVICES ========================================================================================
 
 // Google Analytics: Tracking ID.
-export const GOOGLE_ANALYTICS_TRACKING_ID = 'UA-162951120-1';
+export const GOOGLE_ANALYTICS_TRACKING_ID = 'G-1HW5P0NNDY';
 
 
 // FEATURES ========================================================================================

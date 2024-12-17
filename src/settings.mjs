@@ -37,7 +37,7 @@ export const SITEMAP_ROUTE = '/sitemap-index.xml';
 
 // Named URLs (as name: path).
 export const URLS = {
-  facebook:  'https://www.facebook.com/pascal.polleunus',
+  facebook:  'https://www.facebook.com/pascal.polleunus.be',
   github:    'https://github.com/ppo',
   instagram: 'https://www.instagram.com/ppolleunus',
   linkedin:  'https://www.linkedin.com/in/pascal-polleunus/',

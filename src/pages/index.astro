@@ -9,10 +9,12 @@ const featuredArticles = await getFeaturedArticles();
 
 
 <MainLayout>
-  <main>
-    <section class="container mx-auto px-4 py-8">
-      <h2 class="text-2xl font-bold mb-4">Featured Articles</h2>
-      <BlogList articles={featuredArticles} />
-    </section>
+  <main class="prose max-w-none">
+    {featuredArticles?.length > 0 && (
+      <section>
+        <h2 class="text-2xl font-bold mb-4">Featured Articles</h2>
+        <BlogList articles={featuredArticles} />
+      </section>
+    )}
   </main>
 </MainLayout>

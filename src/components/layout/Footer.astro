@@ -10,14 +10,14 @@ interface Props {
 }
 const { class: className } = Astro.props;
 
-const thisYear = new Date().getFullYear();
+// const thisYear = new Date().getFullYear();
 ---
 
 
-<footer id="main-footer" class:list={['bg-background shadow-sm mt-8 text-sm', className]}>
+<footer class:list={['mt-16 px-2 pt-4 pb-12 text-sm', className]}>
   <Container class="flex justify-center space-x-4">
     {/* <div class="legal">© 1974–${thisYear} Pascal Polleunus.</div> */}
-    <nav id="footer-socials">
+    <nav>
       <ul class="flex gap-4">
         {SOCIAL_NAV.map((item) => (
           <li>

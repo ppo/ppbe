@@ -15,16 +15,18 @@ import profilePicture from '@/media/pascal-polleunus.webp';
   title="About"
   description="Some information about me, Pascal Polleunus."
 >
-  <main class="container mx-auto py-4">
-    <section class="about-intro mt-6 mb-24 text-center">
-      <Image src={profilePicture} width="150" height="150" alt="Profile picture of Pascal Polleunus" />
-      <p>Hi, my name is <strong>Pascal Polleunus</strong>.</p>
-      <p>Born in 🇧🇪 Brussels, Belgium.</p>
-      <p>Currently in {WHERE_AM_I}.</p>
+  <main class="prose max-w-none">
+    <section class="about-intro mb-20 text-center">
+      <Image
+        src={profilePicture} width="150" height="150" alt="Profile picture of Pascal Polleunus"
+        class="mt-0 mb-4"
+      />
+      <div>Hi, my name is <strong>Pascal Polleunus</strong>.</div>
+      <div>Born in 🇧🇪 Brussels, Belgium.</div>
+      <div>Currently in {WHERE_AM_I}.</div>
     </section>
-    <section class="prose">
 
-
+    <section>
       <h2>My Golden Circle</h2>
       <ul class="unstyled">
         <li>
@@ -130,7 +132,6 @@ import profilePicture from '@/media/pascal-polleunus.webp';
 
 <style>
   .about-intro img {
-    @apply mt-0 mb-6;
     border-radius: 50%;
     display: inline-block;
     height: 150px;

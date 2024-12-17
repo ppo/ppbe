@@ -1,6 +1,6 @@
 ---
-import { MAIN_NAV, SITE_NAME } from '@/settings.mjs';
 import { getNamedPath } from '@/lib/url.mjs';
+import { MAIN_NAV, SITE_NAME } from '@/settings.mjs';
 
 import Container from '@/components/layout/Container.astro';
 
@@ -12,7 +12,7 @@ const { class: className } = Astro.props;
 ---
 
 
-<header id="main-header" class:list={["bg-background shadow-sm", className]}>
+<header class:list={['mb-12 px-2 py-4', className]}>
   <Container class="flex justify-between items-center">
     <h1 class="text-xl">
       <a href={getNamedPath('home')}>{SITE_NAME}</a>

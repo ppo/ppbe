@@ -1,13 +1,13 @@
 ---
 import { MY_EMAIL, URLS, WHERE_AM_I } from '@/settings.mjs';
 
-import { Image } from 'astro:assets';
+// TODO: Bug in prod // import { Image } from 'astro:assets';
 
 import ObfuscatedLink from '@/components/ObfuscatedLink.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 import { getNamedPath } from '@/lib/url';
 
-import profilePicture from '@/media/pascal-polleunus.webp';
+// TODO: Bug in prod // import profilePicture from '@/media/pascal-polleunus.webp';
 ---
 
 
@@ -17,8 +17,12 @@ import profilePicture from '@/media/pascal-polleunus.webp';
 >
   <main class="prose max-w-none">
     <section class="about-intro mb-20 text-center">
-      <Image
+      {/* TODO: Bug in prod // <Image
         src={profilePicture} width="150" height="150" alt="Profile picture of Pascal Polleunus"
+        class="mt-0 mb-4"
+      />*/}
+      <img
+        src="/media/pascal-polleunus.webp" width="150" height="150" alt="Profile picture of Pascal Polleunus"
         class="mt-0 mb-4"
       />
       <div>Hi, my name is <strong>Pascal Polleunus</strong>.</div>

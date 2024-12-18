@@ -22,6 +22,11 @@ export async function getStaticPaths() {
 
 type Props = CollectionEntry<'blog'>;
 const article = Astro.props;
+const headProps = {
+  title: article.data.title,
+  description: article.data.abstract,
+  image: article.data.hero?.image,
+}
 
 // TODO: const headerAttrs = {
 //   route: getNamedPath('blog'),
@@ -30,7 +35,7 @@ const article = Astro.props;
 ---
 
 
-<BlogLayout title={article.data.title} description={article.data.abstract}>
+<BlogLayout {...headProps}>
   {/* TODO: <ContentHeader {...headerAttrs} /> */}
   <main class="prose max-w-none">
     <BlogArticle {article} />

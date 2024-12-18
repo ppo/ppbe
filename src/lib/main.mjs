@@ -15,6 +15,8 @@ export function getFirstDefined() {
  * @param {...(string|undefined)} titles - Title(s) to be merged.
  * @returns {string} - The merged title, or the default title.
  */
-export function joinHeadTitle(...titles) {
+export function joinHeadTitle(title) {
+  const titles = Array.isArray(title) ? title : [title];
+  titles.push(HTML_HEAD.title);
   return titles.filter(a => a).join(HTML_HEAD.titleSeparator);
 }

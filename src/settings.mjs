@@ -14,7 +14,7 @@ export const MY_EMAIL = 'pascal@polleunus.be';
 // Settings for the HTML <head>.
 export const HTML_HEAD = {
   title: SITE_NAME,
-  titleSeparator: ' :: ',
+  titleSeparator: ' • ',
   description: 'Pascal Polleunus’ personal website.',
   twitterUsername: 'ppolleunus',
 };

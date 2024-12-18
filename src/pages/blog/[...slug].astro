@@ -30,7 +30,7 @@ const article = Astro.props;
 ---
 
 
-<BlogLayout>
+<BlogLayout title={article.data.title} description={article.data.abstract}>
   {/* TODO: <ContentHeader {...headerAttrs} /> */}
   <main class="prose max-w-none">
     <BlogArticle {article} />

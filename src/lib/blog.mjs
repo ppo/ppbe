@@ -103,6 +103,24 @@ export async function getFeaturedArticles(limit = BLOG_NUM_FEATURED_ON_HOME) {
 
 
 /**
+ * Get related articles for a given article.
+ */
+export async function getRelatedArticles(refArticle, limit = BLOG_NUM_RELATED) {
+  const rawArticles = await _getRawArticles();
+  const relatedArticles = rawArticles.filter((a) => (
+    // Exclude current article
+    a.slug !== refArticle.slug && (
+      // Same category or shared tags
+      a.data.category === refArticle.data.category ||
+      a.data.tags?.some((tag) => refArticle.data.tags?.includes(tag))
+    )
+  ));
+  const articles = limit ? relatedArticles.slice(0, limit) : relatedArticles;
+  return hydrateArticles(sortArticles(articles));
+}
+
+
+/**
  * Get a single article by its slug.
  */
 export async function getArticleBySlug(slug) {
@@ -127,24 +145,6 @@ export async function getArticlesByCategory(category) {
 export async function getArticlesByTag(tag) {
   const rawArticles = await _getRawArticles();
   const articles = rawArticles.filter((a) => a.data.tags?.includes(tag));
-  return hydrateArticles(sortArticles(articles));
-}
-
-
-/**
- * Get related articles for a given article.
- */
-export async function getRelatedArticles(refArticle, limit = BLOG_NUM_RELATED) {
-  const rawArticles = await _getRawArticles();
-  const relatedArticles = rawArticles.filter((a) => (
-    // Exclude current article
-    a.slug !== refArticle.slug && (
-      // Same category or shared tags
-      a.data.category === refArticle.data.category ||
-      a.data.tags?.some((tag) => refArticle.data.tags?.includes(tag))
-    )
-  ));
-  const articles = limit ? relatedArticles.slice(0, limit) : relatedArticles;
   return hydrateArticles(sortArticles(articles));
 }
 

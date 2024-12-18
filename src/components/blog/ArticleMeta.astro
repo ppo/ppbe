@@ -1,4 +1,5 @@
 ---
+import { removeCategoryFromTags } from '@/lib/blog';
 import { FORMATS } from '@/lib/format';
 
 import Time from '@/components/Time.astro';
@@ -6,10 +7,10 @@ import Time from '@/components/Time.astro';
 
 const {
   category,
-  tags,
   publishedAt,
   createdAt,
 } = Astro.props;
+const tags = removeCategoryFromTags(Astro.props.tags, category);
 ---
 
 

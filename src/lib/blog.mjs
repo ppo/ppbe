@@ -177,3 +177,13 @@ function sortArticles(articles) {
     // ALTERNATIVE VERSION: b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf()
   );
 }
+
+
+/**
+ * Remove the "category tag" from the tag list.
+ */
+export function removeCategoryFromTags(tags, category) {
+  if (!tags || tags.length === 0) return tags;
+  const categoryTag = category.replace(' ', '');
+  return tags.filter((t) => t !== categoryTag);
+}

@@ -1,0 +1,50 @@
+---
+import { Icon } from 'astro-icon/components';
+
+import { getAdjacentArticles } from '@/lib/blog';
+
+
+type Props = CollectionEntry<'blog'>;
+const { article } = Astro.props;
+const { prev: prevArticle, next: nextArticle } = await getAdjacentArticles(article);
+---
+
+
+<nav class="mt-10 pt-5 border-t border-gray-200 flex justify-between items-center">
+  {nextArticle && (
+    <a href={nextArticle.url} title={nextArticle.data.title}>
+      <Icon name="mdi:arrow-left" class="w-5 h-5 ml-2" />
+      <span>Next</span>
+    </a>
+  ) || (
+    <div>
+      <Icon name="mdi:arrow-left" class="w-5 h-5 ml-2" />
+      <span>Next</span>
+    </div>
+  )}
+  {prevArticle && (
+    <a href={prevArticle.url} title={prevArticle.data.title}>
+      <span>Previous</span>
+      <Icon name="mdi:arrow-right" class="w-5 h-5 mr-2" />
+    </a>
+  ) || (
+    <div>
+      <span>Previous</span>
+      <Icon name="mdi:arrow-right" class="w-5 h-5 mr-2" />
+    </div>
+  )}
+</nav>
+
+
+<style>
+  nav > * {
+    @apply flex items-center;
+
+    &:last-child {
+      @apply ml-auto;
+    }
+  }
+  nav > div {
+    @apply text-dim;
+  }
+</style>

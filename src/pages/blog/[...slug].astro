@@ -3,11 +3,9 @@ export const prerender = true;
 
 import { type CollectionEntry, getCollection } from 'astro:content';
 
-import { Icon } from 'astro-icon/components';
-
 import BlogArticle from '@/components/blog/Article.astro';
+import DetailNav from '@/components/blog/DetailNav.astro';
 import BlogLayout from '@/layouts/BlogLayout.astro';
-import { getAdjacentArticles } from '@/lib/blog';
 
 // TODO: import { filterObject } from '@/lib/main';
 // TODO: import { getNamedPath } from '@/lib/url';
@@ -24,8 +22,6 @@ export async function getStaticPaths() {
 
 type Props = CollectionEntry<'blog'>;
 const article = Astro.props;
-const { prev: prevArticle, next: nextArticle } = await getAdjacentArticles(article);
-
 
 // TODO: const headerAttrs = {
 //   route: getNamedPath('blog'),
@@ -40,28 +36,5 @@ const { prev: prevArticle, next: nextArticle } = await getAdjacentArticles(artic
     <BlogArticle {article} />
   </main>
 
-  <nav class="mt-10 pt-5 border-t border-gray-200 flex justify-between items-center">
-    {nextArticle && (
-      <a href={nextArticle.url} title={nextArticle.data.title}>
-        <Icon name="mdi:arrow-left" class="w-5 h-5 ml-2" />
-        <span>Next</span>
-      </a>
-    )}
-    {prevArticle && (
-      <a href={prevArticle.url} title={prevArticle.data.title}>
-        <span>Previous</span>
-        <Icon name="mdi:arrow-right" class="w-5 h-5 mr-2" />
-      </a>
-    )}
-  </nav>
+  <DetailNav {article} />
 </BlogLayout>
-
-
-<style>
-  nav > a {
-    @apply flex items-center;
-  }
-  nav > a:last-of-type {
-    @apply ml-auto;
-  }
-</style>

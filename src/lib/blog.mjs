@@ -85,8 +85,8 @@ export async function getAdjacentArticles(refArticle) {
   const nextIndex = currentIndex > 0 ? currentIndex - 1 : null;
 
   return {
-    prev: prevIndex ? hydrateArticle(rawArticles[prevIndex]) : null,
-    next: nextIndex ? hydrateArticle(rawArticles[nextIndex]) : null,
+    prev: prevIndex === null ? null : hydrateArticle(rawArticles[prevIndex]),
+    next: nextIndex === null ? null : hydrateArticle(rawArticles[nextIndex]),
   };
 }
 

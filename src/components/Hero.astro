@@ -4,36 +4,48 @@ interface Props {
   alt: string;
   title: string;
   subtitle?: string;
-  url?: string;
+  url?: string; // TODO
   caption?: string;
   captionUrl?: string;
+  captionIsHtml?: boolean;
 }
 
-const { image, alt, title, subtitle, url, caption, captionUrl } = Astro.props;
+const {
+  image, alt, title, subtitle, caption, captionUrl, captionIsHtml = false
+} = Astro.props;
 ---
 
 
-<section class="relative">
-  <img src={image} {alt} class="w-full h-64 object-cover md:h-96" />
-  <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-    <div class="text-center text-white">
-      <h1 class="text-4xl font-bold mb-2">{title}</h1>
-      {subtitle && (
-        <p class="text-xl">{subtitle}</p>
-      )}
-      {url && (
-        <a href={url} class="mt-4 inline-block bg-primary text-white px-4 py-2 rounded hover:bg-secondary transition-colors">
-          Learn More
-        </a>
-      )}
-    </div>
+<figure>
+  <div class="relative">
+    <img src={image} {alt} class="w-full h-auto my-0" />
+    {(title || subtitle) && (
+      <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="text-center text-white">
+          <h1 class="text-4xl text-white mt-0 mb-2">{title}</h1>
+          {subtitle && (<p class="text-xl my-0">{subtitle}</p>)}
+        </div>
+      </div>
+    )}
   </div>
-  {caption && (
-    <p class="text-dim text-sm text-center mt-2">
-      {captionUrl ? (
-        <a href={captionUrl} target="_blank" rel="noopener noreferrer">{caption}</a>
-        ) : caption
-      }
-    </p>
-  )}
-</section>
+  {/* TODO: Check if <slot> */}
+  <figcaption class="text-dim text-sm text-center mt-2">
+    {caption && (
+      captionIsHtml
+        ? (<Fragment set:html={caption} />)
+        : captionUrl
+          ? (<a href={captionUrl} target="_blank" rel="noopener noreferrer">{caption}</a>)
+          : caption
+    )}
+    <slot />
+  </figcaption>
+</figure>
+
+
+<style>
+  figcaption :global(a) {
+    @apply hover:text-secondary;
+    font-weight: inherit;
+    color: inherit;
+  }
+</style>

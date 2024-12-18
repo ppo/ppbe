@@ -9,6 +9,7 @@ const hero = z.object({
   url: z.string().nullish(),
   caption: z.string().nullish(),
   captionUrl: z.string().nullish(),
+  captionIsHtml: z.boolean().nullish(),
   class: z.string().nullish(),
 });
 

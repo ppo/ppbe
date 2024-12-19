@@ -1,15 +1,14 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
+import { APP_SLUG, SITE_URL } from './src/settings.mjs'; // Note: Import aliases don't work here.
+
 import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import vercel from '@astrojs/vercel/serverless';
 import icon from 'astro-icon';
-
-
-import { APP_SLUG, SITE_URL } from './src/settings.mjs'; // Note: Import aliases don't work here.
 
 
 // https://astro.build/config

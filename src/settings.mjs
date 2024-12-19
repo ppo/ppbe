@@ -66,6 +66,19 @@ export const SOCIAL_NAV = [
   {label: 'RSS Feed',  icon: 'rss',       url: ROUTES.rss},
 ];
 
+// Elements of the link page (@) nav.
+/** @type {import('./types/settings').Nav} */
+export const LINK_PAGE_NAV = [
+  {label: 'Website',   icon: 'favicon',   url: SITE_URL, },
+  null,
+  {label: 'Facebook',  icon: 'facebook',  url: URLS.facebook, },
+  {label: 'GitHub',    icon: 'github',    url: URLS.github, },
+  {label: 'Instagram', icon: 'instagram', url: URLS.instagram, },
+  {label: 'LinkedIn',  icon: 'linkedin',  url: URLS.linkedin, },
+  {label: 'X/Twitter', icon: 'x',         url: URLS.x, },
+  {label: 'YouTube',   icon: 'youtube',   url: URLS.youtube, },
+];
+
 
 // DESIGN ==========================================================================================
 

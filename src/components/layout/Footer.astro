@@ -11,6 +11,11 @@ interface Props {
 const { class: className } = Astro.props;
 
 // const thisYear = new Date().getFullYear();
+const linksProps = {
+  size: 16,
+  target: '_blank',
+  rel: 'noopener noreferrer',
+};
 ---
 
 
@@ -22,7 +27,7 @@ const { class: className } = Astro.props;
         {SOCIAL_NAV.map((item) => (
           <li>
             {item && (
-              <IconLink {...{...item, size: 16, target: "_blank", rel: "noopener noreferrer"}} />
+              <IconLink url={item.url} icon={item.icon} {...linksProps} />
             ) || (
               <></>
             )}

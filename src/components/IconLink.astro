@@ -9,12 +9,13 @@ interface Props {
   label?: string;
   target?: string;
   rel?: string;
+  class?: string;
 }
-const { icon, url, size, label, target, rel } = Astro.props;
+const { icon, url, size, label, target, rel, class: className } = Astro.props;
 ---
 
 
-<a href={url} title={label} {...{target, rel}}>
-  <Icon name={icon} {label} {size} />
-  {/* <span>{label}</span> */}
+<a href={url} title={label} {...{target, rel}} class={className}>
+  <Icon name={icon} {label} {size} class="inline" />
+  {label && (<span style={`margin-left: ${size/3}px`}>{label}</span>)}
 </a>

@@ -30,10 +30,8 @@ export const ROUTES = {
   cv:    '/cv',
 
   rss:   '/rss.xml',
+  sitemap: '/sitemap-index.xml',
 };
-
-// URL of the sitemap.
-export const SITEMAP_ROUTE = '/sitemap-index.xml';
 
 // Named URLs (as name: path).
 export const URLS = {

@@ -1,12 +1,12 @@
 import { getStaticFullUrl } from '@/lib/url.mjs';
-import { SITEMAP_ROUTE } from '@/settings.mjs';
+import { ROUTES } from '@/settings.mjs';
 
 
 const robotsTxt = `
 User-agent: *
 Allow: /
 
-Sitemap: ${ getStaticFullUrl(SITEMAP_ROUTE) }
+Sitemap: ${ getStaticFullUrl(ROUTES.sitemap) }
 Feed: ${ getStaticFullUrl(ROUTES.rss) }
 `.trim();
 

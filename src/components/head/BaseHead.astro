@@ -1,5 +1,5 @@
 ---
-import { HTML_HEAD, SITEMAP_ROUTE } from '@/settings.mjs';
+import { HTML_HEAD, ROUTES } from '@/settings.mjs';
 
 import { getFirstDefined, joinHeadTitle } from '@/lib/main.mjs';
 import { getFullUrl } from '@/lib/url.mjs';
@@ -49,7 +49,7 @@ const rssTitle = `RSS: ${HTML_HEAD.title}`;
 
 {/* URLs */}
 <link rel="canonical" href={pageUrl} />
-<link rel="sitemap" href={SITEMAP_ROUTE} />
+<link rel="sitemap" href={ROUTES.sitemap} />
 <link rel="alternate" type="application/rss+xml" href={rssUrl} title={rssTitle} />
 
 {/* Custom Metadata */}

@@ -7,9 +7,9 @@ subtitle:
 abstract: 
 featured: true
 category: 
-tags: ["<category>"] 
+tags: ["<category>"]
 hero:
-  image: /blog/
+  image: /blog/.webp
   video: 
   alt: 
   title: 

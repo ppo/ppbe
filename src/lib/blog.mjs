@@ -18,7 +18,6 @@ article: {
 */
 
 
-
 import { getCollection } from 'astro:content';
 
 import { getNamedPath } from '@/lib/url';
@@ -29,6 +28,7 @@ async function _getRawArticles(sorted = false) {
   const rawArticles = await getCollection('blog');
   return sorted ? sortArticles(rawArticles) : rawArticles;
 }
+
 
 /**
  * Get all blog articles sorted by creation date (newest first).
@@ -183,7 +183,15 @@ function sortArticles(articles) {
  * Remove the "category tag" from the tag list.
  */
 export function removeCategoryFromTags(tags, category) {
-  if (!tags || tags.length === 0) return tags;
-  const categoryTag = category.replace(' ', '');
-  return tags.filter((t) => t !== categoryTag);
+  return tags.filter((t) => t !== category);
+}
+
+
+/**
+ * Format a list of tags for display.
+ */
+export function formatTags(tags) {
+  return tags.map((t) => {
+    return '#' + t.replace(/[ -]/g, '');
+  }).join(' ');
 }

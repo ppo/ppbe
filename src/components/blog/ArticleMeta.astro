@@ -1,5 +1,5 @@
 ---
-import { removeCategoryFromTags } from '@/lib/blog';
+import { formatTags, removeCategoryFromTags } from '@/lib/blog';
 import { FORMATS } from '@/lib/format';
 
 import Time from '@/components/Time.astro';
@@ -10,7 +10,7 @@ const {
   publishedAt,
   createdAt,
 } = Astro.props;
-const tags = removeCategoryFromTags(Astro.props.tags, category);
+const tags = formatTags(removeCategoryFromTags(Astro.props.tags, category));
 ---
 
 
@@ -19,7 +19,7 @@ const tags = removeCategoryFromTags(Astro.props.tags, category);
     {category && (<span>{category}</span>)}
     <br>
     <!-- {(category && tags) && (<>•</>)} -->
-    {tags && (<span class="text-sm">{tags.map((t) => `#${t}`).join(' ')}</span>)}
+    {tags && (<span class="text-sm">{tags}</span>)}
   </div>
   <div>
     <Time date={publishedAt} format={FORMATS.DATE} title="Published on" />

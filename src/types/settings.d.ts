@@ -8,7 +8,8 @@ export interface Fonts {
 
 // Definition of a navigation (i.e. list of links).
 export interface Nav {
-  label: string;  // Label to display
-  icon?: string;  // Icon
-  url: string;    // Target URL
+  label: string;   // Label to display
+  icon?: string;   // Icon
+  url: string;     // Target URL
+  style?: string;  // Display style
 }

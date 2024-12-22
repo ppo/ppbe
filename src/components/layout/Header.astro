@@ -19,8 +19,8 @@ const { class: className } = Astro.props;
     </h1>
     <nav>
       <ul class="flex space-x-4 font-light">
-        {MAIN_NAV.map(({label, url}) => (
-          <li><a href={url}>{label}</a></li>
+        {MAIN_NAV.map(({label, url, style}) => (
+          <li><a href={url} class={style}>{label}</a></li>
         ))}
       </ul>
     </nav>
@@ -32,5 +32,10 @@ const { class: className } = Astro.props;
   a {
     @apply text-text;
     @apply hover:text-primary;
+  }
+
+  a.highlight {
+    @apply text-secondary hover:text-primary;
+    font-weight: 700;
   }
 </style>

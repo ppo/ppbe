@@ -1,5 +1,5 @@
 ---
-import { SOCIAL_NAV } from '@/settings.mjs';
+import { FOOTER_NAV } from '@/settings.mjs';
 
 import IconLink from '@/components/IconLink.astro';
 import Container from '@/components/layout/Container.astro';
@@ -24,7 +24,7 @@ const linksProps = {
     {/* <div class="legal">© 1974–${thisYear} Pascal Polleunus.</div> */}
     <nav>
       <ul class="flex gap-4">
-        {SOCIAL_NAV.map((item) => (
+        {FOOTER_NAV.map((item) => (
           <li>
             {item && (
               <IconLink

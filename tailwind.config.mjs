@@ -33,7 +33,15 @@ export default {
             h3: { fontSize: '1.2em' },
             '.prose': {
               lineHeight: 1.6,
-            }
+            },
+            a: {
+              color: theme('colors.primary'),
+              fontWeight: 400,
+              textDecoration: 'none',
+            },
+            'a:hover': {
+              textDecoration: 'underline',
+            },
           },
         },
       }),

@@ -26,9 +26,9 @@ const linksProps = {
       <ul class="flex gap-4">
         {FOOTER_NAV.map((item) => (
           <li>
-            {item && (
+            {item && ( // Note: Don't want `label` here!
               <IconLink
-                icon={item.icon} url={item.url} label={item.label} {...linksProps}
+                icon={item.icon} url={item.url} {...linksProps}
                 class="text-text hover:text-primary"
               />
             ) || (

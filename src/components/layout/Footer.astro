@@ -27,7 +27,10 @@ const linksProps = {
         {SOCIAL_NAV.map((item) => (
           <li>
             {item && (
-              <IconLink url={item.url} icon={item.icon} {...linksProps} />
+              <IconLink
+                icon={item.icon} url={item.url} label={item.label} {...linksProps}
+                class="text-text hover:text-primary"
+              />
             ) || (
               <></>
             )}

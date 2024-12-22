@@ -1,5 +1,5 @@
 ---
-import Icon from '@/components/Icon.astro';
+import { Icon } from 'astro-icon/components';
 
 
 interface Props {
@@ -11,11 +11,23 @@ interface Props {
   rel?: string;
   class?: string;
 }
-const { icon, url, size, label, target, rel, class: className } = Astro.props;
+const { icon, url, size = 24, label, target, rel, class: className } = Astro.props;
+
+const aProps = {
+  href: url,
+  title: label,
+  target,
+  rel,
+};
+const iconProps = {
+  name: icon,
+  title: 'Icon: ' + (label ? label : icon.replace(/^[^:]+:/g, '')),
+  size,
+};
 ---
 
 
-<a href={url} title={label} {...{target, rel}} class={className}>
-  <Icon name={icon} {label} {size} class="inline" />
+<a {...aProps} class={className}>
+  <Icon {...iconProps} class="inline" />
   {label && (<span style={`margin-left: ${size/3}px`}>{label}</span>)}
 </a>

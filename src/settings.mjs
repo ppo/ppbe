@@ -56,27 +56,27 @@ export const MAIN_NAV = [
 // Elements of the social nav.
 /** @type {import('./types/settings').Nav} */
 export const SOCIAL_NAV = [
-  {label: 'Facebook',  icon: 'facebook',  url: URLS.facebook, },
-  {label: 'GitHub',    icon: 'github',    url: URLS.github, },
-  {label: 'Instagram', icon: 'instagram', url: URLS.instagram, },
-  {label: 'LinkedIn',  icon: 'linkedin',  url: URLS.linkedin, },
-  {label: 'X/Twitter', icon: 'x',         url: URLS.x, },
-  {label: 'YouTube',   icon: 'youtube',   url: URLS.youtube, },
+  {label: 'Facebook',  icon: 'simple-icons:facebook',  url: URLS.facebook, },
+  {label: 'GitHub',    icon: 'simple-icons:github',    url: URLS.github, },
+  {label: 'Instagram', icon: 'simple-icons:instagram', url: URLS.instagram, },
+  {label: 'LinkedIn',  icon: 'simple-icons:linkedin',  url: URLS.linkedin, },
+  {label: 'X/Twitter', icon: 'simple-icons:x',         url: URLS.x, },
+  {label: 'YouTube',   icon: 'simple-icons:youtube',   url: URLS.youtube, },
   null,
-  {label: 'RSS Feed',  icon: 'rss',       url: ROUTES.rss},
+  {label: 'RSS Feed',  icon: 'simple-icons:rss',       url: ROUTES.rss},
 ];
 
 // Elements of the link page (@) nav.
 /** @type {import('./types/settings').Nav} */
 export const LINK_PAGE_NAV = [
-  {label: 'Website',   icon: 'favicon',   url: SITE_URL, },
+  {label: 'Website',   icon: 'mdi:home',               url: SITE_URL, },
   null,
-  {label: 'Facebook',  icon: 'facebook',  url: URLS.facebook, },
-  {label: 'GitHub',    icon: 'github',    url: URLS.github, },
-  {label: 'Instagram', icon: 'instagram', url: URLS.instagram, },
-  {label: 'LinkedIn',  icon: 'linkedin',  url: URLS.linkedin, },
-  {label: 'X/Twitter', icon: 'x',         url: URLS.x, },
-  {label: 'YouTube',   icon: 'youtube',   url: URLS.youtube, },
+  {label: 'Facebook',  icon: 'simple-icons:facebook',  url: URLS.facebook, },
+  {label: 'GitHub',    icon: 'simple-icons:github',    url: URLS.github, },
+  {label: 'Instagram', icon: 'simple-icons:instagram', url: URLS.instagram, },
+  {label: 'LinkedIn',  icon: 'simple-icons:linkedin',  url: URLS.linkedin, },
+  {label: 'X/Twitter', icon: 'simple-icons:x',         url: URLS.x, },
+  {label: 'YouTube',   icon: 'simple-icons:youtube',   url: URLS.youtube, },
 ];
 
 

@@ -1,5 +1,6 @@
 import { defineCollection, z } from 'astro:content';
 
+
 const hero = z.object({
   image: z.string().nullish(), // Should provide `image` or `video`
   video: z.string().nullish(),
@@ -13,7 +14,7 @@ const hero = z.object({
   class: z.string().nullish(),
 });
 
-// TODO: Dates… z.date() OR z.string().datetime() OR z.coerce.date() // Transform string to Date object
+
 const blog = defineCollection({
   type: 'content',
   schema: z.object({
@@ -31,9 +32,6 @@ const blog = defineCollection({
     hero: hero.nullish(),
   }),
 });
-
-// TODO: const books = defineCollection({});
-// TODO: const projects = defineCollection({});
 
 
 // Note: The key should match the collection directory name in `src/content`.

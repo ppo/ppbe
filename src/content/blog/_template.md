@@ -6,8 +6,8 @@ title:
 subtitle: 
 abstract: 
 featured: true
-category: 
-tags: ["<category>"]
+category:  # Singular.
+tags: ["<category>"]  # All singular.
 hero:
   image: /blog/.webp
   video: 

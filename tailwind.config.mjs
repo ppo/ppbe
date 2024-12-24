@@ -42,6 +42,9 @@ export default {
             'a:hover': {
               textDecoration: 'underline',
             },
+            'strong a, bold a': {
+              fontWeight: 'inherit',
+            },
           },
         },
       }),

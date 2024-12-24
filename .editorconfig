@@ -5,7 +5,7 @@
 # Stop here in the file hierarchy (don't look in parent folders for other `.editorconfig` files).
 root = true
 
-# Default values.
+# Default values
 [*]
 charset = utf-8
 end_of_line = lf
@@ -15,39 +15,39 @@ insert_final_newline = true
 max_line_length = 100
 trim_trailing_whitespace = true
 
-# CSV (for tab-separated files).
+# CSV (for tab-separated files)
 [*.csv]
 indent_size = 50
 indent_style = tab
 
-# Diff files.
+# Diff files
 [*.{diff,patch}]
 indent_size = 4
 trim_trailing_whitespace = false
 
-# INI.
+# INI
 [*.ini]
 indent_size = 4
 
-# Makefiles.
+# Makefiles
 [Makefile]
 indent_size = 4
 indent_style = tab
 
-# Markdown.
-[*.md]
+# Markdown
+[*.{md,mdx}]
 indent_size = 4
 trim_trailing_whitespace = false
 
-# Minified files shouldn't be changed.
+# Minified files (shouldn't be changed!)
 [**.min.{css,js}]
 indent_style = ignore
 insert_final_newline = ignore
 
-# Python.
+# Python
 [*.py]
 indent_size = 4
 
-# reStructuredText.
+# reStructuredText
 [*.rst]
 indent_size = 4

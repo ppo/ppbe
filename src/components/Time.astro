@@ -10,10 +10,10 @@ interface Props {
   title?: string;
   hide?: boolean;
 }
-const { format, date: _date, title: _title, hide } = Astro.props;
+const { format, date: _date, title: _title, hide = false } = Astro.props;
 
 const date = _date ? new Date(_date) : null;
-const displayDate = !date || hide ? null : formatAs(format, date);
+const displayDate = (!date || hide) ? null : formatAs(format, date);
 const title = !_title ? null : (
   displayDate ? `${_title} ${displayDate}` : _title
 );

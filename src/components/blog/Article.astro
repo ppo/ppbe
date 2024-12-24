@@ -1,7 +1,10 @@
 ---
 
 import Hero from '@/components/Hero.astro';
+import Time from '@/components/Time.astro';
 import ArticleMeta from '@/components/blog/ArticleMeta.astro';
+import { isFutureArticle } from '@/lib/blog';
+import { FORMATS } from '@/lib/format';
 
 
 // interface Props {
@@ -36,14 +39,15 @@ const { Content } = await article.render();
       <h2 class="mt-0">{subtitle}</h2>
     )}
 
-    {abstract && (
-      <p class="text-dim italic">{abstract}</p>
-    )}
-
-    {hero && (
-      <Hero {...hero} />
-    )}
-
-    <Content />
+    {isFutureArticle(article) && (
+      <p>
+        Not yet published.<br>
+        Come back on <Time date={article.data.publishedAt} format={FORMATS.DATETIME} />.
+      </p>
+    ) || (<>
+      {abstract && (<p class="text-dim italic">{abstract}</p>)}
+      {hero && (<Hero {...hero} />)}
+      <Content />
+    </>)}
   </div>
 </article>

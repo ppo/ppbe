@@ -41,14 +41,7 @@ const headProps = {
 <BlogLayout {...headProps}>
   {/* TODO: <ContentHeader {...headerAttrs} /> */}
   <main class="prose max-w-none">
-    {isFutureArticle(article) && (
-      <p>
-        Not yet published.<br>
-        Come back on <Time date={article.data.publishedAt} format={FORMATS.DATETIME} />.
-      </p>
-    ) || (
-      <BlogArticle {article} />
-    )}
+    <BlogArticle {article} />
   </main>
 
   <DetailNav {article} />

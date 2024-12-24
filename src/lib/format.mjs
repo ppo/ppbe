@@ -50,9 +50,9 @@ export function formatAs(format, value) {
  */
 export function formatDate(date) {
   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  const y = date.getUTCFullYear();
-  const m = months[date.getUTCMonth()];
-  const d = ('0' + date.getUTCDate()).slice(-2);
+  const y = date.getFullYear();
+  const m = months[date.getMonth()];
+  const d = ('0' + date.getDate()).slice(-2);
   return `${d} ${m} ${y}`;
 }
 
@@ -64,7 +64,7 @@ export function formatDate(date) {
  * @returns The value formatted as a date/time.
  */
 export function formatDateTime(date) {
-  const result = `${formatDate(date)} ${formatTime(date)}`.strip();
+  const result = `${formatDate(date)} ${formatTime(date)}`.trim();
   return result ? result : null;
 }
 
@@ -91,7 +91,7 @@ export function formatMachineTime(date) {
  * @returns The value formatted as a time.
  */
 export function formatTime(date) {
-  const h = ('0' + date.getUTCHours()).slice(-2);
-  const m = ('0' + date.getUTCMinutes()).slice(-2);
+  const h = ('0' + date.getHours()).slice(-2);
+  const m = ('0' + date.getMinutes()).slice(-2);
   return `${h}:${m}`;
 }

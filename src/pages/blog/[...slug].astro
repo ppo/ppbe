@@ -3,8 +3,11 @@ export const prerender = true;
 
 import { type CollectionEntry, getCollection } from 'astro:content';
 
+import { isFutureArticle } from '@/lib/blog';
+import { FORMATS } from '@/lib/format';
 import BlogArticle from '@/components/blog/Article.astro';
 import DetailNav from '@/components/blog/DetailNav.astro';
+import Time from '@/components/Time.astro';
 import BlogLayout from '@/layouts/BlogLayout.astro';
 
 // TODO: import { filterObject } from '@/lib/main';
@@ -38,7 +41,14 @@ const headProps = {
 <BlogLayout {...headProps}>
   {/* TODO: <ContentHeader {...headerAttrs} /> */}
   <main class="prose max-w-none">
-    <BlogArticle {article} />
+    {isFutureArticle(article) && (
+      <p>
+        Not yet published.<br>
+        Come back on <Time date={article.data.publishedAt} format={FORMATS.DATETIME} />.
+      </p>
+    ) || (
+      <BlogArticle {article} />
+    )}
   </main>
 
   <DetailNav {article} />

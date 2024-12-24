@@ -27,6 +27,7 @@ export const ROUTES = {
   home:  '/',
   about: '/about',
   blog:  '/blog',
+  mp25:  '/master-plan-2025',
   cv:    '/cv',
 
   rss:   '/rss.xml',
@@ -49,8 +50,9 @@ export const URLS = {
 // Elements of the main nav.
 /** @type {import('./types/settings').Nav} */
 export const MAIN_NAV = [
-  {label: 'Blog',    url: ROUTES.blog, },
-  {label: 'About',   url: ROUTES.about, },
+  {label: 'MASTER PLAN', url: ROUTES.mp25, style: 'highlight', },
+  {label: 'Blog',        url: ROUTES.blog, },
+  {label: 'About',       url: ROUTES.about, },
 ];
 
 // Elements of the social nav.

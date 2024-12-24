@@ -1,0 +1,45 @@
+---
+import Layout from '@/layouts/MainLayout.astro';
+import { getNamedPath } from '@/lib/url.mjs';
+import { ROUTES } from '@/settings.mjs';
+
+
+interface Props {
+  title?: string | null;
+  description?: string | null;
+  image?: string | URL | null;
+  meta?: object[];
+  frontmatter?: object[];
+}
+
+const {
+  title,
+  description,
+  image,
+  meta,
+} = Astro.props.frontmatter || Astro.props;  // `.md[x]` provide a `frontmatter` prop.
+---
+
+
+<Layout title={[title, "Master Plan 2025"]} {...{description, image, meta}}>
+  <header>
+    <h1><a href={ROUTES.mp25} class="text-dim hover:text-primary">MASTER PLAN 2025</a></h1>
+    <div>
+      <a href={getNamedPath('blog', 'master-plan-2025')}>Full Plan</a>
+      •
+      <a href={getNamedPath('mp25', 'overview')}>Overview</a>
+    </div>
+  </header>
+
+  <main class="prose max-w-none">
+    <slot />
+  </main>
+</Layout>
+
+
+<style>
+  header {
+    @apply pb-1 mb-8 flex gap-4;
+    border-bottom: 1px solid #ddd;
+  }
+</style>

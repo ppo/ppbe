@@ -25,8 +25,8 @@ import { BLOG_NUM_FEATURED_ON_HOME, BLOG_NUM_RELATED } from '@/settings.mjs';
 
 
 async function _getRawArticles(sorted = false) {
-  const rawArticles = (await getCollection('blog'))
-    .filter((a) => !isFutureArticle(a));
+  const rawArticles = (await getCollection('blog'));
+    // .filter((a) => !isFutureArticle(a));
   return sorted ? sortArticles(rawArticles) : rawArticles;
 }
 

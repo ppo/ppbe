@@ -2,6 +2,7 @@
 // TODO: import { getImage, Image } from 'astro:assets';
 
 import Time from '@/components/Time.astro';
+import { isFutureArticle } from '@/lib/blog';
 import { FORMATS } from '@/lib/format';
 
 
@@ -10,6 +11,7 @@ interface Props {
 };
 const { article } = Astro.props;
 const { title, abstract, category, hero, publishedAt } = article.data;
+const isFuture = isFutureArticle(article);
 // BEGIN: ALTERNATIVE VERSION
 // const {
 //   article: {
@@ -23,8 +25,8 @@ const { title, abstract, category, hero, publishedAt } = article.data;
 ---
 
 
-<article>
-  <a href={article.url} class="block flex flex-col sm:flex-row justify-left">
+<article class={isFuture ? 'future' : null}>
+  <a href={isFuture ? null : article.url} class="block flex flex-col sm:flex-row justify-left">
     {/* TODO: {heroImage && (<Image src={heroImage} alt={hero.alt} class="…" />)} */}
     {hero?.image && (
       <img src={hero.image} alt={hero.alt} class="h-auto w-full sm:w-40 sm:shrink-0 object-cover" />
@@ -37,7 +39,26 @@ const { title, abstract, category, hero, publishedAt } = article.data;
         {category && (<>• {category}</>)}
       </div>
       <h2 class="text-lg font-semibold my-1">{title}</h2>
-      {abstract && (<p class="text-sm text-text my-0">{abstract}</p>)}
+
+      {isFuture && (
+        <p class="text-sm text-text my-0 italic">
+          Not yet published.
+          Come back on <Time date={article.data.publishedAt} format={FORMATS.DATETIME} />.
+        </p>
+      )}
+      {(!isFuture && abstract) && (<p class="text-sm text-text my-0">{abstract}</p>)}
     </div>
   </a>
 </article>
+
+
+<style>
+  .future {
+    opacity: 0.5;
+
+    a:hover {
+      @apply text-primary;
+      cursor: not-allowed;
+    }
+  }
+</style>

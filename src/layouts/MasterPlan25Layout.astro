@@ -15,8 +15,8 @@ interface Props {
 
 const {
   title,
-  description,
-  image,
+  description = 'A master plan?! Yes, like Elon… but faster! 1 year, not 10 😂 Wait! Didn’t he also say: “Most people overestimate what they can do in one year and underestimate what they can do in ten years.” 🤔 Well, what I plan here is not rocket science 😉',
+  image = '/blog/master-plan-2025.webp',
   meta,
 } = Astro.props.frontmatter || Astro.props;  // `.md[x]` provide a `frontmatter` prop.
 ---

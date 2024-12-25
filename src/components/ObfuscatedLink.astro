@@ -29,8 +29,9 @@ function obfuscate(v: string): string[] {
 interface Props {
   protocol: 'email' | 'phone';
   value: string;
+  label?: string;
 };
-const { protocol, value } = Astro.props;
+const { protocol, value, label } = Astro.props;
 
 
 const id: string = crypto.randomUUID();
@@ -41,12 +42,12 @@ let v: string[];  // Obfuscated code value (email or phone).
 
 switch (protocol) {
   case 'email':
-    d = obfuscate(value);
+    d = obfuscate(label || value);
     v = obfuscate(value);
     break;
 
   case 'phone':
-    d = obfuscate(value.replaceAll(' ', ' '));  // Non-breaking space.
+    d = obfuscate(label || value.replaceAll(' ', ' '));  // Non-breaking space.
     v = obfuscate(value.replaceAll(' ', ''));
     break;
 }
@@ -61,7 +62,7 @@ switch (protocol) {
   function p(s) { return s.split('').map(c => '%' + c.charCodeAt(0).toString(16)).join(''); }
   const e = document.createElement(u(['0x61']));
   e.setAttribute(u(['0x68', '0x72', '0x65', '0x66']), u(s) + p(u(v)));
-  e.setAttribute('rel', 'nofollow');
+  e.setAttribute('rel', 'nofollow noopener');
   e.innerHTML = h(u(d));
   document.getElementById(id).replaceWith(e);
 </script>

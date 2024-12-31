@@ -13,8 +13,8 @@ const { class: className } = Astro.props;
 
 
 <header class:list={['mb-12 py-4', className]}>
-  <Container class="flex justify-between items-center">
-    <h1 class="text-xl">
+  <Container class="flex flex-col items-center sm:flex-row sm:justify-between">
+    <h1 class="text-xl mb-2 sm:mb-0">
       <a href={getNamedPath('home')}>{SITE_NAME}</a>
     </h1>
     <nav>

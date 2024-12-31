@@ -14,12 +14,11 @@ const tags = formatTags(removeCategoryFromTags(Astro.props.tags, category));
 ---
 
 
-<div class="flex justify-between items-center font-light text-dim text-base mb-2">
+<div class="flex flex-col-reverse justify-start sm:flex-row sm:justify-between sm:items-center font-light text-dim text-base mb-2">
   <div>
-    {category && (<span>{category}</span>)}
-    <br>
+    {category && (<div>{category}</div>)}
     <!-- {(category && tags) && (<>•</>)} -->
-    {tags && (<span class="text-sm">{tags}</span>)}
+    {tags && (<div class="text-sm">{tags}</div>)}
   </div>
   <div>
     <Time date={publishedAt} format={FORMATS.DATE} title="Published on" />

@@ -16,6 +16,9 @@ img, svg {
   /* stroke: 'currentColor'; */
 }
 
+.prose {
+  line-height: 1.6;
+}
 
 ul.unstyled {
   list-style-type: none;
@@ -31,7 +34,6 @@ ul.unstyled {
     list-style: disc;
   }
 }
-
 
 .button {
   @apply text-white bg-primary border border-primary rounded-md px-4 py-2;

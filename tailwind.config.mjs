@@ -25,24 +25,24 @@ export default {
           css: {
             'h1, h2, h3, h4, h5, h6': {
               fontFamily: theme('fontFamily.display'),
-              fontWeight: 700,
+              fontWeight: 700,  // FONTS.display.weight
               letterSpacing: '-0.01em',
             },
             h1: { fontSize: '2.0em' },
             h2: { fontSize: '1.6em' },
             h3: { fontSize: '1.2em' },
-            '.prose': {
-              lineHeight: 1.6,
-            },
             a: {
               color: theme('colors.primary'),
-              fontWeight: 400,
+              fontWeight: 400,  // FONTS.body.weight.normal
               textDecoration: 'none',
             },
             'a:hover': {
               textDecoration: 'underline',
             },
-            'strong a, bold a': {
+            strong: {
+              fontWeight: 500,  // FONTS.body.weight.bold
+            },
+            'b a, strong a': {
               fontWeight: 'inherit',
             },
           },

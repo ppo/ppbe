@@ -15,9 +15,10 @@ interface Props {
   image?: string | URL | null;
   meta?: object[] | null;
 }
-const { image, meta } = Astro.props;
+const { meta } = Astro.props;
 const title = joinHeadTitle(Astro.props.title);
 const description = getFirstDefined(Astro.props.description, HTML_HEAD.description);
+const image = getFirstDefined(Astro.props.image, HTML_HEAD.image);
 
 const pageUrl = getFullUrl(Astro);
 
@@ -44,7 +45,7 @@ const rssTitle = `RSS: ${HTML_HEAD.title}`;
 
 {/* Primary Metadata */}
 {description && <meta name="description" content={description} />}
-<meta name="author" content="Pascal Polleunus" />
+{HTML_HEAD.author && (<meta name="author" content={HTML_HEAD.author} />)}
 {/* <meta name="generator" content={Astro.generator} /> */}
 
 {/* URLs */}

@@ -1,6 +1,6 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 
-import { FONTS } from './src/settings.mjs';
+import { FONTS } from './src/settings';
 
 
 /** @type {import('tailwindcss').Config} */

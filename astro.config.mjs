@@ -1,7 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
-import { APP_SLUG, SITE_URL } from './src/settings.mjs'; // Note: Import aliases don't work here.
+import { APP_SLUG, SITE_URL } from './src/settings'; // Note: Import aliases don't work here.
 
 import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';

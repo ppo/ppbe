@@ -1,4 +1,4 @@
-import { HTML_HEAD, ROUTES } from '@/settings.mjs';
+import { HTML_HEAD, ROUTES } from '@/settings';
 
 
 /**

@@ -1,4 +1,4 @@
-import { HTML_HEAD } from '@/settings.mjs';
+import { HTML_HEAD } from '@/settings';
 
 
 /**

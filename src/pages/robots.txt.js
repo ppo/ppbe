@@ -1,5 +1,5 @@
-import { getStaticFullUrl } from '@/lib/url.mjs';
-import { ROUTES } from '@/settings.mjs';
+import { getStaticFullUrl } from '@/lib/url';
+import { ROUTES } from '@/settings';
 
 
 const robotsTxt = `

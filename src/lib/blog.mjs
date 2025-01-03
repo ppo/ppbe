@@ -21,7 +21,7 @@ article: {
 import { getCollection } from 'astro:content';
 
 import { getNamedPath } from '@/lib/url';
-import { BLOG_NUM_FEATURED_ON_HOME, BLOG_NUM_RELATED } from '@/settings.mjs';
+import { BLOG_NUM_FEATURED_ON_HOME, BLOG_NUM_RELATED } from '@/settings';
 
 
 async function _getRawArticles(sorted = false) {

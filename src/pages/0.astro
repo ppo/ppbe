@@ -5,6 +5,8 @@ import IconLink from '@/components/IconLink.astro';
 import BaseHead from '@/components/head/BaseHead.astro';
 import GoogleAnalytics from '@/components/services/GoogleAnalytics.astro';
 
+import '@/styles/global.css';
+
 
 const linksProps = {
   size: 24,
@@ -23,8 +25,8 @@ const linksProps = {
     <main class="min-h-screen flex flex-col items-center px-4 py-8">
       <h1 class="text-2xl mb-12">{SITE_NAME}</h1>
       <nav class="nav-primary mb-8">
-        <a href={ROUTES.mp25} class="highlight">MASTER PLAN 2025</a>
-        <a href={ROUTES.blog} class="link">Blog</a>
+        <a href={ROUTES.mp25} class="button button-accent">MASTER PLAN 2025</a>
+        <a href={ROUTES.blog} class="button button-outline">Blog</a>
       </nav>
       <nav class="nav-secondary">
         <ul class="flex gap-4">
@@ -58,21 +60,10 @@ const linksProps = {
 
 <style>
   .nav-primary {
-    a {
-      @apply text-white bg-primary border border-primary rounded-md px-1 py-2 mb-4;
-      @apply hover:text-primary hover:bg-transparent;
+    .button {
+      @apply mb-4;
       display: block;
-      text-align: center;
       min-width: 300px;
-      max-width: 100%;
-
-      &.highlight {
-        @apply bg-secondary border-secondary hover:text-secondary hover:bg-transparent;
-      }
-
-      &.link {
-        @apply text-primary bg-transparent border-transparent hover:text-primary hover:border-primary;
-      }
     }
   }
 </style>

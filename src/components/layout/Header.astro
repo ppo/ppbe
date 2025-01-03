@@ -30,12 +30,11 @@ const { class: className } = Astro.props;
 
 <style>
   a {
-    @apply text-text;
-    @apply hover:text-primary;
-  }
+    @apply text-text hover:text-primary;
 
-  a.highlight {
-    @apply text-secondary hover:text-primary;
-    font-weight: 500;
+    &.highlight {
+      @apply text-accent hover:text-primary;
+      font-weight: 500;
+    }
   }
 </style>

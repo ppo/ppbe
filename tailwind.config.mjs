@@ -13,7 +13,7 @@ export default {
         text: '#333',
         dim: '#777',
         primary: '#1e88e5',
-        secondary: '#7cb342',
+        accent: '#7cb342',
       },
       fontFamily: {
         display: [FONTS.display.name],

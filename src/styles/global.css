@@ -8,18 +8,13 @@ body {
 }
 
 a {
-  @apply text-primary hover:text-secondary transition-colors;
+  @apply text-primary hover:text-accent transition-colors;
 }
 
 img, svg {
   fill: 'currentColor';
   /* stroke: 'currentColor'; */
 }
-
-
-.display1 { font-size: 3.584em; }
-.display2 { font-size: 2.986em; }
-.display3 { font-size: 2.074em; }
 
 
 ul.unstyled {
@@ -34,5 +29,25 @@ ul.unstyled {
   }
   > li li {
     list-style: disc;
+  }
+}
+
+
+.button {
+  @apply text-white bg-primary border border-primary rounded-md px-4 py-2;
+  @apply hover:text-primary hover:bg-transparent hover:no-underline;
+  text-align: center;
+  max-width: 100%;
+
+  &.button-outline {
+    @apply text-primary bg-transparent border-transparent hover:text-primary hover:border-primary;
+  }
+
+  &.button-accent {
+    @apply bg-accent border-accent hover:text-accent hover:bg-transparent;
+
+    &.button-outline {
+      @apply text-accent bg-transparent border-transparent hover:text-accent hover:border-accent;
+    }
   }
 }

@@ -30,7 +30,7 @@ export const ROUTES = {
   mp25:  '/master-plan-2025',
   cv:    '/cv',
 
-  rss:   '/rss.xml',
+  rss:     '/rss.xml',
   sitemap: '/sitemap-index.xml',
 };
 
@@ -50,20 +50,20 @@ export const URLS = {
 // Elements of the main nav.
 /** @type {import('./types/settings').Nav} */
 export const MAIN_NAV = [
-  {label: 'MASTER PLAN', url: ROUTES.mp25, style: 'highlight', },
-  {label: 'Blog',        url: ROUTES.blog, },
-  {label: 'About',       url: ROUTES.about, },
+  { label: 'MASTER PLAN', url: ROUTES.mp25, style: 'highlight', },
+  { label: 'Blog',        url: ROUTES.blog, },
+  { label: 'About',       url: ROUTES.about, },
 ];
 
 // Elements of the social nav.
 /** @type {import('./types/settings').Nav} */
 export const SOCIAL_NAV = [
-  {label: 'Facebook',  icon: 'simple-icons:facebook',  url: URLS.facebook, },
-  {label: 'GitHub',    icon: 'simple-icons:github',    url: URLS.github, },
-  {label: 'Instagram', icon: 'simple-icons:instagram', url: URLS.instagram, },
-  {label: 'LinkedIn',  icon: 'simple-icons:linkedin',  url: URLS.linkedin, },
-  {label: 'X/Twitter', icon: 'simple-icons:x',         url: URLS.x, },
-  {label: 'YouTube',   icon: 'simple-icons:youtube',   url: URLS.youtube, },
+  { label: 'Facebook',  icon: 'simple-icons:facebook',  url: URLS.facebook, },
+  { label: 'GitHub',    icon: 'simple-icons:github',    url: URLS.github, },
+  { label: 'Instagram', icon: 'simple-icons:instagram', url: URLS.instagram, },
+  { label: 'LinkedIn',  icon: 'simple-icons:linkedin',  url: URLS.linkedin, },
+  { label: 'X/Twitter', icon: 'simple-icons:x',         url: URLS.x, },
+  { label: 'YouTube',   icon: 'simple-icons:youtube',   url: URLS.youtube, },
 ];
 
 // Elements of the social nav.
@@ -71,13 +71,13 @@ export const SOCIAL_NAV = [
 export const FOOTER_NAV = [
   ...SOCIAL_NAV,
   null,
-  {label: 'RSS Feed', icon: 'simple-icons:rss', url: ROUTES.rss},
+  { label: 'RSS Feed', icon: 'simple-icons:rss', url: ROUTES.rss, },
 ];
 
 // Elements of the link page (@) nav.
 /** @type {import('./types/settings').Nav} */
 export const LINK_PAGE_NAV = [
-  {label: 'Website', icon: 'mdi:home', url: SITE_URL, },
+  { label: 'Website', icon: 'mdi:home', url: SITE_URL, },
   null,
   ...SOCIAL_NAV,
 ];

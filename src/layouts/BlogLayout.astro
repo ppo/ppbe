@@ -1,5 +1,5 @@
 ---
-import Layout from '@/layouts/MainLayout.astro';
+import MainLayout from '@/layouts/MainLayout.astro';
 
 
 interface Props {
@@ -20,6 +20,6 @@ const description = frontmatter?.data.abstract || Astro.props.description;
 ---
 
 
-<Layout title={[title, "Blog"]} {...{description, image, meta}}>
+<MainLayout title={[title, "Blog"]} {...{description, image, meta}}>
   <slot />
-</Layout>
+</MainLayout>

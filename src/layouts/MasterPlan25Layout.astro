@@ -1,6 +1,6 @@
 ---
 import ObfuscatedLink from '@/components/ObfuscatedLink.astro';
-import Layout from '@/layouts/MainLayout.astro';
+import MainLayout from '@/layouts/MainLayout.astro';
 import { getNamedPath } from '@/lib/url';
 import { MY_EMAIL, ROUTES } from '@/settings';
 
@@ -22,7 +22,7 @@ const {
 ---
 
 
-<Layout title={[title, "Master Plan 2025"]} {...{description, image, meta}}>
+<MainLayout title={[title, "Master Plan 2025"]} {...{description, image, meta}}>
   <header>
     <h1><a href={ROUTES.mp25} class="text-dim hover:text-primary bold">MASTER PLAN 2025</a></h1>
     <div>
@@ -35,7 +35,7 @@ const {
   <main class="prose max-w-none">
     <slot />
   </main>
-</Layout>
+</MainLayout>
 
 
 <style>

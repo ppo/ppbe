@@ -4,154 +4,152 @@ import { MY_EMAIL, URLS, WHERE_AM_I } from '@/settings';
 // TODO: Bug in prod // import { Image } from 'astro:assets';
 
 import ObfuscatedLink from '@/components/ObfuscatedLink.astro';
-import MainLayout from '@/layouts/MainLayout.astro';
+import PageLayout from '@/layouts/PageLayout.astro';
 import { getNamedPath } from '@/lib/url';
 
 // TODO: Bug in prod // import profilePicture from '@/media/pascal-polleunus.webp';
 ---
 
 
-<MainLayout
+<PageLayout
   title="About"
   description="Some information about me, Pascal Polleunus."
 >
-  <main class="prose max-w-none">
-    <section class="about-intro mb-20 text-center">
-      {/* TODO: Bug in prod // <Image
-        src={profilePicture} width="150" height="150" alt="Profile picture of Pascal Polleunus"
-        class="mt-0 mb-4"
-      />*/}
-      <img
-        src="/media/pascal-polleunus.webp" width="150" height="150" alt="Profile picture of Pascal Polleunus"
-        class="mt-0 mb-4"
-      />
-      <div>Hi, my name is <strong>Pascal Polleunus</strong>.</div>
-      <div>Born in 🇧🇪 Brussels, Belgium.</div>
-      <div>Currently in {WHERE_AM_I}.</div>
-    </section>
+  <section class="about-intro mb-20 text-center">
+    {/* TODO: Bug in prod // <Image
+      src={profilePicture} width="150" height="150" alt="Profile picture of Pascal Polleunus"
+      class="mt-0 mb-4"
+    />*/}
+    <img
+      src="/media/pascal-polleunus.webp" width="150" height="150" alt="Profile picture of Pascal Polleunus"
+      class="mt-0 mb-4"
+    />
+    <div>Hi, my name is <strong>Pascal Polleunus</strong>.</div>
+    <div>Born in 🇧🇪 Brussels, Belgium.</div>
+    <div>Currently in {WHERE_AM_I}.</div>
+  </section>
 
-    <section>
-      <h2>My Golden Circle</h2>
-      <ul class="unstyled">
-        <li>
-          <strong>WHY:</strong>
-          💪 Contribute to the transition to a new world.
-        </li>
-        <li>
-          <strong>HOW:</strong>
-          <nobr>🤔 Question everything</nobr>
-          <nobr>🤪 Think different</nobr>
-          <nobr>✊ Inspire change</nobr>
-        </li>
-        <li>
-          <strong>WHAT:</strong>
-          ❓ Coming soon… Working on my “Master Plan 2025”!
-        </li>
-      </ul>
-
-
-      <h2>My STAR Idea</h2>
-      <p>
-        I love transcending my limitations and developing my potential.<br>
-        <span class="text-dim italic">Which is therefore the help I like to give others.</span>
-      </p>
+  <section>
+    <h2>My Golden Circle</h2>
+    <ul class="unstyled">
+      <li>
+        <strong>WHY:</strong>
+        💪 Contribute to the transition to a new world.
+      </li>
+      <li>
+        <strong>HOW:</strong>
+        <nobr>🤔 Question everything</nobr>
+        <nobr>🤪 Think different</nobr>
+        <nobr>✊ Inspire change</nobr>
+      </li>
+      <li>
+        <strong>WHAT:</strong>
+        ❓ Coming soon… Working on my “Master Plan 2025”!
+      </li>
+    </ul>
 
 
-      <h2>Interests</h2>
-      <p>Spirituality, travel, nomadism, education, sciences, makers, vanlife, van building, tiny houses, indoor farming, self-sufficiency, sports, CrossFit</p>
+    <h2>My STAR Idea</h2>
+    <p>
+      I love transcending my limitations and developing my potential.<br>
+      <span class="text-dim italic">Which is therefore the help I like to give others.</span>
+    </p>
 
 
-      <h2>Values</h2>
-      <ul class="unstyled">
-        <li><strong>Unity makes strength</strong>                             <nobr><em class="text-dim">— Motto of Belgium</em></nobr></li>
-        <li><strong>Ubuntu:</strong> I am what I am because of who we all are <nobr><em class="text-dim">— Ancient African philosophy</em></nobr></li>
-        <li><strong>One for all and all for one</strong>                      <nobr><em class="text-dim">— The Three Musketeers</em></nobr></li>
-        <li><strong>Being in service to others</strong>                       <nobr><em class="text-dim">— The Law of One</em></nobr></li>
-      </ul>
+    <h2>Interests</h2>
+    <p>Spirituality, travel, nomadism, education, sciences, makers, vanlife, van building, tiny houses, indoor farming, self-sufficiency, sports, CrossFit</p>
 
 
-      <h2>Character</h2>
-      <p class="text-dim"><em>Not quite on every level yet, but that’s what I aspire to</em> 😉</p>
-      <ul class="unstyled">
-        <li><strong>Bold</strong>       <span class="text-dim">—</span> I’m confident, brave, ambitious, audacious</li>
-        <li><strong>Strong</strong>     <span class="text-dim">—</span> I stand for my values and speak the truth</li>
-        <li><strong>Agile</strong>      <span class="text-dim">—</span> I move quickly and easily, adapting to changes</li>
-        <li><strong>Creative</strong>   <span class="text-dim">—</span> I question everything, think different, and innovate</li>
-        <li><strong>Smart</strong>      <span class="text-dim">—</span> I apply all current knowledge and use the latest technologies</li>
-        <li><strong>Excellence</strong> <span class="text-dim">—</span> I do things as they must be done</li>
-        <li><strong>Fun</strong>        <span class="text-dim">—</span> I’m serious but not boring, enjoying what I do</li>
-      </ul>
-
-      <q>I’m the type of person that if you ask me a question and I don’t know the answer, I’m
-        gonna tell you that I don’t know. But I bet you what, I know how to find the answer and I
-        will find the answer.</q>
-      <span class="author">Chris Gardner, in
-        <cite><a href="https://youtube.com/clip/UgkxpQyPVrnaE0A_APJiBJSuf7cNrDjlZhJr">The Pursuit of Happyness</a></cite>
-      </span>
+    <h2>Values</h2>
+    <ul class="unstyled">
+      <li><strong>Unity makes strength</strong>                             <nobr><em class="text-dim">— Motto of Belgium</em></nobr></li>
+      <li><strong>Ubuntu:</strong> I am what I am because of who we all are <nobr><em class="text-dim">— Ancient African philosophy</em></nobr></li>
+      <li><strong>One for all and all for one</strong>                      <nobr><em class="text-dim">— The Three Musketeers</em></nobr></li>
+      <li><strong>Being in service to others</strong>                       <nobr><em class="text-dim">— The Law of One</em></nobr></li>
+    </ul>
 
 
-      <h2>Favorite Quotes</h2>
-      <ul class="unstyled">
-        <li>
-          <q>We can’t solve problems by using the same kind of thinking we used when we created
-            them.</q>
-          <span class="author">Albert Einstein</span>
-        </li>
-        <li>
-          <q>We are what we repeatedly do. Excellence, then, is not an act, but a habit.</q>
-          <span class="author">Aristotle</span>
-        </li>
-        <li>
-          <q>It seems that perfection is attained not when there is nothing more to add, but when
-            there is nothing more to remove.</q>
-          <span class="author">Antoine de Saint Exupéry</span>
-        </li>
-        <li>
-          <q>Simplicity is the ultimate sophistication.</q>
-          <span class="author">Leonardo da Vinci</span>
-        </li>
-        <li>
-          <q>The mind, once stretched by a new idea, never returns to its original dimensions.</q>
-          <span class="author">Ralph Waldo Emerson</span>
-        </li>
-        <li>
-          <q>Happiness is when what you think, what you say, and what you do are in harmony.</q>
-          <span class="author">Mahatma Gandhi</span>
-        </li>
-        <li>
-          <q>Don’t ever let someone tell you you can’t do something. Not even me. You got a dream,
-            you gotta protect it. People can’t do somethin’ themselves, they wanna tell you you
-            can’t do it. You want somethin’, go get it. Period.</q>
-          <span class="author">Chris Gardner, in
-            <cite><a href="https://youtube.com/clip/UgxRWIQcmZXXviXX3yN4AaABCQ">The Pursuit of Happyness</a></cite>
-          </span>
-        </li>
-        <li>
-          <q>1+1=?… 1! Or maybe 1+1=11. And that’s beautiful.</q>
-          <span class="author">JCVD… Belgian so knows “Unity Makes Strength”</span>
-        </li>
-        <li>
-          <q>Forget you haven’t got a chance, just go for it! You never know, […], it might just
-            work.</q>
-          <span class="author">Jean-Claude Dusse, in
-            <cite><a href="https://youtu.be/kf_yBGpVVS8">Les bronzés font du ski</a></cite>
-          </span>
-        </li>
-      </ul>
+    <h2>Character</h2>
+    <p class="text-dim"><em>Not quite on every level yet, but that’s what I aspire to</em> 😉</p>
+    <ul class="unstyled">
+      <li><strong>Bold</strong>       <span class="text-dim">—</span> I’m confident, brave, ambitious, audacious</li>
+      <li><strong>Strong</strong>     <span class="text-dim">—</span> I stand for my values and speak the truth</li>
+      <li><strong>Agile</strong>      <span class="text-dim">—</span> I move quickly and easily, adapting to changes</li>
+      <li><strong>Creative</strong>   <span class="text-dim">—</span> I question everything, think different, and innovate</li>
+      <li><strong>Smart</strong>      <span class="text-dim">—</span> I apply all current knowledge and use the latest technologies</li>
+      <li><strong>Excellence</strong> <span class="text-dim">—</span> I do things as they must be done</li>
+      <li><strong>Fun</strong>        <span class="text-dim">—</span> I’m serious but not boring, enjoying what I do</li>
+    </ul>
+
+    <q>I’m the type of person that if you ask me a question and I don’t know the answer, I’m
+      gonna tell you that I don’t know. But I bet you what, I know how to find the answer and I
+      will find the answer.</q>
+    <span class="author">Chris Gardner, in
+      <cite><a href="https://youtube.com/clip/UgkxpQyPVrnaE0A_APJiBJSuf7cNrDjlZhJr">The Pursuit of Happyness</a></cite>
+    </span>
 
 
-      <h2>Professional Life</h2>
-      <p>
-        My <a href={getNamedPath('cv')} target="_blank">resume</a> and
-        <a href={URLS.linkedin} target="_blank">LinkedIn profile</a>.
-      </p>
+    <h2>Favorite Quotes</h2>
+    <ul class="unstyled">
+      <li>
+        <q>We can’t solve problems by using the same kind of thinking we used when we created
+          them.</q>
+        <span class="author">Albert Einstein</span>
+      </li>
+      <li>
+        <q>We are what we repeatedly do. Excellence, then, is not an act, but a habit.</q>
+        <span class="author">Aristotle</span>
+      </li>
+      <li>
+        <q>It seems that perfection is attained not when there is nothing more to add, but when
+          there is nothing more to remove.</q>
+        <span class="author">Antoine de Saint Exupéry</span>
+      </li>
+      <li>
+        <q>Simplicity is the ultimate sophistication.</q>
+        <span class="author">Leonardo da Vinci</span>
+      </li>
+      <li>
+        <q>The mind, once stretched by a new idea, never returns to its original dimensions.</q>
+        <span class="author">Ralph Waldo Emerson</span>
+      </li>
+      <li>
+        <q>Happiness is when what you think, what you say, and what you do are in harmony.</q>
+        <span class="author">Mahatma Gandhi</span>
+      </li>
+      <li>
+        <q>Don’t ever let someone tell you you can’t do something. Not even me. You got a dream,
+          you gotta protect it. People can’t do somethin’ themselves, they wanna tell you you
+          can’t do it. You want somethin’, go get it. Period.</q>
+        <span class="author">Chris Gardner, in
+          <cite><a href="https://youtube.com/clip/UgxRWIQcmZXXviXX3yN4AaABCQ">The Pursuit of Happyness</a></cite>
+        </span>
+      </li>
+      <li>
+        <q>1+1=?… 1! Or maybe 1+1=11. And that’s beautiful.</q>
+        <span class="author">JCVD… Belgian so knows “Unity Makes Strength”</span>
+      </li>
+      <li>
+        <q>Forget you haven’t got a chance, just go for it! You never know, […], it might just
+          work.</q>
+        <span class="author">Jean-Claude Dusse, in
+          <cite><a href="https://youtu.be/kf_yBGpVVS8">Les bronzés font du ski</a></cite>
+        </span>
+      </li>
+    </ul>
 
 
-      <h2>Get in Touch</h2>
-      <p>You can contact me at <ObfuscatedLink protocol="email" value={MY_EMAIL} /></p>
-    </section>
-  </main>
-</MainLayout>
+    <h2>Professional Life</h2>
+    <p>
+      My <a href={getNamedPath('cv')} target="_blank">resume</a> and
+      <a href={URLS.linkedin} target="_blank">LinkedIn profile</a>.
+    </p>
+
+
+    <h2>Get in Touch</h2>
+    <p>You can contact me at <ObfuscatedLink protocol="email" value={MY_EMAIL} /></p>
+  </section>
+</PageLayout>
 
 
 <style>

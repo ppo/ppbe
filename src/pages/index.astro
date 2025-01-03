@@ -1,7 +1,7 @@
 ---
 import BlogList from '@/components/blog/List.astro';
 import WorkingOn from '@/components/WorkingOn.astro';
-import MainLayout from '@/layouts/MainLayout.astro';
+import PageLayout from '@/layouts/PageLayout.astro';
 import { getFeaturedArticles } from '@/lib/blog';
 
 
@@ -9,21 +9,19 @@ const featuredArticles = await getFeaturedArticles();
 ---
 
 
-<MainLayout>
-  <main class="prose max-w-none">
-    <section>
-      <h2 class="text-2xl font-bold mb-4">Currently Working On</h2>
-      <WorkingOn />
-    </section>
+<PageLayout>
+  <section>
+    <h2 class="text-2xl font-bold mb-4">Currently Working On</h2>
+    <WorkingOn />
+  </section>
 
-    {featuredArticles?.length > 0 && (
-      <section>
-        <h2 class="text-2xl font-bold mb-4">Featured Articles</h2>
-        <BlogList articles={featuredArticles} />
-      </section>
-    )}
-  </main>
-</MainLayout>
+  {featuredArticles?.length > 0 && (
+    <section>
+      <h2 class="text-2xl font-bold mb-4">Featured Articles</h2>
+      <BlogList articles={featuredArticles} />
+    </section>
+  )}
+</PageLayout>
 
 
 <style>

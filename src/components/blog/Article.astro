@@ -45,9 +45,17 @@ const { Content } = await article.render();
         Come back on <Time date={article.data.publishedAt} format={FORMATS.DATETIME} />.
       </p>
     ) || (<>
-      {abstract && (<p class="text-dim italic">{abstract}</p>)}
+      {abstract && (<p class="article-lead">{abstract}</p>)}
       {hero && (<Hero {...hero} />)}
       <Content />
     </>)}
   </div>
 </article>
+
+
+<style>
+  .article-lead {
+    @apply text-dim italic;
+    font-size: 1.1em;
+  }
+</style>

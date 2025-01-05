@@ -24,6 +24,7 @@ const blog = defineCollection({
     title: z.string(),
     subtitle: z.string().nullish(),
     abstract: z.string().nullish(),
+    author: z.string().nullish(),
     featured: z.boolean().nullish(),
     category: z.string().nullish(),
     tags: z.array(z.string()).nullish(),

@@ -5,6 +5,7 @@ createdAt:
 title: 
 subtitle: 
 abstract: 
+author: Pascal Polleunus
 featured: true
 category: # Singular.
 tags: ["<category>"]  # All singular.

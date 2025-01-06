@@ -44,6 +44,8 @@ export const URLS = {
   linkedin:  'https://www.linkedin.com/in/pascal-polleunus/',
   x:         'https://x.com/ppolleunus',
   youtube:   'https://www.youtube.com/@ppolleunus',
+
+  unitygz: 'https://unitygz.com/',
 };
 
 
@@ -52,7 +54,7 @@ export const URLS = {
 // Elements of the main nav.
 /** @type {import('./types/settings').Nav} */
 export const MAIN_NAV = [
-  { label: 'MASTER PLAN', url: ROUTES.mp25, style: 'highlight', },
+  { label: 'UNITY GZ',    url: URLS.unitygz, style: 'highlight', },
   { label: 'Blog',        url: ROUTES.blog, },
   { label: 'About',       url: ROUTES.about, },
 ];

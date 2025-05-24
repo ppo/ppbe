@@ -1,4 +1,4 @@
-export const WHERE_AM_I = "🇮🇩 Lembongan, Bali, Indonesia";
+export const WHERE_AM_I = '🇧🇬 Varna, Bulgaria'.replaceAll(' ', ' ');
 
 
 // MAIN ============================================================================================
@@ -54,7 +54,6 @@ export const URLS = {
 // Elements of the main nav.
 /** @type {import('./types/settings').Nav} */
 export const MAIN_NAV = [
-  { label: 'UNITY GZ',    url: URLS.unitygz, style: 'highlight', },
   { label: 'Blog',        url: ROUTES.blog, },
   { label: 'About',       url: ROUTES.about, },
 ];

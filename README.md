@@ -9,7 +9,7 @@ cd $HOME/dev
 pnpm create astro@latest ./ppbe --skip-houston --template minimal --no-install --no-git
 cd ppbe
 git init
-asdf local nodejs 20.18.0  # Vercel build fails with 22.12.0 :-/
+asdf set nodejs 22.15.0
 pnpm install
 gh repo create ppbe --public -h "pascal.polleunus.be" -s . --push
 ```

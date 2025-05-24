@@ -23,7 +23,7 @@ const linksProps = {
   </head>
   <body class="min-h-screen">
     <main class="min-h-screen flex flex-col items-center px-4 py-8">
-      <h1 class="text-2xl mb-12">{SITE_NAME}</h1>
+      <h1 class="text-2xl mb-12"><a href={ROUTES.home}>{SITE_NAME}</a></h1>
       <nav class="nav-primary mb-8">
         <a href={ROUTES.mp25} class="button button-accent">MASTER PLAN 2025</a>
         <a href={ROUTES.blog} class="button button-outline">Blog</a>
@@ -59,6 +59,9 @@ const linksProps = {
 
 
 <style>
+  h1 a:not(:hover) {
+    color: inherit;
+  }
   .nav-primary {
     .button {
       @apply mb-4;

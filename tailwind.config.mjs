@@ -12,8 +12,8 @@ export default {
         background: '#fafafa',
         text: '#333',
         dim: '#777',
-        primary: '#1e88e5',
-        accent: '#7cb342',
+        primary: '#1e88e5', // Blue 600
+        accent: '#7cb342',  // Light Green 600
       },
       fontFamily: {
         display: [FONTS.display.name],

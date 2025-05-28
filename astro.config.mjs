@@ -6,8 +6,8 @@ import { APP_SLUG, SITE_URL } from './src/settings'; // Note: Import aliases don
 import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
 import sitemap from '@astrojs/sitemap';
-import tailwind from '@astrojs/tailwind';
-import vercel from '@astrojs/vercel/serverless';
+import vercel from '@astrojs/vercel';
+import tailwindcss from "@tailwindcss/vite";
 import icon from 'astro-icon';
 
 
@@ -21,8 +21,10 @@ export default defineConfig({
     mdx(),
     partytown(),
     sitemap(),
-    tailwind(),
   ],
+  vite: {
+    plugins: [ tailwindcss() ],
+  },
 
   site: SITE_URL,
   server: { // Used by `astro dev` & `astro preview`

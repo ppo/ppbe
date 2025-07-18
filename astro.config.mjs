@@ -16,6 +16,7 @@ export default defineConfig({
   output: 'server',
   adapter: vercel(),
 
+  trailingSlash: 'never',
   integrations: [
     icon(),
     mdx(),

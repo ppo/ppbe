@@ -29,14 +29,24 @@ const { class: className } = Astro.props;
 
 
 <style>
-  @reference "../../styles/global.css";
+  @reference "@/styles/global.css";
+
+  h1 {
+    font-family: var(--font-body);
+    letter-spacing: normal;
+    font-size: 1.25em;
+  }
 
   a {
     @apply text-text hover:text-primary;
 
+    &:hover {
+      text-decoration: none;
+    }
+
     &.highlight {
       @apply text-accent hover:text-primary;
-      font-weight: 500;  /* FONTS.body.weight.bold */
+      font-weight: var(--font-body-bold);
     }
   }
 </style>

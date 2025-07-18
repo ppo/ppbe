@@ -44,8 +44,11 @@ const {
 
 <style>
   figcaption :global(a) {
-    @apply hover:text-accent;
-    font-weight: inherit;
     color: inherit;
+    font-weight: inherit;
+
+    &:hover {
+      color: var(--text-accent);
+    }
   }
 </style>

@@ -4,7 +4,6 @@ import MainLayout from '@/layouts/MainLayout.astro';
 import { getNamedPath } from '@/lib/url';
 import { MY_EMAIL, ROUTES } from '@/settings';
 
-
 interface Props {
   title?: string | null;
   description?: string | null;
@@ -39,7 +38,7 @@ const {
 
 
 <style>
-  @reference "../styles/global.css";
+  @reference "@/styles/global.css";
 
   header {
     @apply pb-1 mb-8 flex gap-4;

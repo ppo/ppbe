@@ -20,14 +20,6 @@
 }
 
 
-a {
-  font-weight: var(--font-body-normal);
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
 
 @layer base {
   body {
@@ -75,6 +67,7 @@ a {
   }
 }
 
+
 @layer components {
   .prose {
     line-height: 1.6;
@@ -112,5 +105,15 @@ a {
         @apply text-accent bg-transparent border-transparent hover:text-accent hover:border-accent;
       }
     }
+  }
+}
+
+
+a {
+  font-weight: var(--font-body-normal);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
   }
 }

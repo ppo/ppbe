@@ -8,6 +8,7 @@
   --color-primary: #1e88e5; /* Blue 600 */
   --color-accent: #7cb342;  /* Light Green 600 */
   --color-dim: #777;
+  --color-disabled: #aaa;
   --color-muted: #f5f5f5;
   --color-muted-foreground: #737373;
   --color-border: #e5e5e5;

@@ -6,7 +6,7 @@ import { HTML_HEAD } from '@/settings';
 
 
 export async function GET(context) {
-  const blog = await getArticlesForRss();
+  const blog = await getArticlesForRss('blog');
 
   return rss({
     title: HTML_HEAD.title,

@@ -4,9 +4,9 @@ import { Icon } from 'astro-icon/components';
 import { getAdjacentArticles } from '@/lib/blog';
 
 
-type Props = CollectionEntry<'blog'>;
-const { article } = Astro.props;
-const { prev: prevArticle, next: nextArticle } = await getAdjacentArticles(article);
+const { contentName, article } = Astro.props;
+type Props = CollectionEntry<contentName>;
+const { prev: prevArticle, next: nextArticle } = await getAdjacentArticles(contentName, article);
 ---
 
 

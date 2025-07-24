@@ -3,11 +3,8 @@ export const prerender = true;
 
 import { type CollectionEntry, getCollection } from 'astro:content';
 
-import { isFutureArticle } from '@/lib/blog';
-import { FORMATS } from '@/lib/format';
 import BlogArticle from '@/components/blog/Article.astro';
 import DetailNav from '@/components/blog/DetailNav.astro';
-import Time from '@/components/Time.astro';
 import BlogLayout from '@/layouts/BlogLayout.astro';
 
 // TODO: import { filterObject } from '@/lib/main';
@@ -15,7 +12,7 @@ import BlogLayout from '@/layouts/BlogLayout.astro';
 
 
 export async function getStaticPaths() {
-  const articles = await getCollection('blog');
+  const articles = await getCollection('vanbuildrethink');
   return articles.map((article) => ({
     params: { slug: article.slug },
     props: article,
@@ -23,7 +20,7 @@ export async function getStaticPaths() {
 }
 
 
-type Props = CollectionEntry<'blog'>;
+type Props = CollectionEntry<'vanbuildrethink'>;
 const article = Astro.props;
 const headProps = {
   title: article.data.title,
@@ -32,7 +29,7 @@ const headProps = {
 }
 
 // TODO: const headerAttrs = {
-//   route: getNamedPath('blog'),
+//   route: getNamedPath('vanbuildrethink'),
 //   ...filterObject(article.data, ['title', 'published', 'updated', 'tags', 'collection'])
 // };
 ---
@@ -44,5 +41,5 @@ const headProps = {
     <BlogArticle {article} />
   </main>
 
-  <DetailNav contentName="blog" {article} />
+  <DetailNav contentName="vanbuildrethink" {article} />
 </BlogLayout>

@@ -26,11 +26,12 @@ export const HTML_HEAD = {
 
 // Named routes (as name: path).
 export const ROUTES = {
-  home:  '/',
-  about: '/about',
-  blog:  '/blog',
-  mp25:  '/master-plan-2025',
-  cv:    '/cv',
+  home:            '/',
+  about:           '/about',
+  blog:            '/blog',
+  vanbuildrethink: '/vanbuildrethink',
+  mp25:            '/master-plan-2025',
+  cv:              '/cv',
 
   rss:     '/rss.xml',
   sitemap: '/sitemap-index.xml',
@@ -54,8 +55,9 @@ export const URLS = {
 // Elements of the main nav.
 /** @type {import('./types/settings').Nav} */
 export const MAIN_NAV = [
-  { label: 'Blog',        url: ROUTES.blog, },
-  { label: 'About',       url: ROUTES.about, },
+  { label: 'Van Build Rethink', url: ROUTES.vanbuildrethink, style: 'highlight' },
+  { label: 'Blog',              url: ROUTES.blog, },
+  { label: 'About',             url: ROUTES.about, },
 ];
 
 // Elements of the social nav.

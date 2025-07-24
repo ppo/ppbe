@@ -5,7 +5,8 @@ import PageLayout from '@/layouts/PageLayout.astro';
 import { getFeaturedArticles } from '@/lib/blog';
 
 
-const featuredArticles = await getFeaturedArticles();
+const featuredVBRArticles = await getFeaturedArticles('vanbuildrethink');
+const featuredBlogArticles = await getFeaturedArticles('blog');
 ---
 
 
@@ -17,10 +18,17 @@ const featuredArticles = await getFeaturedArticles();
     </section>
   )}
 
-  {featuredArticles?.length > 0 && (
+  {featuredVBRArticles?.length > 0 && (
     <section>
-      <h2 class="text-2xl font-bold mb-4">Featured Articles</h2>
-      <BlogList articles={featuredArticles} />
+      <h2 class="text-2xl font-bold mb-4">Featured Van Build Rethink Articles</h2>
+      <BlogList articles={featuredVBRArticles} />
+    </section>
+  )}
+
+  {featuredBlogArticles?.length > 0 && (
+    <section>
+      <h2 class="text-2xl font-bold mb-4">Featured Blog Articles</h2>
+      <BlogList articles={featuredBlogArticles} />
     </section>
   )}
 </PageLayout>

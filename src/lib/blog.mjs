@@ -21,7 +21,7 @@ article: {
 import { getCollection } from 'astro:content';
 
 import { getNamedPath } from '@/lib/url';
-import { BLOG_NUM_FEATURED_ON_HOME, BLOG_NUM_RELATED } from '@/settings';
+import { BLOG_NUM_ON_HOME, BLOG_NUM_RELATED } from '@/settings';
 
 
 async function _getRawArticles(contentName, sorted = false) {
@@ -95,9 +95,20 @@ export async function getAdjacentArticles(contentName, refArticle) {
 /**
  * Get featured articles.
  */
-export async function getFeaturedArticles(contentName, limit = BLOG_NUM_FEATURED_ON_HOME) {
+export async function getFeaturedArticles(contentName, limit = BLOG_NUM_ON_HOME) {
   const rawArticles = await _getRawArticles(contentName);
   const featuredArticles = sortArticles(rawArticles.filter((a) => a.data.featured));
+  const articles = limit ? featuredArticles.slice(0, limit) : featuredArticles;
+  return hydrateArticles(contentName, articles);
+}
+
+
+/**
+ * Get latest articles.
+ */
+export async function getLatestArticles(contentName, limit = BLOG_NUM_ON_HOME) {
+  const rawArticles = await _getRawArticles(contentName);
+  const featuredArticles = sortArticles(rawArticles, true);
   const articles = limit ? featuredArticles.slice(0, limit) : featuredArticles;
   return hydrateArticles(contentName, articles);
 }
@@ -172,11 +183,16 @@ function hydrateArticles(contentName, articles) {
 /**
  * Helper function to sort articles by date.
  */
-function sortArticles(articles) {
-  return articles.sort((a, b) =>
-    +new Date(b.data.publishedAt) - +new Date(a.data.publishedAt)
+function sortArticles(articles, featuredFirst = false) {
+  return articles.sort((a, b) => {
+    if (featuredFirst) {
+      if (a.data.featured && !b.data.featured) return -1;
+      if (!a.data.featured && b.data.featured) return 1;
+    }
+
+    return +new Date(b.data.publishedAt) - +new Date(a.data.publishedAt)
     // ALTERNATIVE VERSION: b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf()
-  );
+  });
 }
 
 

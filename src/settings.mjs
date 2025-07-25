@@ -107,5 +107,5 @@ export const GOOGLE_ANALYTICS_TRACKING_ID = 'G-1HW5P0NNDY';
 // FEATURES ========================================================================================
 
 // BLOG
-export const BLOG_NUM_FEATURED_ON_HOME = 5;
+export const BLOG_NUM_ON_HOME = 3;
 export const BLOG_NUM_RELATED = 3;

@@ -5,7 +5,7 @@ import { type CollectionEntry, getCollection } from 'astro:content';
 
 import BlogArticle from '@/components/blog/Article.astro';
 import DetailNav from '@/components/blog/DetailNav.astro';
-import BlogLayout from '@/layouts/BlogLayout.astro';
+import Layout from '@/layouts/VanBuildRethinkLayout.astro';
 
 // TODO: import { filterObject } from '@/lib/main';
 // TODO: import { getNamedPath } from '@/lib/url';
@@ -35,11 +35,11 @@ const headProps = {
 ---
 
 
-<BlogLayout {...headProps}>
+<Layout {...headProps}>
   {/* TODO: <ContentHeader {...headerAttrs} /> */}
   <main class="prose max-w-none">
     <BlogArticle {article} />
   </main>
 
   <DetailNav contentName="vanbuildrethink" {article} />
-</BlogLayout>
+</Layout>

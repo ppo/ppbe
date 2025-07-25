@@ -1,6 +1,6 @@
 ---
 import BlogList from '@/components/blog/List.astro';
-import BlogLayout from '@/layouts/BlogLayout.astro';
+import Layout from '@/layouts/BlogLayout.astro';
 import { getArticles } from '@/lib/blog';
 
 
@@ -8,8 +8,8 @@ const articles = await getArticles('blog');
 ---
 
 
-<BlogLayout>
+<Layout>
   <main class="prose max-w-none">
     <BlogList {articles} />
   </main>
-</BlogLayout>
+</Layout>

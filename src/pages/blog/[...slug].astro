@@ -3,12 +3,9 @@ export const prerender = true;
 
 import { type CollectionEntry, getCollection } from 'astro:content';
 
-import { isFutureArticle } from '@/lib/blog';
-import { FORMATS } from '@/lib/format';
 import BlogArticle from '@/components/blog/Article.astro';
 import DetailNav from '@/components/blog/DetailNav.astro';
-import Time from '@/components/Time.astro';
-import BlogLayout from '@/layouts/BlogLayout.astro';
+import Layout from '@/layouts/BlogLayout.astro';
 
 // TODO: import { filterObject } from '@/lib/main';
 // TODO: import { getNamedPath } from '@/lib/url';
@@ -38,11 +35,11 @@ const headProps = {
 ---
 
 
-<BlogLayout {...headProps}>
+<Layout {...headProps}>
   {/* TODO: <ContentHeader {...headerAttrs} /> */}
   <main class="prose max-w-none">
     <BlogArticle {article} />
   </main>
 
   <DetailNav contentName="blog" {article} />
-</BlogLayout>
+</Layout>

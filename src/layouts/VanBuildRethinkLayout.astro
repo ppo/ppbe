@@ -1,0 +1,25 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+
+
+interface Props {
+  title?: string | null;
+  description?: string | null;
+  image?: string | URL | null;
+  meta?: object[];
+  frontmatter?: object[];
+}
+
+const {
+  title,
+  image,
+  meta,
+  frontmatter,
+} = Astro.props;  // `.md[x]` provide a `frontmatter` prop.
+const description = frontmatter?.data.abstract || Astro.props.description;
+---
+
+
+<MainLayout title={[title, "Van Build Rethink"]} {...{description, image, meta}}>
+  <slot />
+</MainLayout>

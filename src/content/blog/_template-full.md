@@ -1,6 +1,6 @@
 ---
 slug: 
-publishedAt: 2000-12-31T23:59:59+0200  # Shell: date "+%Y-%m-%dT%H:%M:%S%z" | pbcopy
+publishedAt: 2000-12-31T23:59:59+0200  # Shell: `now` (alias: `date "+%Y-%m-%dT%H:%M:%S%z" | pbcopy`)
 createdAt: 
 title: 
 subtitle: 

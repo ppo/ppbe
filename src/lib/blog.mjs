@@ -217,6 +217,8 @@ export function removeCategoryFromTags(tags, category) {
 */
 export function formatTags(tags) {
   return tags.map((t) => {
-    return '#' + t.replace(/[ -]/g, '');
+    return '#' + t
+      .replace(/\b\w/g, (char) => char.toUpperCase())
+      .replace(/[ -]/g, '');
   }).join(' ');
 }

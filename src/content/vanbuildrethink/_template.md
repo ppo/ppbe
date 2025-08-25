@@ -26,6 +26,6 @@ hero:
 
 **Do you have experience or knowledge related to anything related to XXX?**  
 Please [join the conversation on Reddit](https://www.reddit.com/r/VanBuildRethink/XXX/)
-and share what you’ve learned.
+and share what you've learned.
 
 And follow us on socials: @VanBuildRethink

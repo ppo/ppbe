@@ -19,6 +19,8 @@
   --font-body-bold: 600;
   --font-display: "Atkinson Hyperlegible", sans-serif;
   --font-display-normal: 700;
+
+  --default-font-family: var(--font-body);
 }
 
 

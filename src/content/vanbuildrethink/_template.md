@@ -1,8 +1,9 @@
 ---
-slug: XXX-00
+slug: 
 publishedAt: 2000-12-31T23:59:59+0200  # Shell: `now` (alias: `date "+%Y-%m-%dT%H:%M:%S%z" | pbcopy`)
-title: XXX 00
-abstract: 
+title: ""
+subtitle: ""
+abstract: ""
 category: Topic Introduction
 tags: ["XXX", "XXX"]
 hero:

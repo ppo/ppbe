@@ -162,31 +162,4 @@ import { getNamedPath } from '@/lib/url';
     margin-inline: auto;
     width: 150px;
   }
-
-  q {
-    display: block;
-    font-style: italic;
-    quotes: "“" "”";
-  }
-  q::before, q::after { @apply text-dim; }
-  q::before { content: open-quote; }
-  q::after { content: close-quote; }
-  q + .author {
-    @apply text-dim;
-    display: block;
-    white-space: nowrap;
-  }
-  q + .author::before {
-    content: "—";
-  }
-  .author cite {
-    font-style: normal;
-    quotes: "‘" "’";
-  }
-  .author cite::before, .author cite::after { @apply text-dim; }
-  .author cite::before { content: open-quote; }
-  .author cite::after { content: close-quote; }
-  .author a {
-    color: inherit;
-  }
 </style>

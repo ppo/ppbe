@@ -149,3 +149,42 @@ a {
     color: #3ea8e5;
   }
 }
+
+q {
+  display: block;
+  font-style: italic;
+  quotes: "“" "”";
+
+  &::before, &::after { @apply text-dim; }
+  &::before { content: open-quote; }
+  &::after { content: close-quote; }
+}
+
+blockquote:has(+ .author) {
+  margin-bottom: 0;
+}
+
+blockquote cite,
+q + .author {
+  @apply text-dim;
+  display: block;
+  white-space: nowrap;
+
+  &::before {
+    content: "—";
+    margin-right: 2px;
+  }
+
+  a {
+    color: inherit;
+  }
+}
+
+.author cite {
+  font-style: normal;
+  quotes: "‘" "’";
+
+  &::before, &::after { @apply text-dim; }
+  &::before { content: open-quote; }
+  &::after { content: close-quote; }
+}

@@ -16,6 +16,7 @@ hero:
 …
 
 👉 _See our approach in [How Will This Work?](/vanbuildrethink/van-build-rethink#how-will-this-work)_
+💬 _Join the discussion on [Reddit](https://www.reddit.com/r/VanBuildRethink/)_
 
 
 ## Starting Questions

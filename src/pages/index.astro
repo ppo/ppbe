@@ -18,7 +18,7 @@ const latestBlogArticles = await getLatestArticles('blog');
     </section>
   )}
 
-  {latestVBRArticles?.length > 0 && (
+  {false && latestVBRArticles?.length > 0 && (
     <section>
       <h2 class="text-2xl font-bold mb-4">Latest Van Build Rethink Articles</h2>
       <BlogList articles={latestVBRArticles} />

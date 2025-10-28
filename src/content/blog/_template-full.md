@@ -10,16 +10,16 @@ featured: true
 category: # Singular.
 tags: ["<category>"]  # All singular.
 hero:
-  image: /blog/<slug>.webp
-  video: 
-  alt: 
-  title: 
-  subtitle: 
-  url: 
-  caption: 
-  captionUrl: 
-  captionIsHtml: true
-  class: 
+    image: /blog/<slug>.webp
+    video: 
+    alt: 
+    title: 
+    subtitle: 
+    url: 
+    caption: 
+    captionUrl: 
+    captionIsHtml: true
+    class: 
 ---
 
 

@@ -7,9 +7,9 @@ abstract: ""
 category: # Singular.
 tags: ["<category>"]  # All singular.
 hero:
-  image: /blog/<slug>.webp
-  caption: 
-  captionUrl: 
+    image: /blog/<slug>.webp
+    caption: 
+    captionUrl: 
 ---
 
 

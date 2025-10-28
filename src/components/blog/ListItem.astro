@@ -10,7 +10,7 @@ interface Props {
   article: CollectionEntry<'blog'>,
 };
 const { article } = Astro.props;
-const { title, abstract, category, featured, hero, publishedAt } = article.data;
+const { title, subtitle, abstract, category, featured, hero, publishedAt } = article.data;
 const isFuture = isFutureArticle(article);
 // BEGIN: ALTERNATIVE VERSION
 // const {
@@ -46,7 +46,12 @@ const isFuture = isFutureArticle(article);
           Come back on <Time date={article.data.publishedAt} format={FORMATS.DATETIME} />.
         </p>
       )}
-      {(!isFuture && abstract) && (<p class="text-sm text-text my-0">{abstract}</p>)}
+      {(!isFuture && (subtitle || abstract)) && (
+      <p class="text-sm text-text my-0">
+        <strong>{subtitle}</strong><br>
+        {abstract}
+      </p>
+      )}
     </div>
   </a>
 </article>
@@ -54,6 +59,10 @@ const isFuture = isFutureArticle(article);
 
 <style>
   @reference "@/styles/global.css";
+
+  h2 {
+    font-size: 1.25em;
+  }
 
   a:hover {
     text-decoration: none;

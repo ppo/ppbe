@@ -22,6 +22,7 @@
   --font-display: "Alan Sans", sans-serif;
   --font-display-normal: 600;
   --font-display-light: 300;
+  --font-mono: "Roboto Mono", ui-monospace;
 
   --default-font-family: var(--font-body);
 }
@@ -84,6 +85,11 @@
 
       &::before { content: none; }
       &::after  { content: none; }
+
+      b &,
+      strong & {
+        font-weight: inherit;
+      }
     }
   }
 }

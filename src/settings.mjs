@@ -1,4 +1,4 @@
-export const WHERE_AM_I = '🇧🇪 Brussels, Belgium 🤷‍♂️'.replaceAll(' ', ' ');
+export const WHERE_AM_I = '🇮🇹 Italy (North)'.replaceAll(' ', ' ');
 
 
 // MAIN ============================================================================================

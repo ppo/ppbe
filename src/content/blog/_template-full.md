@@ -7,7 +7,7 @@ subtitle: ""
 abstract: ""
 author: Pascal Polleunus
 featured: true
-category: # Singular.
+category: ""  # Singular.
 tags: ["<category>"]  # All singular.
 hero:
     image: /blog/<slug>.webp

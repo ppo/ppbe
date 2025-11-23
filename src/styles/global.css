@@ -200,6 +200,16 @@ q + .author {
   &::after { content: close-quote; }
 }
 
+blockquote.unstyled {
+  font-weight: var(--font-body-normal);
+
+  p {
+    line-height: 1.5;
+    margin-block: 1em;
+  }
+  p:first-of-type::before, p:last-of-type::after { content: ""; }
+}
+
 .remark {
   margin-block: 1.6em;
   padding-left: 1em;

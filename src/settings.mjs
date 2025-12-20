@@ -1,4 +1,4 @@
-export const WHERE_AM_I = '🇮🇹 Tuscany, Italy'.replaceAll(' ', ' ');
+export const WHERE_AM_I = '🇮🇹 Sicily, Italy'.replaceAll(' ', ' ');
 
 
 // MAIN ============================================================================================

@@ -7,7 +7,7 @@ abstract: ""
 category: ""  # Singular
 tags: ["REPEAT CATEGORY"]  # All singular
 hero:
-    image: /blog/<slug>.webp
+    image: /blog/<slug>.webp  # 1536x1024
 ---
 
 

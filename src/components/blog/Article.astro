@@ -5,6 +5,7 @@ import Time from '@/components/Time.astro';
 import ArticleMeta from '@/components/blog/ArticleMeta.astro';
 import { isFutureArticle } from '@/lib/blog';
 import { FORMATS } from '@/lib/format';
+import { IS_DEV } from '@/settings';
 
 
 // interface Props {
@@ -28,6 +29,7 @@ const {
 } = article.data;
 
 const { Content } = await article.render();
+const isFuture = isFutureArticle(article);
 ---
 
 
@@ -39,12 +41,14 @@ const { Content } = await article.render();
       <h2 class="mt-0">{subtitle}</h2>
     )}
 
-    {isFutureArticle(article) && (
+    {isFuture && (
       <p>
         Not yet published.<br>
         Come back on <Time date={article.data.publishedAt} format={FORMATS.DATETIME} />.
       </p>
-    ) || (<>
+    )}
+
+    {(!isFuture || IS_DEV) && (<>
       {abstract && (<p class="article-lead">{abstract}</p>)}
       {hero && (<Hero {...hero} />)}
       <Content />

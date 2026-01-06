@@ -8,6 +8,8 @@ export const SITE_URL = 'https://pascal.polleunus.be';
 export const SITE_NAME = 'Pascal Polleunus';
 export const MY_EMAIL = 'pascal@polleunus.be';
 
+export const IS_DEV = import.meta.env.MODE == 'development';
+
 
 // HEAD ============================================================================================
 

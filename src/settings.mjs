@@ -1,4 +1,4 @@
-export const WHERE_AM_I = '🇮🇹 Sicily, Italy'.replaceAll(' ', ' ');
+export const WHERE_AM_I = '🇵🇹 Milfontes, Portugal'.replaceAll(' ', ' ');
 
 
 // MAIN ============================================================================================

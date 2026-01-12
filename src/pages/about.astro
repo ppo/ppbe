@@ -1,5 +1,5 @@
 ---
-import { MY_EMAIL, URLS, WHERE_AM_I } from '@/settings';
+import { MY_EMAIL, ROUTES, URLS, WHERE_AM_I } from '@/settings';
 
 // TODO: Bug in prod // import { Image } from 'astro:assets';
 
@@ -30,24 +30,36 @@ import { getNamedPath } from '@/lib/url';
   </section>
 
   <section>
+    <div class="headline">Multipotentialite Maker → Exploring Unity-Based Community Models</div>
+
     <h2>My Golden Circle</h2>
     <ul class="unstyled">
       <li>
         <strong>WHY:</strong>
-        💪 Contribute to the transition to a new world.
+        💪 Contribute to the transition to a new era.
       </li>
       <li>
         <strong>HOW:</strong>
-        <nobr>🤔 Question everything</nobr>
-        <nobr>🤪 Think different</nobr>
+        <nobr>🤔 Question everything</nobr> ›
+        <nobr>🤪 Think different</nobr> ›
         <nobr>✊ Inspire change</nobr>
       </li>
       <li>
         <strong>WHAT:</strong>
-        ❓🤔
+        🤝 <a href={URLS.unitygz}>Unity Initiatives</a>
       </li>
     </ul>
 
+
+    <h2>My Human Design</h2>
+    <p><strong>4/1 Splenic Energy Projector</strong> (<a href={`${ROUTES.blog}/understanding-myself-through-human-design`}>article</a>)</p>
+    <p>
+      <b>Profile:</b> 4/1 • Networker/Investigator<br>
+      <b>Centers:</b> Splenic, Heart/Ego<br>
+      <b>Incarnation Cross:</b> Juxtaposition Cross of Crisis (36/6 | 10/15)<br>
+      <b>Channels:</b> 26-44 • Channel of Surrender: A Design of a Transmitter<br>
+      <b>Environment:</b> Wet Kitchens
+    </p>
 
     <h2>My STAR Idea</h2>
     <p>
@@ -161,5 +173,11 @@ import { getNamedPath } from '@/lib/url';
     height: 150px;
     margin-inline: auto;
     width: 150px;
+  }
+
+  .headline {
+    font-size: 1.1em;
+    font-weight: var(--font-body-bold);
+    text-align: center;
   }
 </style>

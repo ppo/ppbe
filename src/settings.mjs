@@ -57,9 +57,9 @@ export const URLS = {
 // Elements of the main nav.
 /** @type {import('./types/settings').Nav} */
 export const MAIN_NAV = [
-  // { label: 'Van Build Rethink', url: ROUTES.vanbuildrethink, style: 'highlight' },
-  { label: 'Blog',              url: ROUTES.blog, },
-  { label: 'About',             url: ROUTES.about, },
+  { label: 'Unity GZ', url: URLS.unitygz, style: 'highlight' },
+  { label: 'Blog',     url: ROUTES.blog, },
+  { label: 'About',    url: ROUTES.about, },
 ];
 
 // Elements of the social nav.

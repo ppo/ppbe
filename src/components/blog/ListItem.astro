@@ -4,6 +4,7 @@
 import Time from '@/components/Time.astro';
 import { isFutureArticle } from '@/lib/blog';
 import { FORMATS } from '@/lib/format';
+import { IS_PROD } from '@/settings';
 
 
 interface Props {
@@ -26,7 +27,7 @@ const isFuture = isFutureArticle(article);
 
 
 <article class:list={[{featured, future: isFuture}, 'p-2']}>
-  <a href={isFuture ? null : article.url} class="block flex flex-col sm:flex-row justify-left">
+  <a href={isFuture && IS_PROD ? null : article.url} class="block flex flex-col sm:flex-row justify-left">
     {/* TODO: {heroImage && (<Image src={heroImage} alt={hero.alt} class="…" />)} */}
     {hero?.image && (
       <img src={hero.image} alt={hero.alt} class="w-full sm:w-40 sm:shrink-0 object-scale-down" />

@@ -42,7 +42,7 @@ const isFuture = isFutureArticle(article);
     )}
 
     {isFuture && (
-      <p>
+      <p class="is-future">
         Not yet published.<br>
         Come back on <Time date={article.data.publishedAt} format={FORMATS.DATETIME} />.
       </p>
@@ -68,5 +68,9 @@ const isFuture = isFutureArticle(article);
     color: var(--text-dim);
     font-size: 1.1em;
     font-style: italic;
+  }
+
+  .is-future {
+    color: var(--color-error);
   }
 </style>

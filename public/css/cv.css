@@ -140,11 +140,11 @@ ul.unstyled > li.separator {
 
 q {
   font-style: italic;
-  quotes: "“" "”";
+  quotes: "«" "»";
 }
 q::before, q::after { color: var(--color-dim); }
-q::before { content: open-quote; }
-q::after { content: close-quote; }
+q::before { content: open-quote; padding-right: 3px; }
+q::after { content: close-quote; padding-left: 3px; }
 q + .author {
   color: var(--color-dim);
   display: block;
@@ -476,5 +476,12 @@ ul.skill-tags li em {
 
   section > h3 {
     page-break-after: avoid;
+  }
+
+  q::before { padding-right: 2px; }
+  q::after { padding-left: 2px; }
+  q + .author {
+    display: inline-block;
+    margin-left: 2px;
   }
 }

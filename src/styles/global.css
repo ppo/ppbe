@@ -92,6 +92,11 @@
         font-weight: inherit;
       }
     }
+
+    .astro-code[data-language="markdown"],
+    .astro-code[data-language="text"] {
+      white-space: pre-wrap;
+    }
   }
 }
 

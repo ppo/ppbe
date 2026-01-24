@@ -1,0 +1,14 @@
+---
+import { MY_EMAIL } from '@/settings';
+
+import ObfuscatedLink from '@/components/ObfuscatedLink.astro';
+
+
+interface Props {
+  label?: string;
+};
+const { label } = Astro.props;
+---
+
+
+<ObfuscatedLink protocol="email" value={MY_EMAIL} {label} />

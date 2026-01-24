@@ -1,9 +1,9 @@
 ---
-import { MY_EMAIL, ROUTES, URLS, WHERE_AM_I } from '@/settings';
+import { ROUTES, URLS, WHERE_AM_I } from '@/settings';
 
 // TODO: Bug in prod // import { Image } from 'astro:assets';
 
-import ObfuscatedLink from '@/components/ObfuscatedLink.astro';
+import MyEmail from '@/components/MyEmail.astro';
 import PageLayout from '@/layouts/PageLayout.astro';
 import { getNamedPath } from '@/lib/url';
 
@@ -159,7 +159,7 @@ import { getNamedPath } from '@/lib/url';
 
 
     <h2 id="get-in-touch">Get in Touch</h2>
-    <p>You can contact me at <ObfuscatedLink protocol="email" value={MY_EMAIL} /></p>
+    <p>You can contact me at <MyEmail /></p>
   </section>
 </PageLayout>
 

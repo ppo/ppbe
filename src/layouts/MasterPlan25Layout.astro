@@ -1,8 +1,8 @@
 ---
-import ObfuscatedLink from '@/components/ObfuscatedLink.astro';
+import MyEmail from '@/components/MyEmail.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 import { getNamedPath } from '@/lib/url';
-import { MY_EMAIL, ROUTES } from '@/settings';
+import { ROUTES } from '@/settings';
 
 interface Props {
   title?: string | null;
@@ -27,7 +27,7 @@ const {
     <div>
       <a href={getNamedPath('mp25', 'links')}>All languages &amp; PDFs</a>
       •
-      <ObfuscatedLink protocol="email" value={MY_EMAIL} label="Contact" />
+      <MyEmail label="Contact" />
     </div>
   </header>
 

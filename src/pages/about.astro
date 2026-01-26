@@ -33,20 +33,15 @@ import { getNamedPath } from '@/lib/url';
     <div class="headline">Multipotentialite Maker → Exploring Unity-Based Community Models</div>
 
     <h2 id="my-golden-circle">My Golden Circle</h2>
-    <ul class="unstyled">
+    <ul class="unstyled my-golden-circle">
       <li>
-        <strong>WHY:</strong>
-        💪 Contribute to the transition to a new era.
+        <strong>WHY:</strong><span>💪 Contribute to the transition to a new era</span>
       </li>
       <li>
-        <strong>HOW:</strong>
-        <nobr>🤔 Question everything</nobr> ›
-        <nobr>🤪 Think different</nobr> ›
-        <nobr>✊ Inspire change</nobr>
+        <strong>HOW:</strong><span>🤔 Question everything ›</span> <span>🤪 Think different ›</span> <span>✊ Inspire change</span>
       </li>
       <li>
-        <strong>WHAT:</strong>
-        🤝 <a href={URLS.unitygz}>Unity Initiatives</a>
+        <strong>WHAT:</strong><span>🤝 <a href={URLS.unitygz}>Unity Initiatives</a></span>
       </li>
     </ul>
 
@@ -166,6 +161,24 @@ import { getNamedPath } from '@/lib/url';
 
 <style>
   @reference "@/styles/global.css";
+
+  .my-golden-circle {
+    strong {
+      display: inline-block;
+      width: 3.4em;
+    }
+
+    span {
+      /* white-space: nowrap; */
+    }
+
+    @media (max-width: 550px) {
+      span:not(:first-of-type) {
+        display: block;
+        padding-left: 3.4em;
+      }
+    }
+  }
 
   .about-intro img {
     border-radius: 50%;

@@ -35,28 +35,7 @@ const blog = defineCollection({
 });
 
 
-const vanbuildrethink = defineCollection({
-  type: 'content',
-  schema: z.object({
-    slug: z.string().nullish(),
-    publishedAt: z.coerce.date().nullable(), // The reference date for sorting
-    createdAt: z.coerce.date().nullish(), // When the content was originally created, defaults to publishedAt.
-    title: z.string(),
-    subtitle: z.string().nullish(),
-    abstract: z.string().nullish(),
-    author: z.string().nullish(),
-    featured: z.boolean().nullish(),
-    category: z.string().nullish(),
-    tags: z.array(z.string()).nullish(),
-    // collection: z.string().nullish(),
-    // related: z.array(reference('vanbuildrethink')).nullable(),  // References to other articles, using their `slug`.
-    hero: hero.nullish(),
-  }),
-});
-
-
 // Note: The key should match the collection directory name in `src/content`.
 export const collections = {
   blog,
-  vanbuildrethink,
 };

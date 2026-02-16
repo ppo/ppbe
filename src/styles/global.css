@@ -76,6 +76,11 @@
       margin-right: 2px;
     }
 
+    hr.strong {
+      border-color: var(--color-dim);
+      margin-block: 5em;
+    }
+
     code:not(.astro-code code) {
       background-color: #eaeaea;
       color: #800;

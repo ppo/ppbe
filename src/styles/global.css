@@ -146,6 +146,10 @@ a {
   }
 }
 
+p.indent {
+  padding-inline-start: 1em;
+}
+
 ul.unstyled {
   list-style-type: none;
   margin: 0;

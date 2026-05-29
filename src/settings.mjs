@@ -1,4 +1,4 @@
-export const WHERE_AM_I = '🇵🇹 Milfontes, Portugal'.replaceAll(' ', ' ');
+export const WHERE_AM_I = '🇵🇹 Around Lisbon, Portugal'.replaceAll(' ', ' ');
 
 
 // MAIN ============================================================================================

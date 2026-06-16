@@ -1,5 +1,4 @@
 ---
-import { INSTANT_MESSAGING } from '@/settings';
 
 import Container from '@/components/layout/Container.astro';
 import PageLayout from '@/layouts/PageLayout.astro';
@@ -14,21 +13,34 @@ import PageLayout from '@/layouts/PageLayout.astro';
   <h1>Instant Messaging</h1>
 
   <Container class="md:flex md:justify-center md:space-x-4">
-    {Object.entries(INSTANT_MESSAGING).map(([key, {name, username, url}]) => {
-      const size = 250;
-      const a1 = url ? `<a href=${url} class="m-0">` : '';
-      const a2 = url ? '</a>' : '';
-      return <section>
-        <h3>{name}</h3>
-        <div set:html={username ? `${a1}${username}${a2}` : '&nbsp;'} />
-        <Fragment set:html={`${a1}<img src="/media/qrcode-${key}.webp" width="${size}" height="${size}" alt="${name} QR Code" />${a2}`} />
-      </section>;
-    })}
+    <section>
+      <h3>Signal</h3>
+      <a href="https://signal.me/#eu/a8WA9Mh7ucWLNJ-a71iT3qBcAG22kATQrVeQfs44zn92LDoY8iZPzYxa3cdk_BKN">
+        <div><strong class="text-accent">Preferred</strong> • ppo.69</div>
+        <img src="/media/qrcode-signal.webp" width="250" height="250" alt="Signal QR Code" />
+      </a>
+    </section>
+
+    <section>
+      <h3>Telegram</h3>
+      <a href="https://t.me/ppolleunus">
+        <div>ppolleunus</div>
+        <img src="/media/qrcode-telegram.webp" width="250" height="250" alt="Telegram QR Code" />
+      </a>
+    </section>
+
+    <section>
+      <h3>WhatsApp</h3>
+      <div>&nbsp;</div>
+      <img src="/media/qrcode-whatsapp.webp" width="250" height="250" alt="WhatsApp QR Code" />
+    </section>
   </Container>
 </PageLayout>
 
 
 <style>
+  @reference "@/styles/global.css";
+
   section {
     text-align: center;
 

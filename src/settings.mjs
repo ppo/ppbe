@@ -113,3 +113,25 @@ export const GOOGLE_ANALYTICS_TRACKING_ID = 'G-1HW5P0NNDY';
 // BLOG
 export const BLOG_NUM_ON_HOME = 3;
 export const BLOG_NUM_RELATED = 3;
+
+
+// MISC ============================================================================================
+
+// INSTANT MESSAGING
+export const INSTANT_MESSAGING = {
+  signal: {
+    name: 'Signal',
+    username: 'ppo.69',
+    url: 'https://signal.me/#eu/a8WA9Mh7ucWLNJ-a71iT3qBcAG22kATQrVeQfs44zn92LDoY8iZPzYxa3cdk_BKN',
+  },
+  telegram: {
+    name: 'Telegram',
+    username: 'ppolleunus',
+    url: 'https://t.me/ppolleunus',
+  },
+  whatsapp: {
+    name: 'WhatsApp',
+    username: null,
+    url:   null,
+  },
+}

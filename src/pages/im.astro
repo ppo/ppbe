@@ -1,0 +1,37 @@
+---
+import { INSTANT_MESSAGING } from '@/settings';
+
+import Container from '@/components/layout/Container.astro';
+import PageLayout from '@/layouts/PageLayout.astro';
+---
+
+
+<PageLayout
+  title="Instant Messaging"
+  description="My instant messaging accounts."
+  meta={ [ { name: 'robots', content: 'noindex, follow' } ] }
+>
+  <h1>Instant Messaging</h1>
+
+  <Container class="md:flex md:justify-center md:space-x-4">
+    {Object.entries(INSTANT_MESSAGING).map(([key, {name, username, url}]) => {
+      const size = 250;
+      const a1 = url ? `<a href=${url} class="m-0">` : '';
+      const a2 = url ? '</a>' : '';
+      return <section>
+        <h3>{name}</h3>
+        <div set:html={username ? `${a1}${username}${a2}` : '&nbsp;'} />
+        <Fragment set:html={`${a1}<img src="/media/qrcode-${key}.webp" width="${size}" height="${size}" alt="${name} QR Code" />${a2}`} />
+      </section>;
+    })}
+  </Container>
+</PageLayout>
+
+
+<style>
+  section {
+    text-align: center;
+
+    img { margin: 0 auto; }
+  }
+</style>

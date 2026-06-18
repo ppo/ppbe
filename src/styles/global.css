@@ -13,7 +13,7 @@
   --color-muted: #f5f5f5;
   --color-muted-foreground: #737373;
   --color-border: #e5e5e5;
-  --tw-prose-code: red;
+  --color-light-gray: #bbb;
 
   --font-body: Roboto, sans-serif;
   --font-body-normal: 400;
@@ -48,6 +48,10 @@
 
 @layer utilities {
   .prose {
+    --tw-prose-bullets: var(--color-light-gray);
+    --tw-prose-code: #b00;
+    --tw-prose-hr: var(--color-light-gray);
+
     a {
       color: var(--color-primary);
 

@@ -1,6 +1,6 @@
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
-import { defineCollection } from 'astro:content';
+import { defineCollection, reference } from 'astro:content';
 
 
 const hero = z.object({
@@ -31,7 +31,7 @@ const blog = defineCollection({
     category: z.string().nullish(),
     tags: z.array(z.string()).nullish(),
     // collection: z.string().nullish(),
-    // related: z.array(reference('blog')).nullable(),  // References to other blog articles, using their `slug`.
+    linked: z.array(reference('blog')).nullish(),  // References to other blog articles, using their `slug`.
     hero: hero.nullish(),
   }),
 });

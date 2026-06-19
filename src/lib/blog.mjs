@@ -115,6 +115,18 @@ export async function getLatestArticles(contentName, limit = BLOG_NUM_ON_HOME) {
 
 
 /**
+ * Get linked articles for a given article.
+ */
+export async function getLinkedArticles(contentName, refArticle) {
+  const rawArticles = await _getRawArticles(contentName);
+  const articles = rawArticles.filter((a) => (
+    refArticle.data.linked?.filter((la) => la.id === a.id).length > 0
+  ));
+  return hydrateArticles(contentName, sortArticles(articles));
+}
+
+
+/**
  * Get related articles for a given article (same category or shared tags).
  */
 export async function getRelatedArticles(contentName, refArticle, limit = BLOG_NUM_RELATED) {

@@ -9,6 +9,8 @@ author: Pascal Polleunus
 featured: true
 category: ""  # Singular
 tags: ["REPEAT CATEGORY"]  # All singular
+linked:
+    - template
 hero:
     image: /blog/<slug>.webp  # 1536x1024
     video: /blog/<slug>.mp4

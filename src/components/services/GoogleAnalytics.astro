@@ -1,7 +1,7 @@
 ---
 // Only rendered in production mode.
 
-import { GOOGLE_ANALYTICS_TRACKING_ID } from '@/settings';
+import { GOOGLE_ANALYTICS_TRACKING_ID, IS_PROD } from '@/settings';
 
 interface Props {
   id?: string | null;
@@ -9,7 +9,7 @@ interface Props {
 const { id = GOOGLE_ANALYTICS_TRACKING_ID } = Astro.props;
 
 
-const isActive = import.meta.env.PROD && id;
+const isActive = IS_PROD && id;
 ---
 
 

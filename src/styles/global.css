@@ -1,38 +1,69 @@
+/*
+- CSS precedence (left beats right): unlayered > utilities > components > base.
+  - Base: Element defaults / resets – goes on top of Preflight (https://tailwindcss.com/docs/preflight)
+  -`@utility` makes the class participate in variant stacking (`hover:`, `md:`…)
+- Anything visual (colors, spacing, element defaults) should go through `@theme` or a `@layer`.
+- To use Tailwind directives and functions in components (not needed for vars), you must declare: `@reference "@/styles/global.css";`
+  ⚠️ Every `@reference` adds a bit of build overhead per component! Try to avoid.
+*/
+
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
 
+/* 1. THEME ===================================================================================== */
+
+/* @config "./tailwind.config.js" */
 @theme {
   --color-background: #fafafa;
+  --color-background-light: #eaeaea;
+  --color-background-medium: #ddd;
   --color-text: #333;
   --color-primary: #1e88e5; /* Blue 600 */
   --color-accent: #7cb342;  /* Light Green 600 */
   --color-dim: #777;
+  --color-code: #b00;
   --color-error: #d32f2f;  /* Red 700 */
+  --color-marker: #aa9;
   --color-disabled: #aaa;
   --color-muted: #f5f5f5;
   --color-muted-foreground: #737373;
   --color-border: #e5e5e5;
-  --color-light-gray: #bbb;
+  --color-lgray: #bbb;
 
-  --font-body: Roboto, sans-serif;
-  --font-body-normal: 400;
-  --font-body-bold: 500;
-  /* --font-display: "Atkinson Hyperlegible", sans-serif;
-  --font-display-normal: 700; */
+  --font-body: "Roboto", sans-serif;
+  --weight-body-light: 400;
+  --weight-body-normal: 400;
+  --weight-body-strong: 500;
+
   --font-display: "Alan Sans", sans-serif;
-  --font-display-normal: 600;
-  --font-display-light: 300;
+  --weight-display-light: 300;
+  --weight-display-normal: 500;
+  --weight-display-strong: 600;
+
   --font-mono: "Roboto Mono", ui-monospace;
+  --weight-mono-light: 400;
+  --weight-mono-normal: 400;
+  --weight-mono-strong: 500;
+
+  --font-logo: var(--font-display);
+  --weight-logo-normal: 400;
 
   --default-font-family: var(--font-body);
+
+  --tw-prose-bullets: var(--color-lgray);
+  --tw-prose-code: var(--color-code);
+  --tw-prose-hr: var(--color-lgray);
 }
 
 
+/* 2. BASE LAYER ================================================================================ */
 
 @layer base {
+
   body {
-    @apply bg-background text-text;
+    color: var(--color-text);
+    background-color: var(--color-background);
   }
 
   a {
@@ -43,15 +74,26 @@
     fill: "currentColor";
     /* stroke: "currentColor"; */
   }
-}
 
+} /* @layer base */
+
+
+/* 3. COMPONENTS LAYER ========================================================================== */
+
+@layer components {
+
+  .prose {
+    line-height: 1.6;
+  } /* .prose */
+
+} /* @layer components */
+
+
+/* 4. UTILITIES ================================================================================= */
 
 @layer utilities {
-  .prose {
-    --tw-prose-bullets: var(--color-light-gray);
-    --tw-prose-code: #b00;
-    --tw-prose-hr: var(--color-light-gray);
 
+  .prose {
     a {
       color: var(--color-primary);
 
@@ -62,7 +104,7 @@
 
     h1, h2, h3, h4, h5, h6 {
       font-family: var(--font-display);
-      font-weight: var(--font-display-normal);
+      font-weight: var(--weight-display-normal);
       letter-spacing: -0.01em;
       line-height: 1.25;
     }
@@ -72,7 +114,7 @@
     h4 { font-size: 1.35em; font-weight: 500; }
 
     strong {
-      font-weight: var(--font-body-bold);
+      font-weight: var(--weight-body-strong);
     }
 
     em {
@@ -86,12 +128,12 @@
     }
 
     code:not(.astro-code code) {
-      background-color: #eaeaea;
-      color: #800;
+      background-color: var(--color-background-light);
+      color: var(--color-code);
       border-radius: 4px;
       padding: 2px 4px;
       /* margin-inline: 2px; */
-      font-weight: var(--font-body-normal);
+      font-weight: var(--weight-body-normal);
 
       &::before { content: none; }
       &::after  { content: none; }
@@ -106,19 +148,16 @@
     .astro-code[data-language="text"] {
       white-space: pre-wrap;
     }
-  }
-}
+
+  } /* .prose */
+
+} /* @layer utilities */
 
 
-@layer components {
-  .prose {
-    line-height: 1.6;
-  }
-}
-
+/* 5. GLOBAL ==================================================================================== */
 
 a {
-  font-weight: var(--font-body-normal);
+  font-weight: var(--weight-body-normal);
   text-decoration: none;
 
   &:hover {
@@ -185,9 +224,9 @@ q {
   font-style: italic;
   quotes: "“" "”";
 
-  &::before, &::after { @apply text-dim; }
+  &::before, &::after { color: var(--color-dim); }
   &::before { content: open-quote; }
-  &::after { content: close-quote; }
+  &::after  { content: close-quote; }
 }
 
 blockquote:has(+ .author) {
@@ -214,19 +253,23 @@ q + .author {
   font-style: normal;
   quotes: "‘" "’";
 
-  &::before, &::after { @apply text-dim; }
+  &::before, &::after { color: var(--color-dim); }
   &::before { content: open-quote; }
-  &::after { content: close-quote; }
+  &::after  { content: close-quote; }
 }
 
 blockquote.unstyled {
-  font-weight: var(--font-body-normal);
+  font-weight: var(--weight-body-normal);
 
   p {
     line-height: 1.5;
     margin-block: 1em;
+
+    &:first-of-type::before,
+    &:last-of-type::after {
+      content: "";
+    }
   }
-  p:first-of-type::before, p:last-of-type::after { content: ""; }
 }
 
 .remark {

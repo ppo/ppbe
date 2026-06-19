@@ -94,10 +94,10 @@ export const LINK_PAGE_NAV = [
 
 /** @type {import('./types/settings').Fonts} */
 export const FONTS = {
-  // display: { name: 'Atkinson Hyperlegible', weights: [700], },  // Available: 4, 7
-  display: { name: 'Alan Sans', weights: [300, 500, 600], },  // Available: 3-9
   body: { name: 'Roboto', weights: [400, 500], },  // Available: 1-9
+  display: { name: 'Alan Sans', weights: [300, 500, 600], },  // Available: 3-9
   mono: { name: 'Roboto Mono', weights: [400, 500], },  // Available: 1-7
+  // logo: { name: '', weights: [], },  // Available:
   // icons: { name: 'Material Icons', },
 };
 

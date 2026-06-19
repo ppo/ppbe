@@ -1,8 +1,8 @@
 ---
-slug: 
+slug: template-full
 publishedAt: 2000-12-31T23:59:59+0200  # Shell: `now` (alias: `date "+%Y-%m-%dT%H:%M:%S%z" | pbcopy`)
 createdAt: 
-title: ""  # Title Capitalization (CMOS)
+title: "Template Full"  # Title Capitalization (CMOS)
 subtitle: ""  # Regular sentence capitalization
 abstract: ""
 author: Pascal Polleunus

@@ -115,16 +115,17 @@ export async function getLatestArticles(contentName, limit = BLOG_NUM_ON_HOME) {
 
 
 /**
- * Get related articles for a given article.
+ * Get related articles for a given article (same category or shared tags).
  */
 export async function getRelatedArticles(contentName, refArticle, limit = BLOG_NUM_RELATED) {
   const rawArticles = await _getRawArticles(contentName);
   const relatedArticles = rawArticles.filter((a) => (
     // Exclude current article
-    a.slug !== refArticle.slug && (
+    a.data.slug !== refArticle.data.slug
+    && (
       // Same category or shared tags
-      a.data.category === refArticle.data.category ||
-      a.data.tags?.some((tag) => refArticle.data.tags?.includes(tag))
+      a.data.category === refArticle.data.category
+      || a.data.tags?.some((tag) => refArticle.data.tags?.includes(tag))
     )
   ));
   const articles = limit ? relatedArticles.slice(0, limit) : relatedArticles;

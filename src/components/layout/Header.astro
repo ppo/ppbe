@@ -29,8 +29,6 @@ const { class: className } = Astro.props;
 
 
 <style>
-  @reference "@/styles/global.css";
-
   h1 {
     font-family: var(--font-body);
     letter-spacing: normal;
@@ -38,15 +36,20 @@ const { class: className } = Astro.props;
   }
 
   a {
-    @apply text-text hover:text-primary;
+    color: var(--color-text);
 
     &:hover {
+      color: var(--color-primary);
       text-decoration: none;
     }
 
     &.highlight {
-      @apply text-accent hover:text-primary;
+      color: var(--color-accent);
       font-weight: var(--weight-body-strong);
+
+      &:hover {
+        color: var(--color-primary);
+      }
     }
   }
 </style>

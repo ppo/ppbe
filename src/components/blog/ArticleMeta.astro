@@ -16,12 +16,12 @@ const tags = formatTags(removeCategoryFromTags(Astro.props.tags, category));
 
 
 <div class="flex flex-col-reverse justify-start sm:flex-row sm:justify-between sm:items-center font-light text-dim text-base mb-4">
-  <div>
+  <div class="flex items-center gap-2 sm:block">
     {category && (<div>{category}</div>)}
     {(category && tags) && (<span class="sm:hidden">•</span>)}
     {tags && (<div class="text-sm">{tags}</div>)}
   </div>
-  <div class="sm:text-right">
+  <div class="flex items-center gap-2 sm:block sm:text-right">
     <Time date={publishedAt} format={FORMATS.DATE} title="Published on" />
     {createdAt && (
       <Time date={createdAt} format={FORMATS.DATE} title="Created on" hide={true} />
@@ -32,12 +32,3 @@ const tags = formatTags(removeCategoryFromTags(Astro.props.tags, category));
     </>)}
   </div>
 </div>
-
-
-<style>
-  @reference "@/styles/global.css";
-
-  div > div {
-    @apply flex items-center gap-2 sm:block;
-  }
-</style>

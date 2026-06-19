@@ -18,7 +18,7 @@ const hero = z.object({
 
 
 const blog = defineCollection({
-  loader: glob({ base: './src/content/blog', pattern: '**/!(_)*.{md,mdx}' }),
+  loader: glob({ base: './src/content/blog', pattern: '**/[^_]*.{md,mdx}' }),
   schema: z.object({
     slug: z.string().nullish(),
     publishedAt: z.coerce.date().nullable(), // The reference date for sorting

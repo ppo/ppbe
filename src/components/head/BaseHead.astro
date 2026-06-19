@@ -22,7 +22,7 @@ const image = getFirstDefined(Astro.props.image, HTML_HEAD.image);
 
 const pageUrl = getFullUrl(Astro);
 
-const rssUrl = new URL('rss.xml', Astro.site);
+const rssUrl = new URL('rss.xml', import.meta.env.SITE);
 const rssTitle = `RSS: ${HTML_HEAD.title}`;
 ---
 

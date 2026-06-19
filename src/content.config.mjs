@@ -1,4 +1,6 @@
-import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
+import { z } from 'astro/zod';
+import { defineCollection } from 'astro:content';
 
 
 const hero = z.object({
@@ -16,7 +18,7 @@ const hero = z.object({
 
 
 const blog = defineCollection({
-  type: 'content',
+  loader: glob({ base: './src/content/blog', pattern: '**/!(_)*.{md,mdx}' }),
   schema: z.object({
     slug: z.string().nullish(),
     publishedAt: z.coerce.date().nullable(), // The reference date for sorting

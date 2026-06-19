@@ -6,6 +6,7 @@ import ArticleMeta from '@/components/blog/ArticleMeta.astro';
 import { isFutureArticle } from '@/lib/blog';
 import { FORMATS } from '@/lib/format';
 import { IS_DEV } from '@/settings';
+import { render } from 'astro:content';
 
 
 // interface Props {
@@ -28,7 +29,7 @@ const {
   hero,
 } = article.data;
 
-const { Content } = await article.render();
+const { Content } = await render(article);
 const isFuture = isFutureArticle(article);
 ---
 

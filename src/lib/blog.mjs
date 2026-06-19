@@ -81,7 +81,7 @@ export async function getTags(contentName) {
  */
 export async function getAdjacentArticles(contentName, refArticle) {
   const rawArticles = await _getRawArticles(contentName, true);
-  const currentIndex = rawArticles.findIndex((a) => a.slug === refArticle.slug);
+  const currentIndex = rawArticles.findIndex((a) => a.data.slug === refArticle.data.slug);
   const prevIndex = currentIndex < rawArticles.length - 1 ? currentIndex + 1 : null;
   const nextIndex = currentIndex > 0 ? currentIndex - 1 : null;
 
@@ -137,7 +137,7 @@ export async function getRelatedArticles(contentName, refArticle, limit = BLOG_N
  */
 export async function getArticleBySlug(contentName, slug) {
   const rawArticles = await _getRawArticles(contentName);
-  return rawArticles.find((a) => a.slug === slug);
+  return rawArticles.find((a) => a.data.slug === slug);
 }
 
 
@@ -167,7 +167,7 @@ export async function getArticlesByTag(contentName, tag) {
  * Add `url`.
  */
 function hydrateArticle(contentName, article) {
-  article.url = getNamedPath(contentName, article.slug);
+  article.url = getNamedPath(contentName, article.data.slug);
   return article;
 }
 

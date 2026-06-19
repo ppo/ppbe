@@ -53,7 +53,7 @@ export function getFullUrl(Astro, path) {
   const realPath = path
     ? ( path.startsWith('/') ? path : `${Astro.url.pathname}/${path}` )
     : Astro.url.pathname;
-  return new URL(cleanUrl(realPath), Astro.site);
+  return new URL(cleanUrl(realPath), import.meta.env.SITE);
 }
 
 

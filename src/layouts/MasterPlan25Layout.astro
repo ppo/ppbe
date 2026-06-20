@@ -1,8 +1,11 @@
 ---
+import { ROUTES } from '@/settings';
+
+import { getNamedPath } from '@/lib/url';
+
 import MyEmail from '@/components/MyEmail.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
-import { getNamedPath } from '@/lib/url';
-import { ROUTES } from '@/settings';
+
 
 interface Props {
   title?: string | null;

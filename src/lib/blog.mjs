@@ -20,8 +20,9 @@ article: {
 
 import { getCollection } from 'astro:content';
 
-import { getNamedPath } from '@/lib/url';
 import { BLOG_NUM_ON_HOME, BLOG_NUM_RELATED } from '@/settings';
+
+import { getNamedPath } from '@/lib/url';
 
 
 async function _getRawArticles(contentName, sorted = false) {

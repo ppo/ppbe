@@ -1,11 +1,12 @@
 ---
+// TODO: Bug in prod // import { Image } from 'astro:assets';
+
 import { ROUTES, URLS, WHERE_AM_I } from '@/settings';
 
-// TODO: Bug in prod // import { Image } from 'astro:assets';
+import { getNamedPath } from '@/lib/url';
 
 import MyEmail from '@/components/MyEmail.astro';
 import PageLayout from '@/layouts/PageLayout.astro';
-import { getNamedPath } from '@/lib/url';
 
 // TODO: Bug in prod // import profilePicture from '@/media/pascal-polleunus.webp';
 ---

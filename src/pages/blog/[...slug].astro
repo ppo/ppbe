@@ -3,12 +3,12 @@ export const prerender = true;
 
 import { type CollectionEntry, getCollection } from 'astro:content';
 
+// TODO: import { filterObject } from '@/lib/main';
+// TODO: import { getNamedPath } from '@/lib/url';
+
 import BlogArticle from '@/components/blog/Article.astro';
 import DetailNav from '@/components/blog/DetailNav.astro';
 import Layout from '@/layouts/BlogLayout.astro';
-
-// TODO: import { filterObject } from '@/lib/main';
-// TODO: import { getNamedPath } from '@/lib/url';
 
 
 export async function getStaticPaths() {

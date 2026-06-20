@@ -1,8 +1,9 @@
 ---
+import { getLatestArticles } from '@/lib/blog';
+
 import BlogList from '@/components/blog/List.astro';
 import WorkingOn from '@/components/WorkingOn.astro';
 import PageLayout from '@/layouts/PageLayout.astro';
-import { getLatestArticles } from '@/lib/blog';
 
 
 const latestBlogArticles = await getLatestArticles('blog');

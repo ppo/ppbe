@@ -1,5 +1,6 @@
-import { getStaticFullUrl } from '@/lib/url';
 import { ROUTES } from '@/settings';
+
+import { getStaticFullUrl } from '@/lib/url';
 
 
 const robotsTxt = `

@@ -1,10 +1,12 @@
 ---
 // TODO: import { getImage, Image } from 'astro:assets';
 
-import Time from '@/components/Time.astro';
+import { IS_PROD } from '@/settings';
+
 import { isFutureArticle } from '@/lib/blog';
 import { FORMATS } from '@/lib/format';
-import { IS_PROD } from '@/settings';
+
+import Time from '@/components/Time.astro';
 
 
 interface Props {

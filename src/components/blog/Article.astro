@@ -1,11 +1,14 @@
 ---
+import { render } from 'astro:content';
+
+import { IS_DEV } from '@/settings';
+
+import { isFutureArticle } from '@/lib/blog';
+import { FORMATS } from '@/lib/format';
+
 import Hero from '@/components/Hero.astro';
 import Time from '@/components/Time.astro';
 import ArticleMeta from '@/components/blog/ArticleMeta.astro';
-import { isFutureArticle } from '@/lib/blog';
-import { FORMATS } from '@/lib/format';
-import { IS_DEV } from '@/settings';
-import { render } from 'astro:content';
 
 
 // interface Props {

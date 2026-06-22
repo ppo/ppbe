@@ -16,8 +16,6 @@
 /* @config "./tailwind.config.js" */
 @theme {
   --color-background: #fafafa;
-  --color-background-light: #eaeaea;
-  --color-background-medium: #ddd;
   --color-text: #333;
   --color-primary: #1e88e5; /* Blue 600 */
   --color-accent: #7cb342;  /* Light Green 600 */
@@ -33,6 +31,9 @@
   --color-lgray: #bbb;
   --color-mgray: #888;
   --color-dgray: #666;
+  --color-bg-lgray: #eaeaea;
+  --color-bg-mgray: #ddd;
+  --color-bg-dgray: #bbb;
 
   --font-body: "Roboto", sans-serif;
   --weight-body-light: 400;
@@ -96,6 +97,7 @@
     --tw-prose-bullets: var(--color-lgray);
     --tw-prose-code: var(--color-code);
     --tw-prose-hr: var(--color-lgray);
+    --tw-prose-quote-borders: var(--color-bg-mgray);
 
     a {
       color: var(--color-primary);
@@ -131,7 +133,7 @@
     }
 
     code:not(.astro-code code) {
-      background-color: var(--color-background-light);
+      background-color: var(--color-bg-lgray);
       color: var(--color-code);
       border-radius: 4px;
       padding: 2px 4px;
@@ -281,7 +283,7 @@ q + .author {
 }
 
 .remark {
+  border: 0 solid var(--color-accent); border-left-width: 4px;
   margin-block: 1.6em;
   padding-left: 1em;
-  border: 0 solid var(--color-accent); border-left-width: 4px;
 }

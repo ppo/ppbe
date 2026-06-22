@@ -29,7 +29,10 @@
   --color-muted: #f5f5f5;
   --color-muted-foreground: #737373;
   --color-border: #e5e5e5;
+
   --color-lgray: #bbb;
+  --color-mgray: #888;
+  --color-dgray: #666;
 
   --font-body: "Roboto", sans-serif;
   --weight-body-light: 400;
@@ -50,10 +53,6 @@
   --weight-logo-normal: 400;
 
   --default-font-family: var(--font-body);
-
-  --tw-prose-bullets: var(--color-lgray);
-  --tw-prose-code: var(--color-code);
-  --tw-prose-hr: var(--color-lgray);
 }
 
 
@@ -94,6 +93,10 @@
 @layer utilities {
 
   .prose {
+    --tw-prose-bullets: var(--color-lgray);
+    --tw-prose-code: var(--color-code);
+    --tw-prose-hr: var(--color-lgray);
+
     a {
       color: var(--color-primary);
 
@@ -155,6 +158,8 @@
 
 
 /* 5. GLOBAL ==================================================================================== */
+
+fragment { display: inline; }
 
 a {
   font-weight: var(--weight-body-normal);
@@ -229,13 +234,28 @@ q {
   &::after  { content: close-quote; }
 }
 
-blockquote:has(+ .author) {
-  margin-bottom: 0;
+blockquote {
+  color: var(--color-dgray);
+  font-weight: var(--weight-body-normal);
+  padding: 0.25em 0.75em;
+  quotes: "" "";
+
+  > *:first-child { margin-top: 0; }
+  > *:last-child  { margin-bottom: 0; }
+
+  p {
+    line-height: 1.5;
+    margin-block: 1em;
+  }
+
+  &:has(+ .author) {
+    margin-bottom: 0;
+  }
 }
 
-blockquote cite,
+blockquote > cite,
 q + .author {
-  @apply text-dim;
+  color: var(--color-dim);
   display: block;
   white-space: nowrap;
 
@@ -246,30 +266,18 @@ q + .author {
 
   a {
     color: inherit;
+    border-bottom: 1px dotted var(--color-lgray);
+
+    &:hover {
+      border-bottom: 1px solid var(--color-dim);
+      text-decoration: none;
+    }
   }
 }
 
 .author cite {
-  font-style: normal;
-  quotes: "‘" "’";
-
-  &::before, &::after { color: var(--color-dim); }
-  &::before { content: open-quote; }
-  &::after  { content: close-quote; }
-}
-
-blockquote.unstyled {
-  font-weight: var(--weight-body-normal);
-
-  p {
-    line-height: 1.5;
-    margin-block: 1em;
-
-    &:first-of-type::before,
-    &:last-of-type::after {
-      content: "";
-    }
-  }
+  display: inline-block;
+  font-style: inherit;
 }
 
 .remark {

@@ -1,0 +1,15 @@
+---
+interface Props {
+  author: string;
+}
+const { author } = Astro.props;
+
+const quote = await Astro.slots.render('default');
+const cite = Astro.slots.has('cite')
+  ? await Astro.slots.render('cite')
+  : null;
+---
+
+
+<q set:html={quote.trim()} />
+<span class="author">{author}{cite && <Fragment set:html={cite.trim()} />}</span>

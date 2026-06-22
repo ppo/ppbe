@@ -6,6 +6,7 @@ import { ROUTES, URLS, WHERE_AM_I } from '@/settings';
 import { getNamedPath } from '@/lib/url';
 
 import MyEmail from '@/components/MyEmail.astro';
+import Quote from '@/components/Quote.astro';
 import PageLayout from '@/layouts/PageLayout.astro';
 
 // TODO: Bug in prod // import profilePicture from '@/media/pascal-polleunus.webp';
@@ -89,64 +90,76 @@ import PageLayout from '@/layouts/PageLayout.astro';
       <li><strong>Fun</strong>        <span class="text-dim">—</span> I’m serious but not boring, enjoying what I do</li>
     </ul>
 
-    <q>I’m the type of person that if you ask me a question and I don’t know the answer, I’m
-      gonna tell you that I don’t know. But I bet you what, I know how to find the answer and I
-      will find the answer.</q>
-    <span class="author">Chris Gardner, in
-      <cite><a href="https://youtube.com/clip/UgkxpQyPVrnaE0A_APJiBJSuf7cNrDjlZhJr">The Pursuit of Happyness</a></cite>
-    </span>
+    <blockquote>
+      <Quote author="Chris Gardner">
+        <>I’m the type of person that if you ask me a question and I don’t know the answer,
+          I’m gonna tell you that I don’t know. But I bet you what, I know how to find the answer
+          and I will find the answer.</>
+        <cite slot="cite">
+          , “<a href="https://youtube.com/clip/UgkxpQyPVrnaE0A_APJiBJSuf7cNrDjlZhJr">The Pursuit of Happyness</a>”
+        </cite>
+      </Quote>
+    </blockquote>
 
 
     <h2 id="favorite-quotes">Favorite Quotes</h2>
-    <ul class="unstyled">
-      <li>
-        <q>We can’t solve problems by using the same kind of thinking we used when we created
-          them.</q>
-        <span class="author">Albert Einstein</span>
-      </li>
-      <li>
-        <q>We are what we repeatedly do. Excellence, then, is not an act, but a habit.</q>
-        <span class="author">Aristotle</span>
-      </li>
-      <li>
-        <q>It seems that perfection is attained not when there is nothing more to add, but when
-          there is nothing more to remove.</q>
-        <span class="author">Antoine de Saint Exupéry</span>
-      </li>
-      <li>
-        <q>Simplicity is the ultimate sophistication.</q>
-        <span class="author">Leonardo da Vinci</span>
-      </li>
-      <li>
-        <q>The mind, once stretched by a new idea, never returns to its original dimensions.</q>
-        <span class="author">Ralph Waldo Emerson</span>
-      </li>
-      <li>
-        <q>Happiness is when what you think, what you say, and what you do are in harmony.</q>
-        <span class="author">Mahatma Gandhi</span>
-      </li>
-      <li>
-        <q>Don’t ever let someone tell you you can’t do something. Not even me. You got a dream,
+    <p>
+      <Quote author="Albert Einstein">
+        We can’t solve problems by using the same kind of thinking we used when we created them.
+      </Quote>
+    </p>
+    <p>
+      <Quote author="Aristotle">
+        We are what we repeatedly do. Excellence, then, is not an act, but a habit.
+      </Quote>
+    </p>
+    <p>
+      <Quote author="Antoine de Saint Exupéry">
+        It seems that perfection is attained not when there is nothing more to add,
+        but when there is nothing more to remove.
+      </Quote>
+    </p>
+    <p>
+      <Quote author="Leonardo da Vinci">
+        Simplicity is the ultimate sophistication.
+      </Quote>
+    </p>
+    <p>
+      <Quote author="Ralph Waldo Emerson">
+        The mind, once stretched by a new idea, never returns to its original dimensions.
+      </Quote>
+    </p>
+    <p>
+      <Quote author="Mahatma Gandhi">
+        Happiness is when what you think, what you say, and what you do are in harmony.
+      </Quote>
+    </p>
+    <p>
+      <Quote author="Chris Gardner">
+        <>Don’t ever let someone tell you you can’t do something. Not even me. You got a dream,
           you gotta protect it. People can’t do somethin’ themselves, they wanna tell you you
-          can’t do it. You want somethin’, go get it. Period.</q>
-        <span class="author">Chris Gardner, in
-          <cite><a href="https://youtube.com/clip/UgxRWIQcmZXXviXX3yN4AaABCQ">The Pursuit of Happyness</a></cite>
-        </span>
-      </li>
-      <li>
-        <q>1+1=? 2. No, 1! Or maybe 1+1=11. And that’s beautiful.</q>
-        <span class="author">
-          <cite><a href="https://youtu.be/FTKV29C7yJE">JCVD</a></cite>…
-          Belgian so knows “Unity Makes Strength”</span>
-      </li>
-      <li>
-        <q>Forget you haven’t got a chance, just go for it! You never know, […], it might just
-          work.</q>
-        <span class="author">Jean-Claude Dusse, in
-          <cite><a href="https://youtu.be/kf_yBGpVVS8">Les bronzés font du ski</a></cite>
-        </span>
-      </li>
-    </ul>
+          can’t do it. You want somethin’, go get it. Period.</>
+        <cite slot="cite">
+          , “<a href="https://youtube.com/clip/UgxRWIQcmZXXviXX3yN4AaABCQ">The Pursuit of Happyness</a>”
+        </cite>
+      </Quote>
+    </p>
+    <p>
+      <Quote author="JCVD">
+        <>1+1=? 2. No, 1! Or maybe 1+1=11. And that’s beautiful.</>
+        <cite slot="cite">
+          … <a href="https://youtu.be/FTKV29C7yJE">a Belgian who knows “Unity Makes Strength”</a>
+        </cite>
+      </Quote>
+    </p>
+    <p>
+      <Quote author="Jean-Claude Dusse">
+        <>Forget you haven’t got a chance, just go for it! You never know, […], it might just work.</>
+        <cite slot="cite">
+          , “<a href="https://youtu.be/kf_yBGpVVS8">Les bronzés font du ski</a>”
+        </cite>
+      </Quote>
+    </p>
 
 
     <h2 id="professional-life">Professional Life</h2>

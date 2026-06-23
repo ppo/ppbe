@@ -20,7 +20,7 @@ const { class: className } = Astro.props;
     </h1>
       {IS_DEV && <a href={`${SITE_URL}${Astro.url.pathname}`} title="Page in Prod">⇪</a>}
     <nav>
-      <ul class="flex space-x-4 font-light">
+      <ul class="flex space-x-4">
         {MAIN_NAV.map(({label, url, style}) => (
           <li><a href={url} class={style}>{label}</a></li>
         ))}
@@ -47,11 +47,15 @@ const { class: className } = Astro.props;
 
     &.highlight {
       color: var(--color-accent);
-      font-weight: var(--weight-body-strong);
+      font-weight: var(--weight-body-bold);
 
       &:hover {
         color: var(--color-primary);
       }
     }
+  }
+
+  ul {
+    font-weight: var(--weight-body-light);
   }
 </style>

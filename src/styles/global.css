@@ -20,9 +20,7 @@
   --color-primary: #1e88e5; /* Blue 600 */
   --color-accent: #7cb342;  /* Light Green 600 */
   --color-dim: #777;
-  --color-code: #b00;
   --color-error: #d32f2f;  /* Red 700 */
-  --color-marker: #aa9;
   --color-disabled: #aaa;
   --color-muted: #f5f5f5;
   --color-muted-foreground: #737373;
@@ -35,20 +33,26 @@
   --color-bg-mgray: #ddd;
   --color-bg-dgray: #bbb;
 
+  --color-bullets: var(--color-lgray);
+  --color-code: #b00;
+  --color-hr: var(--color-lgray);
+  --color-marker: #aa9;
+  --color-quote-borders: var(--color-bg-mgray);
+
   --font-body: "Roboto", sans-serif;
   --weight-body-light: 400;
   --weight-body-normal: 400;
-  --weight-body-strong: 500;
+  --weight-body-bold: 500;
 
   --font-display: "Alan Sans", sans-serif;
   --weight-display-light: 300;
   --weight-display-normal: 500;
-  --weight-display-strong: 600;
+  --weight-display-bold: 600;
 
   --font-mono: "Roboto Mono", ui-monospace;
   --weight-mono-light: 400;
   --weight-mono-normal: 400;
-  --weight-mono-strong: 500;
+  --weight-mono-bold: 500;
 
   --font-logo: var(--font-display);
   --weight-logo-normal: 400;
@@ -84,7 +88,7 @@
 
   .prose {
     line-height: 1.6;
-  } /* .prose */
+  }
 
 } /* @layer components */
 
@@ -94,10 +98,11 @@
 @layer utilities {
 
   .prose {
-    --tw-prose-bullets: var(--color-lgray);
+
+    --tw-prose-bullets: var(--color-bullets);
     --tw-prose-code: var(--color-code);
-    --tw-prose-hr: var(--color-lgray);
-    --tw-prose-quote-borders: var(--color-bg-mgray);
+    --tw-prose-hr: var(--color-hr);
+    --tw-prose-quote-borders: var(--color-quote-borders);
 
     a {
       color: var(--color-primary);
@@ -119,7 +124,7 @@
     h4 { font-size: 1.35em; font-weight: 500; }
 
     strong {
-      font-weight: var(--weight-body-strong);
+      font-weight: var(--weight-body-bold);
     }
 
     em {
@@ -226,6 +231,14 @@ ul.unstyled {
   }
 }
 
+.remark {
+  border: 0 solid var(--color-accent); border-left-width: 4px;
+  margin-block: 1.6em;
+  padding-left: 1em;
+}
+
+/* QUOTES & BLOCKQUOTES ------------------------------------------------------------------------- */
+
 q {
   display: block;
   font-style: italic;
@@ -280,10 +293,4 @@ q + .author {
 .author cite {
   display: inline-block;
   font-style: inherit;
-}
-
-.remark {
-  border: 0 solid var(--color-accent); border-left-width: 4px;
-  margin-block: 1.6em;
-  padding-left: 1em;
 }

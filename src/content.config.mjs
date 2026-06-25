@@ -31,7 +31,7 @@ const blog = defineCollection({
     category: z.string().nullish(),
     tags: z.array(z.string()).nullish(),
     // collection: z.string().nullish(),
-    linked: z.array(reference('blog')).nullish(),  // References to other blog articles, using their `slug`.
+    related: z.array(reference('blog')).nullish(),  // References to related blog articles, using their `slug`.
     hero: hero.nullish(),
   }),
 });

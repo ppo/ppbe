@@ -3,7 +3,7 @@ import { render } from 'astro:content';
 
 import { IS_DEV } from '@/settings';
 
-import { getLinkedArticles, isFutureArticle } from '@/lib/blog';
+import { getRelatedArticles, isFutureArticle } from '@/lib/blog';
 import { FORMATS } from '@/lib/format';
 
 import Hero from '@/components/Hero.astro';
@@ -34,7 +34,7 @@ const {
 
 const { Content } = await render(article);
 const isFuture = isFutureArticle(article);
-const linkedArticles = await getLinkedArticles(article);
+const relatedArticles = await getRelatedArticles(article);
 ---
 
 
@@ -59,8 +59,8 @@ const linkedArticles = await getLinkedArticles(article);
       <Content />
     </>)}
 
-    {linkedArticles && (
-      <RelArticles title="Linked Articles" articles={linkedArticles} />
+    {relatedArticles && (
+      <RelArticles title="Related Articles" articles={relatedArticles} />
     )}
   </div>
 </article>

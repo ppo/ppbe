@@ -100,7 +100,7 @@ export async function getLatestArticles(collection, limit = BLOG_NUM_ON_HOME) {
 
 
 /**
- * Get previous and next articles for a given article.
+ * Get previous and next articles for the given article.
  */
 export async function getAdjacentArticles(refArticle) {
   const rawArticles = await _getRawArticles(refArticle.collection, true);
@@ -116,23 +116,23 @@ export async function getAdjacentArticles(refArticle) {
 
 
 /**
- * Get linked articles for a given article.
+ * Get related articles of the given article.
  */
-export async function getLinkedArticles(refArticle) {
-  if (!refArticle.data.linked) return [];
+export async function getRelatedArticles(refArticle) {
+  if (!refArticle.data.related) return [];
   const articles = await Promise.all(
-    refArticle.data.linked.map(({ id }) => getEntry(refArticle.collection, id))
+    refArticle.data.related.map(({ id }) => getEntry(refArticle.collection, id))
   );
   return hydrateArticles(sortArticles(articles));
 }
 
 
 /**
- * Get related articles for a given article (same category or shared tags).
+ * Get articles similar to the given article (same category or shared tags).
  */
-export async function getRelatedArticles(refArticle, limit = BLOG_NUM_RELATED) {
+export async function getSimilarArticles(refArticle, limit = BLOG_NUM_RELATED) {
   const rawArticles = await _getRawArticles(refArticle.collection);
-  const relatedArticles = rawArticles.filter((a) => (
+  const similarArticles = rawArticles.filter((a) => (
     // Exclude current article
     a.data.slug !== refArticle.data.slug
     && (
@@ -141,7 +141,7 @@ export async function getRelatedArticles(refArticle, limit = BLOG_NUM_RELATED) {
       || a.data.tags?.some((tag) => refArticle.data.tags?.includes(tag))
     )
   ));
-  const articles = limit ? relatedArticles.slice(0, limit) : relatedArticles;
+  const articles = limit ? similarArticles.slice(0, limit) : similarArticles;
   return hydrateArticles(sortArticles(articles));
 }
 

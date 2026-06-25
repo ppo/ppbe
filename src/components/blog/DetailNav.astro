@@ -6,7 +6,7 @@ import { getAdjacentArticles } from '@/lib/blog';
 
 const { contentName, article } = Astro.props;
 type Props = CollectionEntry<contentName>;
-const { prev: prevArticle, next: nextArticle } = await getAdjacentArticles(contentName, article);
+const { prev: prevArticle, next: nextArticle } = await getAdjacentArticles(article);
 ---
 
 

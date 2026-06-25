@@ -2,6 +2,9 @@
 import ListItem from '@/components/blog/ListItem.astro';
 
 
+interface Props {
+  articles: Collection<'blog'>,
+};
 const { articles } = Astro.props;
 ---
 

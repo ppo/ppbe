@@ -18,7 +18,7 @@ article: {
 */
 
 
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 
 import { BLOG_NUM_ON_HOME, BLOG_NUM_RELATED } from '@/settings';
 
@@ -119,10 +119,10 @@ export async function getAdjacentArticles(refArticle) {
  * Get linked articles for a given article.
  */
 export async function getLinkedArticles(refArticle) {
-  const rawArticles = await _getRawArticles(refArticle.collection);
-  const articles = rawArticles.filter((a) => (
-    refArticle.data.linked?.filter((la) => la.id === a.id).length > 0
-  ));
+  if (!refArticle.data.linked) return [];
+  const articles = await Promise.all(
+    refArticle.data.linked.map(({ id }) => getEntry(refArticle.collection, id))
+  );
   return hydrateArticles(sortArticles(articles));
 }
 

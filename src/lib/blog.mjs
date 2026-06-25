@@ -151,7 +151,8 @@ export async function getRelatedArticles(refArticle, limit = BLOG_NUM_RELATED) {
  */
 export async function getArticleBySlug(collection, slug) {
   const rawArticles = await _getRawArticles(collection);
-  return rawArticles.find((a) => a.data.slug === slug);
+  const article = rawArticles.find((a) => a.data.slug === slug);
+  return hydrateArticle(article);
 }
 
 

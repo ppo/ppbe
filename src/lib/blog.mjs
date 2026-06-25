@@ -119,7 +119,7 @@ export async function getAdjacentArticles(refArticle) {
  * Get related articles of the given article.
  */
 export async function getRelatedArticles(refArticle) {
-  if (!refArticle.data.related) return [];
+  if (!refArticle.data.related) return;
   const articles = await Promise.all(
     refArticle.data.related.map(({ id }) => getEntry(refArticle.collection, id))
   );

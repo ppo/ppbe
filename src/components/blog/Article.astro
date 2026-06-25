@@ -3,12 +3,13 @@ import { render } from 'astro:content';
 
 import { IS_DEV } from '@/settings';
 
-import { isFutureArticle } from '@/lib/blog';
+import { getLinkedArticles, isFutureArticle } from '@/lib/blog';
 import { FORMATS } from '@/lib/format';
 
 import Hero from '@/components/Hero.astro';
 import Time from '@/components/Time.astro';
 import ArticleMeta from '@/components/blog/ArticleMeta.astro';
+import RelArticles from '@/components/blog/RelArticles.astro';
 
 
 // interface Props {
@@ -33,6 +34,7 @@ const {
 
 const { Content } = await render(article);
 const isFuture = isFutureArticle(article);
+const linkedArticles = await getLinkedArticles(article);
 ---
 
 
@@ -56,6 +58,10 @@ const isFuture = isFutureArticle(article);
       {hero && (<Hero {...hero} />)}
       <Content />
     </>)}
+
+    {linkedArticles && (
+      <RelArticles title="Linked Articles" articles={linkedArticles} />
+    )}
   </div>
 </article>
 

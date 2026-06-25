@@ -1,0 +1,25 @@
+---
+import { FORMATS } from '@/lib/format';
+
+import Time from '@/components/Time.astro';
+
+
+interface Props {
+  title: string;
+  articles: Collection<'blog'>,
+};
+const { title, articles } = Astro.props;
+---
+
+
+<nav class="mt-10 pt-5 border-t border-gray-200">
+  <h6 class="mt-2">{title}</h6>
+  <ul>
+    {articles.map((article) => (
+      <li>
+        <a href={article.url}>{article.data.title}</a>
+        <span class="text-sm text-dim">(<Time date={article.data.publishedAt} format={FORMATS.DATE} />)</span>
+      </li>
+    ))}
+  </ul>
+</nav>

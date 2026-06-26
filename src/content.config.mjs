@@ -29,7 +29,7 @@ const blog = defineCollection({
     author: z.string().nullish(),
     featured: z.boolean().nullish(),
     category: z.string().nullish(),
-    tags: z.array(z.string()).nullish(),
+    tags: z.array(z.string()).nullish(),  // `category` is also used for getting & filtering by `tags`.
     // collection: z.string().nullish(),
     related: z.array(reference('blog')).nullish(),  // References to related blog articles, using their `slug`.
     hero: hero.nullish(),

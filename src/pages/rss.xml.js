@@ -7,7 +7,7 @@ import { getStaticFullUrl } from '@/lib/url';
 
 
 export async function GET(context) {
-  const blog = await getArticlesForRss('blog');
+  const blog = await getArticlesForRss();
 
   return rss({
     title: HTML_HEAD.title,

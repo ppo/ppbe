@@ -1,8 +1,9 @@
 ---
 export const prerender = true;
 
-import { type CollectionEntry, getCollection } from 'astro:content';
+import { type CollectionEntry } from 'astro:content';
 
+import { hydrateArticle, getRawArticles } from '@/lib/blog';
 // TODO: import { filterObject } from '@/lib/main';
 // TODO: import { getNamedPath } from '@/lib/url';
 
@@ -12,7 +13,7 @@ import Layout from '@/layouts/BlogLayout.astro';
 
 
 export async function getStaticPaths() {
-  const articles = await getCollection('blog');
+  const articles = await getRawArticles();
   return articles.map((article) => ({
     params: { slug: article.data.slug },
     props: article,
@@ -21,7 +22,7 @@ export async function getStaticPaths() {
 
 
 type Props = CollectionEntry<'blog'>;
-const article = Astro.props;
+const article = hydrateArticle(Astro.props);
 const headProps = {
   title: article.data.title,
   description: article.data.abstract,
@@ -41,5 +42,5 @@ const headProps = {
     <BlogArticle {article} />
   </main>
 
-  <DetailNav contentName="blog" {article} />
+  <DetailNav collection="blog" {article} />
 </Layout>

@@ -1,13 +1,12 @@
 // TODO: Mix object (to simplify the functions) & functions (for easier interface)
-// TODO: Hydrate article => article.url
 /*
 article: {
   collection: 'blog',
-  id: 'example-post-1.md',
+  id: 'example-post-1',
   slug: 'example-post-1',
-  filePath: 'src/content/blog/example-post-1.md',
+  filePath: 'src/content/blog/251231.example-post-1.md',
   digest: '510c77829f3dd993',
-  data: // see content/config › blog
+  data: // see `src/content.config.mjs` › blog
   body: '[…]',
   rendered: {
     html: '[…]',
@@ -18,93 +17,219 @@ article: {
 */
 
 
-import { getCollection, getEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 
 import { BLOG_NUM_ON_HOME, BLOG_NUM_RELATED } from '@/settings';
 
 import { getNamedPath } from '@/lib/url';
 
 
-async function _getRawArticles(collection, sorted = false) {
-  const rawArticles = (await getCollection(collection));
-    // .filter((a) => !isFutureArticle(a));
-  return sorted ? sortArticles(rawArticles) : rawArticles;
+const DEFAULT_COLLECTION = 'blog';
+
+// Operations for `getRawArticles()`.
+const OP_HYDRATE = 1;
+const OP_SORT = 2;
+const ALL_OPS = OP_HYDRATE | OP_SORT;
+
+let _baseUrl;  // Lazy initialization in `hydrateArticle()`.
+
+
+// RAW ARTICLES ====================================================================================
+
+/**
+ * Return all articles, with global filtering and processing. Optionally with requested operations.
+*/
+export async function getRawArticles(collection=DEFAULT_COLLECTION, operations=undefined) {
+  const collectionEntries = await getCollection(collection);
+
+  let rawArticles = [];
+  collectionEntries.map((article) => {
+    // DISABLED: Include future articles as handled in rendering.
+    // // Discard future articles.
+    // if (isFutureArticle(article)) return;
+
+    // Hydration.
+    if (operations & OP_HYDRATE) {
+      article = hydrateArticle(article);
+    }
+
+    rawArticles.push(article);
+  });
+
+  // Sorting.
+  if (operations & OP_SORT) {
+    rawArticles = sortArticles(rawArticles);
+  }
+
+  return rawArticles;
+}
+
+
+// OPERATIONS ======================================================================================
+
+/**
+ * Return the hydrated article.
+ */
+export function hydrateArticle(article) {
+  _baseUrl = _baseUrl || getNamedPath(article.collection);  // Lazy initialization.
+
+  article.url = `${_baseUrl}/${article.data.slug}`;
+
+  return article;
 }
 
 
 /**
- * Get all blog articles sorted by creation date (newest first).
+ * Return the list of hydrated articles.
  */
-export async function getArticles(collection) {
-  const rawArticles = await _getRawArticles(collection, true);
-  return hydrateArticles(rawArticles);
+function hydrateArticles(articles) {
+  return articles.map((article) => hydrateArticle(article));
 }
 
 
 /**
- * Get all blog articles for RSS feed.
+ * Return whether the article is to be published in the future.
  */
-export async function getArticlesForRss(collection) {
-  const rawArticles = await _getRawArticles(collection, true);
-  const articles = hydrateArticles(rawArticles);
-  return articles.map((a) => ({
-    title: a.data.title,
-    description: a.data.abstract,
-    pubDate: a.data.publishedAt,
-    link: a.url,
-    categories: a.data.tags,
+export function isFutureArticle(article) {
+  return article ? article.data.publishedAt > new Date() : false;
+}
+
+
+/**
+ * Return the list of articles sorted by date; and featured if requested.
+*/
+function sortArticles(articles, featuredFirst=false) {
+  return articles.sort((a, b) => {
+    if (featuredFirst) {
+      // Happens if only one of the articles is `featured`.
+      if (a.data.featured && !b.data.featured) return -1;  // a comes before b.
+      if (!a.data.featured && b.data.featured) return 1;   // b comes before a.
+    }
+
+    // Sort on `publishedAt`.
+    return +new Date(b.data.publishedAt) - +new Date(a.data.publishedAt)
+    // ALTERNATIVE VERSION: b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf()
+  });
+}
+
+
+// LIST GETTERS ====================================================================================
+
+/**
+ * Return the list of published articles; hydrated and sorted.
+ */
+export async function getArticles(collection=DEFAULT_COLLECTION) {
+  const articles = await getRawArticles(collection, ALL_OPS);
+  return articles;
+}
+
+
+/**
+ * Return the list of articles for the RSS feed.
+ */
+export async function getArticlesForRss(collection=DEFAULT_COLLECTION) {
+  const rawArticles = await getRawArticles(collection, ALL_OPS);
+
+  // Build data for RSS.
+  const rssArticles = rawArticles.map((article) => ({
+    title: article.data.title,
+    description: article.data.abstract,
+    pubDate: article.data.publishedAt,
+    link: article.url,
+    categories: article.data.tags,
   }));
+
+  return rssArticles;
 }
 
 
 /**
- * Get all unique categories.
+ * Return the list of featured articles; hydrated and sorted.
  */
-export async function getCategories(collection) {
-  const rawArticles = await _getRawArticles(collection);
-  const categories = new Set(rawArticles.map((a) => a.data.category).filter(Boolean));
-  return Array.from(categories);
+export async function getFeaturedArticles(collection=DEFAULT_COLLECTION, limit=BLOG_NUM_ON_HOME) {
+  const rawArticles = await getRawArticles(collection);
+
+  // Filter by featured.
+  const featuredArticles = rawArticles.filter((article) => article.data.featured);
+  // Sorting.
+  const sortedArticles = sortArticles(featuredArticles);
+  // Slicing.
+  const limitedArticles = limit ? sortedArticles.slice(0, limit) : sortedArticles;
+  // Hydration.
+  const articles = hydrateArticles(limitedArticles);
+
+  return articles;
 }
 
 
 /**
- * Get all unique tags.
+ * Return the list of latest articles; hydrated and sorted.
  */
-export async function getTags(collection) {
-  const rawArticles = await _getRawArticles(collection);
-  const tags = new Set(rawArticles.flatMap((a) => a.data.tags || []));
-  return Array.from(tags);
+export async function getLatestArticles(collection=DEFAULT_COLLECTION, limit=BLOG_NUM_ON_HOME) {
+  const rawArticles = await getRawArticles(collection, OP_SORT);
+
+  // Slicing.
+  const limitedArticles = rawArticles.slice(0, limit);
+  // Hydration.
+  const articles = hydrateArticles(limitedArticles);
+
+  return articles;
 }
 
 
 /**
- * Get featured articles.
+ * Return the list of related articles, sorted as defined; hydrated.
  */
-export async function getFeaturedArticles(collection, limit = BLOG_NUM_ON_HOME) {
-  const rawArticles = await _getRawArticles(collection);
-  const featuredArticles = sortArticles(rawArticles.filter((a) => a.data.featured));
-  const articles = limit ? featuredArticles.slice(0, limit) : featuredArticles;
-  return hydrateArticles(articles);
+export async function getRelatedArticles(refArticle) {
+  // No related?
+  if (!refArticle.data.related) return;
+  // Cached?
+  if (refArticle.relatedArticles) return refArticle.relatedArticles;
+
+  // Get each related article by ID; hydrated. With caching. No sorting.
+  refArticle.relatedArticles = await Promise.all(
+    refArticle.data.related.map(({ id }) => getArticleById(id, refArticle.collection))
+  );
+
+  return refArticle.relatedArticles;
 }
 
 
 /**
- * Get latest articles.
+ * Return the list of similar articles; hydrated and sorted.
  */
-export async function getLatestArticles(collection, limit = BLOG_NUM_ON_HOME) {
-  const rawArticles = await _getRawArticles(collection);
-  const featuredArticles = sortArticles(rawArticles, true);
-  const articles = limit ? featuredArticles.slice(0, limit) : featuredArticles;
-  return hydrateArticles(articles);
+export async function getSimilarArticles(refArticle, limit=BLOG_NUM_RELATED) {
+  const rawArticles = await getRawArticles(refArticle.collection);
+
+  // Filter by similarity.
+  const similarArticles = rawArticles.filter((article) => (
+    // Exclude current article
+    article.data.slug !== refArticle.data.slug
+    && (
+      // Same category or shared tags
+      article.data.category === refArticle.data.category
+      || article.data.tags?.some((tag) => refArticle.data.tags?.includes(tag))
+    )
+  ));
+  // Sorting.
+  const sortedArticles = sortArticles(similarArticles);
+  // Slicing.
+  const limitedArticles = limit ? sortedArticles.slice(0, limit) : sortedArticles;
+  // Hydration.
+  const articles = hydrateArticles(limitedArticles);
+
+  return articles;
 }
 
-
 /**
- * Get previous and next articles for the given article.
+ * Return the previous and next articles for the given article; hydrated.
  */
 export async function getAdjacentArticles(refArticle) {
-  const rawArticles = await _getRawArticles(refArticle.collection, true);
+  const rawArticles = await getRawArticles(refArticle.collection, OP_SORT);
+
+  // Get index of current article.
   const currentIndex = rawArticles.findIndex((a) => a.data.slug === refArticle.data.slug);
+  // Calculate previous & next indexes.
   const prevIndex = currentIndex < rawArticles.length - 1 ? currentIndex + 1 : null;
   const nextIndex = currentIndex > 0 ? currentIndex - 1 : null;
 
@@ -115,125 +240,96 @@ export async function getAdjacentArticles(refArticle) {
 }
 
 
+// "BY" GETTERS ====================================================================================
+
 /**
- * Get related articles of the given article.
+ * Return all articles in the given category; hydrated and sorted.
  */
-export async function getRelatedArticles(refArticle) {
-  if (!refArticle.data.related) return;
-  const articles = await Promise.all(
-    refArticle.data.related.map(({ id }) => getEntry(refArticle.collection, id))
-  );
-  return hydrateArticles(sortArticles(articles));
+export async function getArticlesByCategory(category, collection=DEFAULT_COLLECTION) {
+  const rawArticles = await getRawArticles(collection);
+
+  // Filter articles by category.
+  const filteredArticles = rawArticles.filter((article) => article.data.category === category);
+  // Hydration & sorting.
+  const articles = sortArticles(hydrateArticles(filteredArticles));
+
+  return articles;
 }
 
 
 /**
- * Get articles similar to the given article (same category or shared tags).
- */
-export async function getSimilarArticles(refArticle, limit = BLOG_NUM_RELATED) {
-  const rawArticles = await _getRawArticles(refArticle.collection);
-  const similarArticles = rawArticles.filter((a) => (
-    // Exclude current article
-    a.data.slug !== refArticle.data.slug
-    && (
-      // Same category or shared tags
-      a.data.category === refArticle.data.category
-      || a.data.tags?.some((tag) => refArticle.data.tags?.includes(tag))
-    )
-  ));
-  const articles = limit ? similarArticles.slice(0, limit) : similarArticles;
-  return hydrateArticles(sortArticles(articles));
-}
-
-
-/**
- * Get a single article by its slug.
- */
-export async function getArticleBySlug(collection, slug) {
-  const rawArticles = await _getRawArticles(collection);
-  const article = rawArticles.find((a) => a.data.slug === slug);
-  return hydrateArticle(article);
-}
-
-
-/**
- * Get articles by category.
- */
-export async function getArticlesByCategory(collection, category) {
-  const rawArticles = await _getRawArticles(collection);
-  const articles = rawArticles.filter((a) => a.data.category === category);
-  return hydrateArticles(sortArticles(articles));
-}
-
-
-/**
- * Get articles by tag.
+ * Return all articles having the given tag; hydrated and sorted.
 */
-export async function getArticlesByTag(collection, tag) {
-  const rawArticles = await _getRawArticles(collection);
-  const articles = rawArticles.filter((a) => a.data.tags?.includes(tag));
-  return hydrateArticles(sortArticles(articles));
+export async function getArticlesByTag(tag, collection=DEFAULT_COLLECTION) {
+  const rawArticles = await getRawArticles(collection);
+
+  // Filter articles by tag.
+  const filteredArticles = rawArticles.filter((article) => (
+    article.data.category === tag || article.data.tags?.includes(tag)
+  ));
+  // Hydration & sorting.
+  const articles = sortArticles(hydrateArticles(filteredArticles));
+
+  return articles;
 }
 
 
 /**
- * Helper function to hydrate the given article.
- *
- * Add `url`.
+ * Return the article having the given ID; hydrated.
  */
-function hydrateArticle(article) {
-  article.url = getNamedPath(article.collection, article.data.slug);
+export async function getArticleById(id, collection=DEFAULT_COLLECTION) {
+  const rawArticles = await getRawArticles(collection);
+  // Find and hydration.
+  const article = hydrateArticle(rawArticles.find((article) => article.id === id));
   return article;
 }
 
 
 /**
- * Helper function to hydrate all articles.
+* Return the article having the given slug; hydrated.
+  */
+export async function getArticleBySlug(slug, collection=DEFAULT_COLLECTION) {
+  const rawArticles = await getRawArticles(collection);
+  // Find and hydration.
+  const article = hydrateArticle(rawArticles.find((article) => article.data.slug === slug));
+  return article;
+}
+
+
+// CATEGORIES & TAGS ===============================================================================
+
+/**
+ * Return the list of unique categories; sorted.
  */
-function hydrateArticles(articles) {
-  return articles.map((a) => hydrateArticle(a));
+export async function getCategories(collection=DEFAULT_COLLECTION) {
+  const rawArticles = await getRawArticles(collection);
+
+  // Get unique categories.
+  const rawCategories = Array.from(new Set(
+    rawArticles.map((article) => article.data.category)
+      .filter(Boolean)  // Remove falsy values (false, 0, '', null, undefined, NaN).
+  ));
+  // Sorting.
+  const categories = rawCategories.sort((a, b) => a.localeCompare(b));
+
+  return categories;
 }
 
 
 /**
- * Helper function to sort articles by date.
+ * Return the list of unique tags; sorted.
  */
-function sortArticles(articles, featuredFirst = false) {
-  return articles.sort((a, b) => {
-    if (featuredFirst) {
-      if (a.data.featured && !b.data.featured) return -1;
-      if (!a.data.featured && b.data.featured) return 1;
-    }
+export async function getTags(collection=DEFAULT_COLLECTION) {
+  const rawArticles = await getRawArticles(collection);
 
-    return +new Date(b.data.publishedAt) - +new Date(a.data.publishedAt)
-    // ALTERNATIVE VERSION: b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf()
-  });
-}
+  // Get unique tags.
+  const rawTags = Array.from(new Set(
+    // rawArticles.flatMap((article) => article.data.tags)
+    rawArticles.flatMap((article) => [article.data.category, ...article.data.tags])
+      .filter(Boolean)  // Remove falsy values (false, 0, '', null, undefined, NaN).
+  ));
+  // Sorting.
+  const tags = rawTags.sort((a, b) => a.localeCompare(b));
 
-
-/**
- * Helper function to check if the article must not yet be published.
- */
-export function isFutureArticle(article) {
-  return article ? article.data.publishedAt > new Date() : false;
-}
-
-
-/**
- * Remove the "category tag" from the tag list.
- */
-export function removeCategoryFromTags(tags, category) {
-  return tags.filter((t) => t !== category);
-}
-
-
-/**
- * Format a list of tags for display.
-*/
-export function formatTags(tags) {
-  return tags.map((t) => {
-    return '#' + t
-      .replace(/\b\w/g, (char) => char.toUpperCase())
-      .replace(/[ -]/g, '');
-  }).join(' ');
+  return tags;
 }

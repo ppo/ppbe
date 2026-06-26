@@ -21,8 +21,9 @@ const blog = defineCollection({
   loader: glob({ base: './src/content/blog', pattern: '**/[^_]*.{md,mdx}' }),
   schema: z.object({
     slug: z.string().nullish(),
-    publishedAt: z.coerce.date().nullable(), // The reference date for sorting
-    createdAt: z.coerce.date().nullish(), // When the content was originally created, defaults to publishedAt.
+    // TODO: Review `publishedAt` & `createdAt`.
+    publishedAt: z.coerce.date().nullable(), // The reference date for sorting.
+    createdAt: z.coerce.date().nullish(),    // When the content was originally created, defaults to `publishedAt`.
     title: z.string(),
     subtitle: z.string().nullish(),
     abstract: z.string().nullish(),

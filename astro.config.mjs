@@ -18,7 +18,7 @@ export default defineConfig({
 
   trailingSlash: 'never',
   integrations: [
-    icon(),
+    icon(),  // See https://icon-sets.iconify.design/
     mdx(),
     partytown(),
     sitemap(),

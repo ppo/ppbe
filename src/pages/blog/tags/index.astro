@@ -1,0 +1,16 @@
+---
+import { getTags } from '@/lib/blog';
+
+import Layout from '@/layouts/BlogLayout.astro';
+
+
+const tags = await getTags();
+---
+
+
+<Layout>
+  <main class="prose max-w-none">
+    <h1>Tags</h1>
+    <p>{tags.join(' • ')}</p>
+  </main>
+</Layout>

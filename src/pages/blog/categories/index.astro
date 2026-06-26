@@ -1,0 +1,16 @@
+---
+import { getCategories } from '@/lib/blog';
+
+import Layout from '@/layouts/BlogLayout.astro';
+
+
+const categories = await getCategories();
+---
+
+
+<Layout>
+  <main class="prose max-w-none">
+    <h1>Categories</h1>
+    <p>{categories.join(' • ')}</p>
+  </main>
+</Layout>

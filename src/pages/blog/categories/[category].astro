@@ -1,0 +1,28 @@
+---
+export const prerender = true;
+
+import { getArticlesByCategory, getCategories } from '@/lib/blog';
+
+import BlogList from '@/components/blog/List.astro';
+import Layout from '@/layouts/BlogLayout.astro';
+
+
+export async function getStaticPaths() {
+  const categories = await getCategories();
+  return categories.map((category) => ({
+    params: { category },
+    props: category,
+  }));
+}
+
+
+const { category } = Astro.params;
+const articles = await getArticlesByCategory(category);
+---
+
+
+<Layout title={`Articles in ${category}`}>
+  <main class="prose max-w-none">
+    <BlogList {articles} />
+  </main>
+</Layout>

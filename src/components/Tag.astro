@@ -1,0 +1,45 @@
+---
+interface Props {
+  name: string;
+  url?: string;
+  class?: string;
+}
+const { name, url, class: className } = Astro.props;
+
+const aProps = {
+  href: `${url}/${encodeURI(name)}`,
+  title: `Tag: ${name}`,
+};
+---
+
+
+{url && (
+  <a {...aProps} class:list={['tag', className]}>
+    <span>{name}</span>
+  </a>
+) || (
+  <>
+    <span class="tag">{name}</span>
+  </>
+)}
+
+
+<style>
+  a {
+    color: inherit;
+  }
+
+  .tag {
+    font-size: 0.9em;
+    /* background-color: var(--color-bg-lgray);
+    padding: 0.25em 0.5em; */
+
+    &:not(:last-of-type) {
+      margin-right: 0.25em;
+    }
+    &::before {
+      content: '#';
+      color: var(--color-lgray);
+    }
+  }
+</style>

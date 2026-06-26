@@ -29,11 +29,13 @@ export const HTML_HEAD = {
 
 // Named routes (as name: path).
 export const ROUTES = {
-  home:  '/',
-  about: '/about',
-  blog:  '/blog',
-  mp25:  '/master-plan-2025',
-  cv:    '/cv',
+  home:              '/',
+  about:             '/about',
+  blog:              '/blog',
+  'blog-tags':       '/blog/tags',
+  'blog-categories': '/blog/categories',
+  mp25:              '/master-plan-2025',
+  cv:                '/cv',
 
   rss:     '/rss.xml',
   sitemap: '/sitemap-index.xml',

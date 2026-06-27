@@ -5,7 +5,7 @@ title: "Template"  # Title Capitalization (CMOS)
 subtitle: ""  # Regular sentence capitalization
 abstract: ""
 category: ""  # Singular
-tags: ["REPEAT CATEGORY"]  # All singular
+tags: ["", ""]  # All singular
 hero:
     image: /blog/<slug>.webp  # 1536x1024
 ---

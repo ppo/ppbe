@@ -8,7 +8,7 @@ abstract: ""
 author: Pascal Polleunus
 featured: true
 category: ""  # Singular
-tags: ["REPEAT CATEGORY"]  # All singular
+tags: ["", ""]  # All singular
 related:
     - template
 hero:
